@@ -1,11 +1,3 @@
-#main {
-    width: 100%;
-    /* box-sizing: border-box; */
-    /* padding: 150px 300px 0px 300px; */
-    /* background: #909090; */
-
-}
-
 .join__wrap {
     max-width: 1200px;
     margin: 120px auto;
@@ -33,6 +25,11 @@
 .join__index ul {
     display: inline-block;
     position: relative;
+    display: flex;
+    width: 50%;
+    gap: 33%;
+    justify-content: space-between;
+    margin: 0 auto;
 }
 
 .join__index ul::after {
@@ -59,9 +56,6 @@
     position: relative;
 }
 
-.join__index li:nth-child(2) {
-    margin: 0 200px;
-}
 
 .join__index li.active1,
 .join__index li.active2,
