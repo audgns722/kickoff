@@ -9,6 +9,8 @@ import Join from './components/user/Join'
 import JoinEnd from './components/user/JoinEnd'
 import FindId from './components/user/FindId'
 import FindSuccess from './components/user/FindSuccess'
+import BoardList from './components/board/BoardList'
+import BoardDetail from './components/board/BoardDetail'
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
           <Route path='/joinEnd' element={<JoinEnd />}></Route>
           <Route path='/findId' element={<FindId />}></Route>
           <Route path='/findSuccess' element={<FindSuccess />}></Route>
+          <Route path='/list' element={<BoardList />}></Route>
+          <Route path='/detail' element={<BoardDetail />}></Route>
         </Routes>
       </Main>
     </>
