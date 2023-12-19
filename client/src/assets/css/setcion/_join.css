@@ -1,0 +1,369 @@
+#main {
+    width: 100%;
+    /* box-sizing: border-box; */
+    /* padding: 150px 300px 0px 300px; */
+    /* background: #909090; */
+
+}
+
+.join__wrap {
+    max-width: 1200px;
+    margin: 120px auto;
+}
+
+.join__title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* 가운데 정렬이었던 부분을 왼쪽 정렬로 변경 */
+    justify-content: flex-start;
+}
+
+.join__title h2 {
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.join__index {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 80px;
+}
+
+.join__index ul {
+    display: inline-block;
+    position: relative;
+}
+
+.join__index ul::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #d9d9d9;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: -1;
+}
+
+.join__index li {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 33px;
+    border-radius: 50%;
+    border: 2px solid #d9d9d9;
+    font-family: var(--main-gmark);
+    font-size: 18px;
+    background-color: #d9d9d9;
+    position: relative;
+}
+
+.join__index li:nth-child(2) {
+    margin: 0 200px;
+}
+
+.join__index li.active1,
+.join__index li.active2,
+.join__index li.active3 {
+    color: var(--white);
+    background-color: var(--red);
+}
+
+.join__index li.active1:before {
+    position: absolute;
+    content: '약관동의';
+    bottom: -50px;
+    color: black;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.join__index li.active2:before {
+    position: absolute;
+    content: '정보입력';
+    bottom: -50px;
+    color: black;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.join__index li.active3:before {
+    position: absolute;
+    content: '가입완료';
+    bottom: -50px;
+    color: black;
+    width: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
+.join__agree {
+    margin-top: 100px;
+}
+
+.agree__box {
+    padding: 0%;
+    margin-bottom: 50px;
+
+}
+
+
+
+.agree__box .check {
+    margin-top: 10px;
+
+}
+
+.agree__box .check label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.agree__box .check input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+}
+
+
+
+.agree__box .check button {
+    margin-left: 10px;
+    /* Adjust the margin as needed to create space */
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+
+.agree__box .check .indicator {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: var(--white);
+    border: 1px;
+    margin-top: 10px;
+}
+
+.agree__box .check .indicator::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.agree__box .check input:checked~.indicator {
+    background: #ff0000;
+}
+
+.agree__box .check input:checked~.indicator::after {
+    display: block;
+}
+
+/* 모두 동의 버튼 박스 */
+.agree__box1 .check label {
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+    border: 1px;
+    padding: 21px 20px 20px 40px;
+    display: flex;
+    /* Add display: flex; to enable flex properties */
+    align-items: center;
+    /* Center the content vertically */
+    background-color: var(--white200);
+}
+
+.agree__box1 .check .indicator5 {
+    position: absolute;
+    top: 50%;
+    left: 380px;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background: var(--white);
+    border: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center the content inside the indicator */
+    color: var(--black);
+    /* Add color to the content inside the indicator */
+}
+
+.agree__box1 .check .indicator5::after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+
+}
+
+.agree__box1 .check input:checked~.indicator5 {
+    background: #ff0000;
+}
+
+.agree__box1 .check input:checked~.indicator5::after {
+    display: block;
+}
+
+.join__agree .next {
+    border: 1px solid var(--black);
+    /* var(--black)는 적절한 색상 변수로 변경하세요 */
+    padding: 10px;
+    background-color: var(--black);
+    /* 버튼 배경색을 원하는 색으로 변경하세요 */
+    color: var(--white);
+    /* 버튼 텍스트 색을 원하는 색으로 변경하세요 */
+    cursor: pointer;
+    /* 포인터 모양의 커서를 사용하여 사용자에게 버튼을 클릭할 수 있다는 힌트를 제공합니다. */
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.scroll__style {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    transition: max-height 0.3s ease-out;
+}
+
+.scroll__style.show {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.viewDetailsBtn,
+.closeDetailsBtn {
+    cursor: pointer;
+}
+
+.agree__box .scroll {
+    height: 400px;
+    background-color: var(--black600);
+    /* padding: 30px; */
+    white-space: pre-line;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+/* 추가된 스타일 */
+.agree__box .scroll.show {
+    max-height: 500px;
+}
+
+
+.join {
+    display: flex;
+    align-items: center;
+    /* Align items vertically in the center */
+}
+
+.join label {
+    width: 110px;
+    /* Set a fixed width for labels */
+    margin-right: 60px;
+    /* Adjust the right margin for labels */
+    margin-bottom: 80px;
+}
+
+.join label::before {
+    content: '*';
+    color: var(--red);
+}
+
+.write {
+    flex: 1;
+    /* Allow the write div to take up remaining space */
+    padding-bottom: 60px;
+}
+
+.input__style {
+    padding: 9px;
+    border: 1px solid var(--black);
+    width: 400px;
+    height: 40px;
+    box-sizing: border-box;
+    /* Default border color */
+}
+
+/* Change border color on focus */
+.input__style:hover {
+    padding: 8px;
+    border: 2px solid var(--red);
+    /* Red border color */
+}
+
+.join__insert .join .btn {
+    padding: 8px 16px;
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    cursor: pointer;
+}
+
+.msg {
+    font-size: 14px;
+    color: var(--black);
+}
+
+
+/* "회원가입 완료" 버튼에 대한 스타일링 */
+.next {
+    border: 1px solid var(--black);
+    padding: 10px;
+    background-color: var(--black);
+    color: var(--white);
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 170px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+
+.join__end p {
+    text-align: center;
+    font-size: 19px;
+}
+
+.join__end button {
+    background-color: var(--red);
+    color: var(--white);
+    border: 1px;
+    width: 200px;
+    margin-top: 10px;
+}

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/* setting */
+@import "./setting/_font.css";
+@import "./setting/_var.css";
+@import "./setting/_reset.css";
+@import "./setting/_common.css";
+
+/* section */
+@import "./setcion/_main.css";
+@import "./setcion/_board.css";
+@import "./setcion/_find.css";
+@import "./setcion/_login.css";
+@import "./setcion/_mypage.css";
+@import "./setcion/_leagueDetail.css";
+@import "./setcion/_playDetail.css";
+@import "./setcion/_join.css";

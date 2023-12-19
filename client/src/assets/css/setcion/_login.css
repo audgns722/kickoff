@@ -1,0 +1,220 @@
+.login__wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-image: url(../../img/loginbg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.login__wrap::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login__wrap>div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+
+.logo__wrap {
+    display: flex;
+}
+
+.logo__wrap h2 {
+    font-size: 36px;
+    line-height: 47px;
+    font-weight: 400;
+    color: #f4f4f4;
+}
+
+.logo__wrap img {
+    margin-right: 15px;
+}
+
+/* 로그인 카드 스타일 */
+.CardLayout {
+    background-color: #fff;
+    width: 500px;
+    height: 650px;
+    border-radius: 5px;
+    margin: 10% auto;
+    padding: 3em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.CardLayout__header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+    font-style: normal;
+    letter-spacing: .05em;
+    text-transform: none;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.EmailPage__content form {
+    margin-top: 1em;
+    position: relative;
+}
+
+.email-field label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.email-field p {
+    margin-bottom: 35px;
+}
+
+.email-field a {
+    color: #007bff;
+}
+
+.email-field input[type="email"] {
+    width: 100%;
+    padding: 0.5em;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.email-field input[type="email"]:focus {
+    outline: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+.email_address label {
+    display: block;
+    padding: 4px 0 5px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.EmailPage__submit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.EmailPage__submit button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+/* 소셜 로그인 및 추가 링크 스타일 */
+
+.RuleWithText-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 3.5em;
+    margin-bottom: 2em;
+}
+
+.RuleWithText-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    /* margin: 0 16px; */
+
+}
+
+.RuleWithText {
+    margin: 0 10px;
+}
+
+
+#SocialButtons-Container a {
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    color: #000;
+    text-decoration: none;
+    /* font-weight: bold; */
+    border-radius: 25px;
+    border: 1px solid #eaeaea;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#SocialButtons-Container em {
+    font-weight: 900;
+    font-size: 16px;
+}
+
+#SocialButtons-Container img {
+    width: 45px;
+    height: 45px;
+}
+
+
+/* password */
+.PasswordPage__content form {
+    margin-top: 1em;
+    position: relative;
+}
+
+.password-field label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.password-field p {
+    margin-bottom: 35px;
+}
+
+.password-field a {
+    color: #007bff;
+}
+
+.password-field input[type="password"] {
+    width: 100%;
+    padding: 0.5em;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.password-field input[type="password"]:focus {
+    outline: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+.password label {
+    display: block;
+    padding: 4px 0 5px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.Password__submit button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10;
+    right: 0;
+    border-radius: 30px;
+}

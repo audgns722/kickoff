@@ -1,0 +1,32 @@
+:root {
+    --font-noto: "Noto Serif Display";
+
+    --bgcolor: #070A14;
+    --red: #CE0000;
+    --navy: #121931;
+    --gray: #B8BAC1;
+
+    --black: #000;
+
+    --white: #fff;
+
+    /* 폰트 셋팅 */
+    font-family: var(--font-arita), var(--font-noto), var(--font-gmarket);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+
+    /* 폰트 최적화 */
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

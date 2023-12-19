@@ -1,0 +1,441 @@
+#main {
+    width: 100%;
+    height: 100vh;
+    /* box-sizing: border-box; */
+    /* padding: 150px 300px 0px 300px; */
+    /* background: #909090; */
+
+}
+
+.play__wrap {
+    padding-left: 55px;
+}
+
+.league__info {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.league__title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+    /* 수평 가운데 정렬 */
+}
+
+.league__title img {
+    width: 52px;
+    height: 52px;
+    margin-right: 10px;
+
+}
+
+.league__title h3 {
+    font-size: 26px;
+    font-family: var(--font-gmarket);
+    font-weight: 900;
+
+}
+
+.play__info {
+    margin-top: 4.16vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    max-height: 560px;
+}
+
+.league__home {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ddd; */
+    text-align: center;
+    /* 가운데 정렬 */
+}
+
+.league__home .logo {
+    width: 13vw;
+    height: 13vw;
+    min-width: 100px;
+    min-height: 100px;
+    border: 8px solid green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.league__home .logo img {
+    width: 40%;
+}
+
+.league__home h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 55px;
+    /* 텍스트와 로고 사이의 간격 조절을 위해 마진 추가 */
+}
+
+.league__home p {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 40px;
+}
+
+.league__home p em {
+    color: green;
+}
+
+.league__away {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #ddd; */
+    text-align: center;
+    /* 가운데 정렬 */
+}
+
+.league__away .logo {
+    width: 13vw;
+    height: 13vw;
+    min-width: 100px;
+    min-height: 100px;
+    border: 8px solid var(--red);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.league__away img {
+    width: 40%;
+}
+
+.league__away h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 55px;
+    /* 텍스트와 로고 사이의 간격 조절을 위해 마진 추가 */
+}
+
+.league__away p {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-top: 40px;
+}
+
+.league__away p em {
+    color: var(--red);
+}
+
+.league__match {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+.league__match .date {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gray);
+}
+
+.league__match .date em {
+    color: var(--black);
+}
+
+.league__match .score {
+    font-size: 5.2vw;
+    line-height: 1;
+    font-weight: 900;
+    padding: 2.5vw 0;
+}
+
+.league__match .playdata {
+    font-size: 1.2rem;
+    color: var(--gray);
+}
+
+.league__match .stadium {
+    font-size: 24px;
+    margin-top: 5.2vw;
+    color: var(--gray);
+}
+
+.league__match .stadium em {
+    font-weight: 900;
+    color: var(--black);
+}
+
+.league__match .draw {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--gray);
+    margin-top: 35px;
+}
+
+.league__match .draw em {
+    color: #CEC85D;
+}
+
+.list {
+    width: 100%;
+    height: 84px;
+    text-align: center;
+}
+
+.list ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-top: 100px;
+}
+
+.list li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.list a {
+    padding: 0 25px;
+    text-decoration: none;
+    color: var(--gray);
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.list a.active {
+    color: #007BFF;
+    position: relative;
+}
+
+.list a.active::before {
+    content: '';
+    width: 40%;
+    height: 4px;
+    background-color: #5983FF;
+    position: absolute;
+    bottom: -27px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.list a:hover {
+    color: #007BFF;
+}
+
+
+/* play__bottom */
+.play__bottom {
+    width: 100%;
+    height: 2000px;
+    padding-left: 55px;
+    background-color: #F2F3F4;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--gray);
+}
+
+.play__bottom .play__status {
+    background-color: #fff;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 6vh 0;
+}
+
+.play__status .status__top {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--gray);
+    font-weight: 700;
+}
+
+.play__status .status__top>div:nth-child(2) {
+    margin: 0 40px;
+}
+
+.play__status .status__top .team {
+    font-size: 2rem;
+    font-weight: 700;
+    display: inline-block;
+    color: var(--black);
+}
+
+.status__progress {
+    width: 100%;
+    padding: 0 5.4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.status__progress .progress__left {
+    width: 35%;
+    height: 10px;
+    background-color: greenyellow;
+    position: relative;
+}
+
+.status__progress .progress__left::before {
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 50%;
+    height: 10px;
+    background-color: var(--gray);
+}
+
+.status__progress .progress__text {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.status__progress .progress__text .score {
+    font-size: 1.4rem;
+
+}
+
+.status__progress .progress__text>div:nth-child(2) {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray);
+    margin: 0 30px;
+}
+
+.status__progress .progress__right {
+    width: 35%;
+    height: 10px;
+    background-color: red;
+    position: relative;
+}
+
+.status__progress .progress__right::before {
+    position: absolute;
+    content: '';
+    right: 0;
+    width: 50%;
+    height: 10px;
+    background-color: var(--gray);
+}
+
+.play__bottom .play__comment {
+    background-color: #fff;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 0 3vh 0;
+}
+
+.play__comment .comment__top {
+    height: 95px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+
+.play__comment .comment__top em {
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.play__comment .comments {
+    padding: 30px;
+    display: flex;
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.play__comment .comments .avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.play__comment .comments .text {
+    display: flex;
+    flex-direction: column;
+}
+
+.play__comment .comments .text .name {
+    font-weight: 600;
+}
+
+.play__comment .comments .text .cont {
+    padding: 15px 30px;
+    background-color: #F4F7F8;
+    border-radius: 50px;
+}
+
+.play__comment .comments .time {
+    display: flex;
+    align-items: flex-end;
+    color: var(--gray);
+    margin-left: 10px;
+}
+
+.play__comment .commnetBox {
+    width: 100%;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.play__comment .commnetBox .commentInput {
+    width: 85%;
+    background-color: #F4F7F8;
+    border-radius: 50px;
+    padding: 15px 30px;
+}
+
+.commnetBox .comment__view {
+    color: var(--gray);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.commnetBox .comment__view em {
+    font-size: 1.1rem;
+    font-weight: 500;
+}

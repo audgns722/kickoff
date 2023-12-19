@@ -1,0 +1,64 @@
+/* 소셜 로그인 및 추가 링크 스타일 */
+
+#SocialButtons-Container a {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    color: #000;
+    /* 링크 색상 */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 1px solid #eaeaea;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+#SocialButtons-Container a {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+    color: #000;
+    /* 링크 색상 */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    border: 1px solid #eaeaea;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.profile-image img {
+    width: 70px;
+    height: 70px;
+}
+
+.notification {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.findUsername {
+    margin-left: 15px;
+    margin-bottom: 0 !important;
+}
+
+.findtext p {
+    line-height: 1.4;
+    margin-bottom: 50px;
+}
+
+.action-button {
+    background-color: var(--white);
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.btn__wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

@@ -1,0 +1,314 @@
+        /* detail__info */
+        .detail__info {
+            width: 100%;
+            height: 460px;
+            background: linear-gradient(to right, #8762A7 0%, #553370 100%);
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail__info::before {
+            background-image: url(../../img/detail_cloud.png);
+            position: absolute;
+            content: '';
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+
+        .detail__info::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            bottom: 0;
+            z-index: 1;
+            background: linear-gradient(to bottom, #55337000 0%, #8762A7 100%);
+        }
+
+        .detail__info .left {
+            width: 25.2604vw;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .detail__info .left::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: calc(100% + 30px);
+            min-width: 250px;
+            background-image: url(../../img/detail_faceon.png);
+            background-position: bottom left;
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .detail__info .left .logo {
+            width: 9.6354vw;
+            height: 9.6354vw;
+            min-width: 100px;
+            min-height: 100px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .detail__info .left .logo img {
+            width: 80%;
+        }
+
+        .detail__info .right {
+            width: calc(100% - 25.2604vw);
+            height: 100%;
+            display: grid;
+            z-index: 2;
+            grid-template-columns: repeat(2, 50%);
+            padding-top: 52px;
+            padding-left: 5px;
+            grid-template-areas:
+                "area1 area2"
+                "area3 area4"
+                "area5 area4"
+            ;
+        }
+
+        .detail__info .right>div:nth-child(1) {
+            grid-area: area1;
+        }
+
+        .detail__info .right>div:nth-child(2) {
+            grid-area: area2;
+        }
+
+        .detail__info .right>div:nth-child(3) {
+            grid-area: area3;
+        }
+
+        .detail__info .right>div:nth-child(4) {
+            grid-area: area4;
+        }
+
+        .detail__info .right>div:nth-child(5) {
+            grid-area: area5;
+        }
+
+        .detail__info .right>div:nth-child(6) {
+            grid-area: area6;
+        }
+
+        .detail__info .right .info {
+            height: 100%;
+        }
+
+        .detail__info .right .info h1 {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        .detail__info .right .info p {
+            margin-top: 5px;
+            font-size: 1.8rem;
+            color: var(--white);
+            display: block;
+        }
+
+        .detail__info .right .info .teams__logo {
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .teams__logo .logo {
+            background-image: url(../../img/logo_chelsea.png);
+            width: 30px;
+            height: 30px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* detail__content */
+        .detail__content {
+            width: 100%;
+            background-color: #fff;
+            height: 100%;
+        }
+
+        .detail__content .content__top {
+            height: 93px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #B8BAC1;
+            padding: 0px 32px;
+        }
+
+        .detail__content .content__top .left__text {
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .detail__content .content__top ul {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .detail__content .content__top ul>li {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #B8BAC1;
+            cursor: pointer;
+        }
+
+        .detail__content .content__top ul>li:hover {
+            color: #5983FF;
+        }
+
+        .detail__content .content__top ul>li.active {
+            color: #5983FF;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .detail__content .content__top ul>li.active::before {
+            content: '';
+            width: 40%;
+            height: 4px;
+            background-color: #5983FF;
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .right__text select {
+            color: #B8BAC1;
+            text-align: center;
+        }
+
+        .content__bottom .result__title {
+            width: 100%;
+            height: 93px;
+            padding: 0px 50px 0 32px;
+            border-bottom: 1px solid #B8BAC1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .result__title .left__text {
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .result__title .right__text {
+            color: #B8BAC1;
+            font-weight: 700;
+        }
+
+        .result__info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 93px;
+            border-bottom: 1px solid #B8BAC1;
+            padding: 0 32px;
+        }
+
+        .result__info .result__left {
+            display: flex;
+            text-align: center;
+        }
+
+        .result__info .result__left .league__logo {
+            background-image: url(../../img/logo_chelsea.png);
+            width: 44px;
+            height: 44px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+        }
+
+        .result__left .date {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result__left .date p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.2;
+            display: inline-block;
+        }
+
+        .result__left .date span {
+            line-height: 1.2;
+            display: inline-block;
+            color: #B8BAC1;
+        }
+
+        .result__info .result__center {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+        }
+
+        .result__center .league__team {
+            display: flex;
+            align-items: center;
+        }
+
+        .result__center .league__team .logo {
+            background-image: url(../../img/logo_chelsea.png);
+            width: 33px;
+            height: 33px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .result__center .league__team .name {
+            padding: 0 25px;
+            font-weight: 500;
+            color: #B8BAC1;
+            font-size: 1.3rem;
+        }
+
+        .result__center .league__team .name.win {
+            padding: 0 25px;
+            font-weight: 700;
+            color: var(--black);
+            font-size: 1.3rem;
+        }
+
+        .result__center .league__score {
+            padding: 5px 20px;
+            background-color: #F0F0F0;
+            border-radius: 5px;
+            color: #B8BAC1;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .result__center .league__score em {
+            color: var(--black);
+        }
