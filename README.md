@@ -12,4 +12,4 @@ npm install path --save
 npm install cors
 npm install node-fetch
 
-영식
+지성
