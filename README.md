@@ -11,3 +11,5 @@ npm install nodemon --save
 npm install path --save
 npm install cors
 npm install node-fetch
+
+영식
