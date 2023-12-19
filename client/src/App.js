@@ -11,7 +11,6 @@ import FindId from './components/user/FindId'
 import FindSuccess from './components/user/FindSuccess'
 import BoardList from './components/board/BoardList'
 import BoardDetail from './components/board/BoardDetail'
-import Join from './pages/Join'
 
 const App = () => {
   return (
