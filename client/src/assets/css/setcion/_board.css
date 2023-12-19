@@ -288,7 +288,7 @@
 }
 
 .board__detail>.bottom>.btnWrap {
-    display: flex;
+    /* display: flex; */
 }
 
 .board__detail>.bottom>.btnWrap>.modify,
