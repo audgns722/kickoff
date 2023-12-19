@@ -166,7 +166,7 @@ const JoinInfo = () => {
                         </div>
                     </div>
 
-                    <button disabled={flag} className="next" onClick={(e) => JoinFunc(e)}><Link to="/">회원가입 완료</Link></button>
+                    <button disabled={flag} className="next" onClick={(e) => JoinFunc(e)}>회원가입 완료</button>
 
                 </div>
             </div>
