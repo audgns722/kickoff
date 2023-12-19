@@ -2,7 +2,8 @@
 npx create-react-app .   
 npm install react-router-dom   
 npm install axios   
-npm install http-proxy-middleware --save   
+npm install http-proxy-middleware --save
+npm install firebase
 
 ## server 설치
 npm init -y    
@@ -11,6 +12,11 @@ npm install nodemon --save
 npm install path --save
 npm install cors
 npm install node-fetch
+npm install mongoose --save
 
 영식
 진호
+<<<<<<< HEAD
+=======
+영식2
+>>>>>>> 05b220ab77b219d57e56aeea988ddcfb0b863cc3

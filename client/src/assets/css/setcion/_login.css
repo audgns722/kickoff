@@ -178,11 +178,11 @@
     margin-bottom: 0.5em;
 }
 
-.password-field p {
+.Password__submit p {
     margin-bottom: 35px;
 }
 
-.password-field a {
+.Password__submit a {
     color: #007bff;
 }
 

@@ -31,6 +31,7 @@
     padding-top: 55px;
     width: 55px;
     height: 100vh;
+    z-index: 1;
     position: fixed;
     left: 0;
     top: 0;
