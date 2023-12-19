@@ -11,7 +11,7 @@ const Header = () => {
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [currentTime]);
 
     const getTimeWithOffset = (offset) => {
         const localTime = new Date();
@@ -38,7 +38,7 @@ const Header = () => {
                     KICKOFF
                 </h1>
                 <div className="search">
-                    <label for="search">SEARCH</label>
+                    <label htmlFor="search">SEARCH</label>
                     <input type="text" name="search" placeholder="Premier League, Chelsea" />
                     <p style={{ color: "#fff" }}>돋보기이미지 넣어야함</p>
                 </div>
@@ -46,14 +46,14 @@ const Header = () => {
 
             <div className="header__right">
                 <div className="link">
-                    <label for="link" className="blind">LINK</label>
+                    <label htmlFor="link" className="blind">LINK</label>
                     <select name="link" id="link">
                         <option value="NOTICE">NOTICE</option>
                         <option value="BOARD">BOARD</option>
                     </select>
                 </div>
                 <div className="time">
-                    <label for="time" className="blind">LINK</label>
+                    <label htmlFor="time" className="blind">LINK</label>
                     <select name="time" id="lintimek" onChange={handleChangeTimezone} value={selectedTimezone}>
                         {renderTimeInfo('KOREA', 9, 'Korea')}
                         {renderTimeInfo('LONDON', 1, 'London')}
@@ -61,7 +61,7 @@ const Header = () => {
                     </select>
                 </div>
                 <div className="login">
-                    <Link to="/">
+                    <Link to="/login">
                         LOGIN
                     </Link>
                 </div>

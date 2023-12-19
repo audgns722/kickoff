@@ -14,4 +14,9 @@ npm install cors
 npm install node-fetch   
 npm install mongoose --save   
 
+영식
+진호
+<<<<<<< HEAD
+=======
 영식2
+>>>>>>> 05b220ab77b219d57e56aeea988ddcfb0b863cc3
