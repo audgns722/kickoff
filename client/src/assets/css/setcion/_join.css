@@ -1,14 +1,12 @@
 .join__wrap {
     max-width: 1200px;
     margin: 120px auto;
+    width: 90%;
 }
 
 .join__title {
     width: 100%;
-    display: flex;
-    align-items: center;
-    /* 가운데 정렬이었던 부분을 왼쪽 정렬로 변경 */
-    justify-content: flex-start;
+    text-align: center;
 }
 
 .join__title h2 {
@@ -32,7 +30,7 @@
     margin: 0 auto;
 }
 
-.join__index ul::after {
+.join__index ul::before {
     content: '';
     width: 100%;
     height: 2px;
@@ -40,7 +38,6 @@
     position: absolute;
     left: 0;
     top: 50%;
-    z-index: -1;
 }
 
 .join__index li {
@@ -110,7 +107,7 @@
 
 
 .agree__box .check {
-    margin-top: 10px;
+    margin: 10px 0;
 
 }
 
@@ -152,7 +149,7 @@
     height: 20px;
     width: 20px;
     background: var(--white);
-    border: 1px;
+    border: 1px solid #ccc;
     margin-top: 10px;
 }
 
@@ -191,20 +188,13 @@
 }
 
 .agree__box1 .check .indicator5 {
-    position: absolute;
-    top: 50%;
-    left: 380px;
-    transform: translateY(-50%);
+    position: relative;
+    margin-right: 5px;
     height: 20px;
     width: 20px;
     background: var(--white);
-    border: 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Center the content inside the indicator */
+    border: 1px solid #ccc;
     color: var(--black);
-    /* Add color to the content inside the indicator */
 }
 
 .agree__box1 .check .indicator5::after {
@@ -251,6 +241,12 @@
     margin: 0;
     padding: 0;
     transition: max-height 0.3s ease-out;
+    background-color: #ccc;
+}
+
+.scroll__style em {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .scroll__style.show {
@@ -265,8 +261,9 @@
 
 .agree__box .scroll {
     height: 400px;
-    background-color: var(--black600);
-    /* padding: 30px; */
+    background-color: var(--black500);
+    margin-left: 30px;
+    padding: 30px;
     white-space: pre-line;
     overflow-y: auto;
     line-height: 1.6;
@@ -306,7 +303,7 @@
 .input__style {
     padding: 9px;
     border: 1px solid var(--black);
-    width: 400px;
+    width: 100%;
     height: 40px;
     box-sizing: border-box;
     /* Default border color */
@@ -319,7 +316,16 @@
     /* Red border color */
 }
 
+.join__insert {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
 .join__insert .join .btn {
+    float: right;
     padding: 8px 16px;
     background-color: var(--white);
     color: var(--black);
