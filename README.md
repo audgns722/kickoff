@@ -8,11 +8,11 @@ npm install firebase
 ## server 설치
 npm init -y    
 npm install express --save   
-npm install nodemon --save
-npm install path --save
-npm install cors
-npm install node-fetch
-npm install mongoose --save
+npm install nodemon --save   
+npm install path --save   
+npm install cors   
+npm install node-fetch   
+npm install mongoose --save   
 
 영식
 진호

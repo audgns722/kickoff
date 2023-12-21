@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+// icon
+import { FaShare } from "react-icons/fa";
+import { AiOutlineLike } from "react-icons/ai";
+
 const MainCont = (props) => {
     return (
         <>
@@ -25,7 +29,7 @@ const MainCont = (props) => {
                         <div className="btn">
                             <Link href="/">
                                 <div className="icon">
-
+                                    <FaShare />
                                 </div>
                                 <i>VIEW</i>
                             </Link>
@@ -75,11 +79,11 @@ const MainCont = (props) => {
                         </p>
                         <div className="btn">
                             <div className="like">
-                                따봉
+                                <AiOutlineLike />
                                 <span>369</span>
                             </div>
                             <div className="share">
-                                공유
+                                <FaShare />
                                 <span>369</span>
                             </div>
                         </div>

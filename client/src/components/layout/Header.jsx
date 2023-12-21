@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import firebase from '../../firebase.js'
+
+// icon
+import { IoMdSearch } from "react-icons/io";
 
 const Header = () => {
+    // 시간
     const [selectedTimezone, setSelectedTimezone] = useState('KOREA');
     const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -31,6 +37,17 @@ const Header = () => {
     const handleChangeTimezone = (e) => {
         setSelectedTimezone(e.target.value);
     };
+
+    // 로그아웃
+    const user = useSelector(state => state.user);
+    // console.log(user);
+    const navigate = useNavigate();
+
+    const LogoutHandler = () => {
+        firebase.auth().signOut();
+        navigate("/");
+    }
+
     return (
         <header id="header">
             <div className="header__left">
@@ -38,9 +55,9 @@ const Header = () => {
                     KICKOFF
                 </h1>
                 <div className="search">
+                    <IoMdSearch />
                     <label htmlFor="search">SEARCH</label>
                     <input type="text" name="search" placeholder="Premier League, Chelsea" />
-                    <p style={{ color: "#fff" }}>돋보기이미지 넣어야함</p>
                 </div>
             </div>
 
@@ -61,9 +78,15 @@ const Header = () => {
                     </select>
                 </div>
                 <div className="login">
-                    <Link to="/login">
-                        LOGIN
-                    </Link>
+                    {user.accessToken === "" ? (
+                        <Link to="/login">
+                            LOGIN
+                        </Link>
+                    ) : (
+                        <Link onClick={(() => LogoutHandler())}>
+                            Logout
+                        </Link>
+                    )}
                 </div>
             </div>
         </header>
