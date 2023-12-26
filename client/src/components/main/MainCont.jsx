@@ -6,6 +6,7 @@ import { FaShare } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 
 const MainCont = (props) => {
+
     return (
         <>
             <div style={{ padding: "55px 300px 0 55px" }}>

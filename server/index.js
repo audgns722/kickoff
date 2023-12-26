@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // express router
-// app.use("/api/post", require("./router/post.js"));
+app.use("/api/board", require("./router/board.js"));
 app.use("/api/user", require("./router/user.js"));
 
 app.listen(port, () => {
@@ -42,8 +42,10 @@ app.use(cors());
 
 // 2023시즌 경기결과 최신순
 app.post('/api/matches', async (req, res) => {
+    const leagueNum = req.body.leagueNum; // 클라이언트로부터 받은 리그 번호
+
     try {
-        const response = await axios.get('http://api.football-data.org/v4/competitions/2021/matches', {
+        const response = await axios.get(`http://api.football-data.org/v4/competitions/${leagueNum}/matches`, {
             headers: {
                 'X-Auth-Token': config.XAuthToken,
             },
@@ -52,9 +54,8 @@ app.post('/api/matches', async (req, res) => {
                 season: '2023',
             },
         });
-        // 받아온 데이터 역순정렬
-        const reversedMatches = response.data.matches.reverse();
 
+        const reversedMatches = response.data.matches.reverse();
         res.json({ matches: reversedMatches });
     } catch (error) {
         console.error('Error fetching matches:', error);

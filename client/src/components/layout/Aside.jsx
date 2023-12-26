@@ -1,8 +1,24 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
 const Aside = (props) => {
+    const [leagueNum, setLeagueNum] = useState("2021");
+
+    const leagueNumHandler = (e) => {
+        setLeagueNum(e.target.value);
+    };
+
+    useEffect(() => {
+        axios.post('/api/matches', { leagueNum })
+            .then((response) => {
+                props.setMatches(response.data.matches);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [leagueNum]);
     console.log(props.matches)
     return (
         <aside id="aside">
@@ -44,6 +60,18 @@ const Aside = (props) => {
             <div className="aside__score">
                 <div className="score__title">
                     <h2>recent matches</h2>
+
+                    <div>
+                        <select name="link" id="link" onChange={leagueNumHandler} value={leagueNum}>
+                            <option value="2021">EPL</option>
+                            <option value="2014">LaLiga</option>
+                            <option value="2019">SerieA</option>
+                            <option value="2015">Ligue1</option>
+                            <option value="2002">Bundesliga</option>
+                        </select>
+                        {/* 여기에 경기 목록을 렌더링하는 로직 */}
+                    </div>
+
                 </div>
                 <div className="score__match">
                     <ul>

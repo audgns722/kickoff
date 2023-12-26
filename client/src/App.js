@@ -19,6 +19,8 @@ import FindId from './components/user/FindId'
 import FindSuccess from './components/user/FindSuccess'
 import BoardList from './components/board/BoardList'
 import BoardDetail from './components/board/BoardDetail'
+import BoardWrite from './components/board/BoardWrite.jsx'
+import VideoView from './components/video/VideoView.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -49,10 +51,11 @@ const App = () => {
           <Route path='/findId' element={<FindId />}></Route>
           <Route path='/findSuccess' element={<FindSuccess />}></Route>
           <Route path='/mypage' element={<MyPage />}></Route>
-          <Route path='/list' element={<BoardList />}></Route>
-          <Route path='/detail' element={<BoardDetail />}></Route>
+          <Route path='/boardlist' element={<BoardList />}></Route>
+          <Route path='/boarddetail' element={<BoardDetail />}></Route>
+          <Route path='/boardwrite' element={<BoardWrite />}></Route>
           <Route path='/leagueDetail' element={<LeagueDetail />}></Route>
-          <Route path='/detail' element={<BoardDetail />}></Route>
+          <Route path='/videoview' element={<VideoView />}></Route>
         </Routes>
       </Main>
     </>

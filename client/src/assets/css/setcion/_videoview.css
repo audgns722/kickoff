@@ -1,0 +1,19 @@
+#videoview {
+    width: 100%;
+    height: 100vh;
+    padding-left: 55px;
+    padding-top: 55px;
+}
+
+.video__wrap {}
+
+.video__play {
+    width: 90%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.video__play iframe {
+    border: 5px solid var(--red);
+}
