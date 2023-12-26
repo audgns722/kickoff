@@ -11,14 +11,14 @@ import Main from './components/layout/Main'
 import Home from './pages/Home'
 import Login from './components/user/Login'
 import JoinAgree from './components/user/JoinAgree'
-import Join from './components/user/Join'
-import MyPage from './components/user/MyPage'
-import LeagueDetail from './components/league/LeagueDetail'
+import JoinInfo from './components/user/joinInfo'
 import JoinEnd from './components/user/JoinEnd'
-import FindId from './components/user/FindId'
-import FindSuccess from './components/user/FindSuccess'
-import BoardList from './components/board/BoardList'
-import BoardDetail from './components/board/BoardDetail'
+// import MyPage from './components/user/MyPage'
+// import LeagueDetail from './components/league/LeagueDetail'
+// import FindId from './components/user/FindId'
+// import FindSuccess from './components/user/FindSuccess'
+// import BoardList from './components/board/BoardList'
+// import BoardDetail from './components/board/BoardDetail'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,15 +44,15 @@ const App = () => {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/joinAgree' element={<JoinAgree />}></Route>
-          <Route path='/join' element={<Join />}></Route>
+          <Route path='/joininfo' element={<JoinInfo />}></Route>
           <Route path='/joinEnd' element={<JoinEnd />}></Route>
-          <Route path='/findId' element={<FindId />}></Route>
+          {/* <Route path='/findId' element={<FindId />}></Route>
           <Route path='/findSuccess' element={<FindSuccess />}></Route>
           <Route path='/mypage' element={<MyPage />}></Route>
           <Route path='/list' element={<BoardList />}></Route>
           <Route path='/detail' element={<BoardDetail />}></Route>
           <Route path='/leagueDetail' element={<LeagueDetail />}></Route>
-          <Route path='/detail' element={<BoardDetail />}></Route>
+          <Route path='/detail' element={<BoardDetail />}></Route> */}
         </Routes>
       </Main>
     </>

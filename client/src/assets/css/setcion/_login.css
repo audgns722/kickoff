@@ -75,9 +75,9 @@
     margin-bottom: 0.5em;
 }
 
-.email-field p {
+/* .email-field p {
     margin-bottom: 35px;
-}
+} */
 
 .email-field a {
     color: #007bff;
@@ -178,9 +178,9 @@
     margin-bottom: 0.5em;
 }
 
-.Password__submit p {
-    margin-bottom: 35px;
-}
+/* .Password__submit p {
+    margin-bottom: 25px;
+} */
 
 .Password__submit a {
     color: #007bff;

@@ -2,6 +2,11 @@
     width: 100%;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 .container {
     width: 1280px;
     margin: 0 auto;
@@ -50,7 +55,7 @@
 
 /* ------------------------------ */
 
-.header__left>.logo {
+.header__left>a>.logo {
     font-size: 1rem;
     font-weight: 700;
     color: var(--white);
@@ -147,7 +152,7 @@ select:focus {
     color: var(--black);
 }
 
-.header__right>.login>a {
+.header__right>.login>.loginLink {
     width: 120px;
     font-size: 0.8rem;
     font-weight: 700;
@@ -156,6 +161,35 @@ select:focus {
     border-radius: 5px;
     padding: 5px 20px;
     text-align: center;
+}
+
+.header__right>.login>.logout {
+    width: 120px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--white);
+    background-color: rgb(82, 82, 82);
+    border-radius: 5px;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.header__right>.login {
+    display: flex;
+    align-items: center;
+}
+
+.header__right>.login>.mypage {
+    display: block;
+    width: auto;
+    color: var(--gray);
+    margin-right: 1rem;
+}
+
+.header__right>.login>.mypage>a {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
 }
 
 /* //header__right */

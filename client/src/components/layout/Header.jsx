@@ -45,15 +45,18 @@ const Header = () => {
 
     const LogoutHandler = () => {
         firebase.auth().signOut();
+        alert("로그아웃을 했습니다.");
         navigate("/");
     }
 
     return (
         <header id="header">
             <div className="header__left">
-                <h1 className="logo">
-                    KICKOFF
-                </h1>
+                <Link to="/">
+                    <h1 className="logo">
+                        KICKOFF
+                    </h1>
+                </Link>
                 <div className="search">
                     <IoMdSearch />
                     <label htmlFor="search">SEARCH</label>
@@ -79,13 +82,16 @@ const Header = () => {
                 </div>
                 <div className="login">
                     {user.accessToken === "" ? (
-                        <Link to="/login">
+                        <Link to="/login" className='loginLink'>
                             LOGIN
                         </Link>
                     ) : (
-                        <Link onClick={(() => LogoutHandler())}>
-                            Logout
-                        </Link>
+                        <>
+                            <p className='mypage'><Link to='/mypage'>{user.displayName}</Link>님 반갑습니다.</p>
+                            <Link className='logout' onClick={(() => LogoutHandler())}>
+                                LOGOUT
+                            </Link>
+                        </>
                     )}
                 </div>
             </div>

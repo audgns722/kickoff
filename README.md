@@ -4,7 +4,10 @@ npm install react-router-dom
 npm install axios   
 npm install http-proxy-middleware --save
 npm install firebase
-
+npm install react-redux   
+npm install @reduxjs/toolkit  
+npm install react-icons --save 
+   
 ## server 설치
 npm init -y    
 npm install express --save   

@@ -32,8 +32,6 @@ const Home = () => {
             })
     }, [])
 
-
-
     return (
         <div>
             <Nav />

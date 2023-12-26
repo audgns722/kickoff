@@ -9,8 +9,7 @@ const JoinInfo = () => {
     const [youPass, setYouPass] = useState("");
     const [youPassC, setYouPassC] = useState("");
     const [flag, setFlag] = useState(false);
-    // const [nameCheck, setNameCheck] = useState(false);
-    // const [nameInfo, setNameInfo] = useState("");
+    const [emailCheck, setEmailCheck] = useState(false);
 
     let navigate = useNavigate();
 
@@ -25,9 +24,9 @@ const JoinInfo = () => {
         if (youPass !== youPassC) {
             return alert("비밀번호가 일치하지 않습니다.")
         }
-        // if (!nameCheck) {
-        //     return alert("닉네임 중복검사를 진행해주세요.")
-        // }
+        if (!emailCheck) {
+            return alert("이메일 중복검사를 진행해주세요.")
+        }
 
         // firebase 회원가입
         let createdUser = await firebase.auth().createUserWithEmailAndPassword(youEmail, youPass);
@@ -49,35 +48,35 @@ const JoinInfo = () => {
             .then((response) => {
                 if (response.data.success) {
                     alert("회원가입이 완료되었습니다.");
-                    navigate("/login");
+                    navigate("/joinEnd");
                 } else {
                     alert("회원가입이 실패하였습니다.");
                 }
             })
     }
 
-    // const nameCheckFunc = (e) => {
-    //     e.preventDefault();
+    const emailCheckFunc = (e) => {
+        e.preventDefault();
 
-    //     if (!youName) {
-    //         return alert("닉네임을 입력해주세요.");
-    //     }
+        if (!youEmail) {
+            return alert("이메일을 입력해주세요.");
+        }
 
-    //     let body = {
-    //         displayName: youName,
-    //     }
+        let body = {
+            email: youEmail,
+        }
 
-    //     axios.post("/api/user/namecheck", body).then((response) => {
-    //         if (response.data.success) {
-    //             if (response.data.check) {
-    //                 setNameCheck(true);
-    //                 setNameInfo("사용 가능한 닉네임입니다.");
-    //             } else {
-    //                 setNameInfo("사용 불가능한 닉님임입니다.")
-    //             }
-    //         }
-    //     })
-    // }
+        axios.post("/api/user/emailcheck", body).then((response) => {
+            if (response.data.success) {
+                if (response.data.check) {
+                    setEmailCheck(true);
+                    alert("사용 가능한 이메일입니다.");
+                } else {
+                    alert("사용 불가능한 이메일입니다.")
+                }
+            }
+        })
+    }
 
     return (
         <>
@@ -104,12 +103,13 @@ const JoinInfo = () => {
                                 name="youEmail"
                                 placeholder="이메일을 적어주세요."
                                 className="input__style"
+                                autoComplete="off"
                                 required
                                 minLength={8}
                                 value={youEmail}
                                 onChange={(e) => setYouEmail(e.currentTarget.value)}
                             />
-                            <button className="btn">중복체크</button>
+                            <button className="btn email" onClick={(e) => emailCheckFunc(e)}>중복체크</button>
                             <p className="msg" id="youEmailComment">이메일은 8자 이상으로 입력해주세요. 영문,숫자만 사용 가능합니다.</p>
                         </div>
                     </div>
@@ -123,7 +123,7 @@ const JoinInfo = () => {
                                 name="youPass"
                                 placeholder="비밀번호를 적어주세요."
                                 className="input__style"
-                                autocomplete="off"
+                                autoComplete="off"
                                 required
                                 minLength={8}
                                 value={youPass}
@@ -141,7 +141,7 @@ const JoinInfo = () => {
                                 id="youPassC"
                                 name="youPassC"
                                 placeholder="다시 한번 비밀번호를 적어주세요."
-                                autocomplete="off"
+                                autoComplete="off"
                                 required
                                 className="input__style"
                                 value={youPassC}
@@ -158,6 +158,8 @@ const JoinInfo = () => {
                                 id="youName"
                                 name="youName"
                                 placeholder="이름을 적어주세요!"
+                                autoComplete='off'
+                                required
                                 className="input__style"
                                 value={youName}
                                 onChange={(e) => setYouName(e.currentTarget.value)}
