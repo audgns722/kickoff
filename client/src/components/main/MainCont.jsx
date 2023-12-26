@@ -1,6 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
+
 // icon
 import { FaShare } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
@@ -89,18 +95,36 @@ const MainCont = (props) => {
                         </div>
                     </div>
                 </div>
+
                 <div className="main__video">
+
+
                     <div className="video__wrap">
-                        {props.videoInfo.slice(0, 5).map((video, key) => (
-                            <div className="video" key={key}>
-                                <Link to={video.matchviewUrl} target='_blank'>
-                                    <img src={video.thumbnail} alt="썸네일" />
-                                </Link>
-                            </div>
-                        ))}
+                        <Swiper
+                            spaceBetween={15}
+                            slidesPerView={3}
+                            navigation={true}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                            modules={[Autoplay, Navigation]}
+                            className="mySwiper"
+                        >
+                            {props.videoInfo.slice(0, 10).map((video, key) => (
+                                <SwiperSlide key={key} className="video">
+                                    <Link to={video.matchviewUrl} target='_blank'>
+                                        <img src={video.thumbnail} alt="썸네일" />
+                                    </Link>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
-                </div >
-            </div>
+
+                </div>
+
+
+            </div >
         </>
     )
 }

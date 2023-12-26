@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
 const Aside = (props) => {
+    const [leagueNum, setLeagueNum] = useState(""); // 상태 변수 및 업데이트 함수
+
+    const leagueNumHandler = (e) => {
+        setLeagueNum(e.target.value); // 상태 업데이트 함수를 사용하여 값을 업데이트
+    };
     console.log(props.matches)
     return (
         <aside id="aside">
@@ -44,6 +49,18 @@ const Aside = (props) => {
             <div className="aside__score">
                 <div className="score__title">
                     <h2>recent matches</h2>
+
+                    <div className="link">
+                        <label htmlFor="link" className="blind">LINK</label>
+                        <select name="link" id="link" onChange={leagueNumHandler} value={leagueNum}>
+                            <option value="2021">EPL</option>
+                            <option value="2014">LaLiga</option>
+                            <option value="2019">SerieA</option>
+                            <option value="2015">Ligue1</option>
+                            <option value="2002">Bundesliga</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div className="score__match">
                     <ul>
