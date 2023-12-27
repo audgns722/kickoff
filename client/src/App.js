@@ -18,6 +18,7 @@ import LeagueDetail from './components/league/LeagueDetail'
 import FindId from './components/user/FindId'
 import FindSuccess from './components/user/FindSuccess'
 import BoardList from './components/board/BoardList'
+import BoardWrite from './components/board/BoardWrite'
 import BoardDetail from './components/board/BoardDetail'
 import VideoView from './components/video/VideoView.jsx'
 

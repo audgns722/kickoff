@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../layout/Footer';
 import Nav from '../layout/Nav'
-import { useNavigate } from 'react-router-dom';
-import { AiTwotoneLike } from "react-icons/ai";
-import { TfiComment } from "react-icons/tfi";
-import { GrView } from "react-icons/gr";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+// icon
+import { TfiComment } from "react-icons/tfi";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+
 
 
 
@@ -110,7 +112,7 @@ const BoardList = () => {
                                             <div className="left__info">
                                                 <div className="info__left">
                                                     <div className="like">
-                                                        <AiTwotoneLike />
+                                                        <AiOutlineLike />
                                                         <span>공감 <i>777</i></span>
                                                     </div>
                                                     <div className="comment">
@@ -118,7 +120,7 @@ const BoardList = () => {
                                                         <span>댓글 <i>777</i></span>
                                                     </div>
                                                     <div className="view">
-                                                        <GrView />
+                                                        <AiOutlineEye />
                                                         <span>조회수 <i>777</i></span>
                                                     </div>
                                                 </div>
@@ -136,8 +138,6 @@ const BoardList = () => {
                     </div>
                 </div>
             </div>
-
-            <Footer />
         </ >
 
     )

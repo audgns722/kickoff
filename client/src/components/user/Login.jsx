@@ -5,14 +5,13 @@ import firebase from '../../firebase.js'
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
 
     const LoginFunc = async (e) => {
         e.preventDefault();
 
         if (!(email && password)) {
-            return alert("이메일 또는 비밀번호를 채워주세요!");
+            return alert("이메일 또는 비밀번호를 채워주세요.");
         }
         try {
             await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -20,15 +19,9 @@ const Login = () => {
             navigate("/");
         } catch (err) {
             console.log(err);
-            // setErrorMsg("이메일과 비밀번호를 다시 한번 확인해주세요!")
+            alert("이메일과 비밀번호를 다시 한번 확인해주세요.");
         }
     }
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setErrorMsg("")
-    //     }, 5000)
-    // }, [errorMsg]);
 
     return (
         <div className="login__wrap">

@@ -75,7 +75,8 @@
 /* swiper */
 .swiper-button-next:after,
 .swiper-button-prev:after {
-    color: var(--white);
+    color: var(--red);
+    font-size: 2rem !important;
 }
 
 /* ------------------------------ */
