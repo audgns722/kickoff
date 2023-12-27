@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-const Aside = (props) => {
+const Aside = ({ matches, setMatches }) => {
     const [matchFlag, setMatchFlag] = useState(true);
-
     const [leagueNum, setLeagueNum] = useState("2021");
 
     const leagueNumHandler = (e) => {
@@ -14,13 +13,13 @@ const Aside = (props) => {
     useEffect(() => {
         axios.post('/api/matches', { leagueNum })
             .then((response) => {
-                props.setMatches(response.data.matches);
+                setMatches(response.data.matches);
             })
             .catch((err) => {
                 console.log(err);
             });
-    }, [leagueNum]);
-    console.log(props.matches)
+    }, [leagueNum, setMatches]);
+
     return (
         <aside id="aside">
             {matchFlag ? (
@@ -32,28 +31,28 @@ const Aside = (props) => {
                         <div className="aside__info">
                             <div className="home">
                                 <div className="logo">
-                                    <img src={props.matches?.[0]?.homeTeam?.crest} alt={props.matches?.[0]?.homeTeam?.name} />
+                                    <img src={matches?.[0]?.homeTeam?.crest} alt={matches?.[0]?.homeTeam?.name} />
                                 </div>
-                                <p className="team">{props.matches?.[0]?.homeTeam?.shortName}</p>
+                                <p className="team">{matches?.[0]?.homeTeam?.shortName}</p>
                                 <Link to="#">HOME</Link>
                             </div>
                             <div className="score">
                                 <div className="league">
-                                    {props.matches?.[0]?.competition?.name}
+                                    {matches?.[0]?.competition?.name}
                                 </div>
                                 <div className="home__score">
-                                    {props.matches?.[0]?.score?.fullTime?.home}
+                                    {matches?.[0]?.score?.fullTime?.home}
                                 </div>
                                 <span>:</span>
                                 <div className="away__score">
-                                    {props.matches?.[0]?.score?.fullTime?.away}
+                                    {matches?.[0]?.score?.fullTime?.away}
                                 </div>
                             </div>
                             <div className="away">
                                 <div className="logo">
-                                    <img src={props.matches?.[0]?.awayTeam?.crest} alt={props.matches?.[0]?.awayTeam?.name} />
+                                    <img src={matches?.[0]?.awayTeam?.crest} alt={matches?.[0]?.awayTeam?.name} />
                                 </div>
-                                <p className="team">{props.matches?.[0]?.awayTeam?.shortName}</p>
+                                <p className="team">{matches?.[0]?.awayTeam?.shortName}</p>
                                 <Link to="#">AWAY</Link>
                             </div>
                         </div>
@@ -86,7 +85,7 @@ const Aside = (props) => {
                 </div>
                 <div className="score__match">
                     <ul>
-                        {props.matches.slice(1, 10).map((matche, key) => (
+                        {matches.slice(1, 10).map((matche, key) => (
                             <li key={key}>
                                 <div className="home">
                                     <div className="logo">

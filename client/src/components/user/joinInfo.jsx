@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import firebase from '../../firebase.js'
 
@@ -47,12 +47,20 @@ const JoinInfo = () => {
         axios.post("/api/user/join", body)
             .then((response) => {
                 if (response.data.success) {
-                    alert("회원가입이 완료되었습니다.");
-                    navigate("/joinEnd");
+                    firebase.auth().signOut().then(() => {
+                        alert("회원가입이 완료되었습니다.");
+                        navigate("/joinEnd");
+                    }).catch((error) => {
+                        console.log(error);
+                    });
                 } else {
                     alert("회원가입이 실패하였습니다.");
                 }
             })
+            .catch((error) => {
+                alert("회원가입 과정에서 오류가 발생했습니다.");
+                console.log(error);
+            });
     }
 
     const emailCheckFunc = (e) => {

@@ -83,6 +83,11 @@
     color: #007bff;
 }
 
+.email-field a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
 .email-field input[type="email"] {
     width: 100%;
     padding: 0.5em;

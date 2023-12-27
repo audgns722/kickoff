@@ -130,17 +130,14 @@
         .detail__info .right .info .teams__logo {
             width: 60%;
             display: flex;
+            align-items: center;
             justify-content: space-between;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
-        .teams__logo .logo {
-            background-image: url(../../img/logo_chelsea.png);
-            width: 30px;
-            height: 30px;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        .detail__info .right .info .teams__logo .logo {
+            width: 19%;
         }
 
         /* detail__content */

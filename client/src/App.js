@@ -14,13 +14,13 @@ import JoinAgree from './components/user/JoinAgree'
 import JoinInfo from './components/user/joinInfo'
 import JoinEnd from './components/user/JoinEnd'
 import MyPage from './components/user/MyPage'
-import LeagueDetail from './components/league/LeagueDetail'
-import FindId from './components/user/FindId'
-import FindSuccess from './components/user/FindSuccess'
+import League from './pages/League'
+import FindPw from './components/user/FindPw.jsx'
 import BoardList from './components/board/BoardList'
 import BoardWrite from './components/board/BoardWrite'
 import BoardDetail from './components/board/BoardDetail'
 import VideoView from './components/video/VideoView.jsx'
+import LeagueDetail from './components/league/LeagueDetail.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,20 +43,20 @@ const App = () => {
       <Header />
       <Main>
         <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/joinAgree' element={<JoinAgree />}></Route>
-          <Route path='/joininfo' element={<JoinInfo />}></Route>
-          <Route path='/joinEnd' element={<JoinEnd />}></Route>
-          <Route path='/findId' element={<FindId />}></Route>
-          <Route path='/findSuccess' element={<FindSuccess />}></Route>
-          <Route path='/mypage' element={<MyPage />}></Route>
-          <Route path='/boardlist' element={<BoardList />}></Route>
-          <Route path='/boarddetail' element={<BoardDetail />}></Route>
-          <Route path='/boardwrite' element={<BoardWrite />}></Route>
-          <Route path='/leagueDetail' element={<LeagueDetail />}></Route>
-          <Route path='/detail' element={<BoardDetail />}></Route>
-          <Route path='/videoview:videoId' element={<VideoView />}></Route>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/joinagree' element={<JoinAgree />} />
+          <Route path='/joininfo' element={<JoinInfo />} />
+          <Route path='/joinend' element={<JoinEnd />} />
+          <Route path='/findpw' element={<FindPw />} />
+          <Route path='/mypage' element={<MyPage />} />
+          <Route path='/boardlist' element={<BoardList />} />
+          <Route path='/boarddetail' element={<BoardDetail />} />
+          <Route path='/boardwrite' element={<BoardWrite />} />
+          <Route path='/league/:leagueId' element={<League />} />
+          <Route path='/detail' element={<BoardDetail />} />
+          <Route path='/videoview:videoId' element={<VideoView />} />
+          <Route path='/leaguedetail' element={<LeagueDetail />} />
         </Routes>
       </Main>
     </>

@@ -1,13 +1,16 @@
 import React from 'react'
 
-const LeagueDetail = () => {
+const LeagueDetail = ({ league }) => {
+
     return (
         <>
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="detail__info">
                     <div className="left">
                         <div className="logo">
-                            <img src="../assets/img/logo_chelsea.png" alt="teamlogo" />
+                            {league.competition.emblem &&
+                                <img src={league.competition.emblem} alt={league.competition.name} />
+                            }
                         </div>
                     </div>
                     <div className="right">
@@ -17,35 +20,27 @@ const LeagueDetail = () => {
                         </div>
                         <div className="info">
                             <h1>NUMBER OF TEAMS</h1>
-                            <p>18 teams</p>
+                            {league &&
+                                <p>{league.teams.length} teams</p>
+                            }
                         </div>
                         <div className="info">
                             <h1>LEAGUES</h1>
-                            <p>PREMER LEAGUE</p>
+                            {league &&
+                                <p>{league.competition.name}</p>
+                            }
                         </div>
                         <div className="info">
                             <h1>TEAMS</h1>
-                            <div className="teams__logo">
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                            </div>
-                            <div className="teams__logo">
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                            </div>
-                            <div className="teams__logo">
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                                <div className="logo"></div>
-                            </div>
+                            {league.teams.length > 0 && (
+                                <div className="teams__logo">
+                                    {league.teams.map((team, index) => (
+                                        <div className="logo" key={index}>
+                                            <img src={team.crest} alt={team.teamName} />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         <div className="info">
                             <h1>BEST PLAYER</h1>
