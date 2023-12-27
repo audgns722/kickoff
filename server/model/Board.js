@@ -1,19 +1,19 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema(
+const boardSchema = new mongoose.Schema(
     {
         title: String,
         content: String,
-        postNum: Number,
+        boardNum: Number,
         image: String,
         author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         }
     },
-    { collection: "posts" }
+    { collection: "boards" }
 );
 
-const Post = mongoose.model("Post", postSchema);
+const Board = mongoose.model("Board", boardSchema);
 
-module.exports = { Post };
+module.exports = { Board };

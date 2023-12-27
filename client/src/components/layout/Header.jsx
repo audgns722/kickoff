@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, } from 'react-router-dom'
 import firebase from '../../firebase.js'
 
 // icon
@@ -49,6 +49,20 @@ const Header = () => {
         navigate("/");
     }
 
+    // option 링크
+
+    const handleChange = (event) => {
+        // 사용자가 선택한 값에 따라 URL 변경
+        const path = event.target.value;
+        if (path) {
+            navigate(`/${path}`);
+        }
+    };
+
+    const HomeLink = () => {
+        navigate('/')
+    }
+
     return (
         <header id="header">
             <div className="header__left">
@@ -67,9 +81,9 @@ const Header = () => {
             <div className="header__right">
                 <div className="link">
                     <label htmlFor="link" className="blind">LINK</label>
-                    <select name="link" id="link">
+                    <select name="link" id="link" onChange={handleChange}>
                         <option value="NOTICE">NOTICE</option>
-                        <option value="BOARD">BOARD</option>
+                        <option value="boardlist">BOARD</option>
                     </select>
                 </div>
                 <div className="time">

@@ -492,8 +492,9 @@
 }
 
 .main__video>.video__wrap {
-    width: 300%;
+    /* width: 300%; */
     display: flex;
+    margin-bottom: 5vh;
 }
 
 .main__video>.video__wrap>.video {
