@@ -55,7 +55,7 @@ const App = () => {
           <Route path='/boarddetail' element={<BoardDetail />}></Route>
           <Route path='/boardwrite' element={<BoardWrite />}></Route>
           <Route path='/leagueDetail' element={<LeagueDetail />}></Route>
-          <Route path='/videoview' element={<VideoView />}></Route>
+          <Route path='/videoview:videoId' element={<VideoView />}></Route>
         </Routes>
       </Main>
     </>

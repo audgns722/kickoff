@@ -76,7 +76,7 @@ const Aside = (props) => {
                 <div className="score__match">
                     <ul>
                         {props.matches.slice(1, 6).map((matche, key) => (
-                            <li>
+                            <li key={key}>
                                 <div className="home">
                                     <div className="logo">
                                         <img src={matche.homeTeam.crest} alt={matche.homeTeam.tla} />
