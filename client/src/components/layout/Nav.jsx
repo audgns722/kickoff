@@ -28,7 +28,7 @@ const nav = () => {
                     </li>
                     <li>
                         <Link to="/league/2002">
-                            <img src="https://d37kf7rs4g1hyv.cloudfront.net/img/flags/64/101.png" alt="kleague" />
+                            <img src="https://crests.football-data.org/BL1.png" alt="bundesliga" />
                         </Link>
                     </li>
                 </ul>

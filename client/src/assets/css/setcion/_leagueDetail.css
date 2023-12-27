@@ -123,21 +123,29 @@
         .detail__info .right .info p {
             margin-top: 5px;
             font-size: 1.8rem;
+            font-weight: 500;
             color: var(--white);
             display: block;
+            text-transform: uppercase;
         }
 
         .detail__info .right .info .teams__logo {
             width: 60%;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             margin-top: 15px;
-            flex-wrap: wrap;
+
         }
 
         .detail__info .right .info .teams__logo .logo {
-            width: 19%;
+            min-width: 30px;
+            min-height: 30px;
+            margin: 5px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
         }
 
         /* detail__content */

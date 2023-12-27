@@ -1,6 +1,9 @@
 import React from 'react'
 
 const LeagueDetail = ({ league }) => {
+    if (!league || league.length === 0) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <>
@@ -35,8 +38,8 @@ const LeagueDetail = ({ league }) => {
                             {league.teams.length > 0 && (
                                 <div className="teams__logo">
                                     {league.teams.map((team, index) => (
-                                        <div className="logo" key={index}>
-                                            <img src={team.crest} alt={team.teamName} />
+                                        <div className="logo" key={index} style={{ backgroundImage: `url(${team.crest})` }}>
+                                            {/* <img src={team.crest} alt={team.teamName} /> */}
                                         </div>
                                     ))}
                                 </div>
