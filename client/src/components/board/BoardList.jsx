@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Nav from '../layout/Nav'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // icon
 import { TfiComment } from "react-icons/tfi";
@@ -17,9 +17,7 @@ const BoardList = () => {
     const [boardList, setBoardList] = useState([]);
 
     const navigate = useNavigate();
-    const BoardDetailLink = () => {
-        navigate('/boarddetail');
-    };
+
 
     const BoardWrite = () => {
         navigate('/boardwrite')
@@ -97,14 +95,22 @@ const BoardList = () => {
                                                 <div className="hot active">
                                                     HOT
                                                 </div>
-                                                <div className="title" onClick={BoardDetailLink} style={{ cursor: "pointer" }}>
-                                                    <h3>{board.title}</h3>
-                                                </div>
+                                                <Link to={`/boarddetail/${board.boardNum}`}>
+                                                    <div className="title" style={{ cursor: "pointer" }}>
+                                                        <h3>{board.title}</h3>
+                                                    </div>
+                                                </Link>
+
                                             </div>
-                                            <div className="left__desc" onClick={BoardDetailLink} style={{ cursor: "pointer" }}>
+
+                                            <div className="left__desc" style={{ cursor: "pointer" }}>
                                                 <p>
-                                                    {board.content}
+                                                    <Link to={`/boarddetail/${board.boardNum}`}>
+                                                        {board.content}
+                                                    </Link>
                                                 </p>
+
+
                                                 <div className="img">
                                                     <img src="../assets/img/liverpool.png" alt="임시" />
                                                 </div>

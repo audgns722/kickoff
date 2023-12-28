@@ -19,18 +19,18 @@ import FindId from './components/user/FindId'
 import FindSuccess from './components/user/FindSuccess'
 import BoardList from './components/board/BoardList'
 import BoardWrite from './components/board/BoardWrite'
-import BoardDetail from './components/board/BoardDetail'
+// import BoardDetail from './components/board/BoardDetail'
 import VideoView from './components/video/VideoView.jsx'
-import PlayDetail from './components/league/PlayDetail.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
+
   const user = useSelector((state) => state.user);
   console.log(user);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
-      console.log("userInfo : ", userInfo);
+      console.log("userInfo", userInfo);
       if (userInfo !== null) {
         dispatch(loginUser(userInfo.multiFactor.user));
       } else {
@@ -53,11 +53,12 @@ const App = () => {
           <Route path='/findSuccess' element={<FindSuccess />}></Route>
           <Route path='/mypage' element={<MyPage />}></Route>
           <Route path='/boardlist' element={<BoardList />}></Route>
-          <Route path='/boarddetail' element={<BoardDetail />}></Route>
+          <Route path='/boarddetail/:boardNum' element={<BoardArea />}></Route>
           <Route path='/boardwrite' element={<BoardWrite />}></Route>
+          <Route path='/boardmodify/:boardNum' element={<BoardModify />}></Route>
           <Route path='/leagueDetail' element={<LeagueDetail />}></Route>
-          <Route path='/playDetail' element={<PlayDetail />}></Route>
-          <Route path='/videoview/:videoId' element={<VideoView />}></Route>
+          <Route path='/detail' element={<BoardDetail />}></Route>
+          <Route path='/videoview:videoId' element={<VideoView />}></Route>
         </Routes>
       </Main>
     </>
