@@ -21,6 +21,7 @@ import BoardList from './components/board/BoardList'
 import BoardWrite from './components/board/BoardWrite'
 import BoardDetail from './components/board/BoardDetail'
 import VideoView from './components/video/VideoView.jsx'
+import PlayDetail from './components/league/PlayDetail.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,8 +56,8 @@ const App = () => {
           <Route path='/boarddetail' element={<BoardDetail />}></Route>
           <Route path='/boardwrite' element={<BoardWrite />}></Route>
           <Route path='/leagueDetail' element={<LeagueDetail />}></Route>
-          <Route path='/detail' element={<BoardDetail />}></Route>
-          <Route path='/videoview:videoId' element={<VideoView />}></Route>
+          <Route path='/playDetail' element={<PlayDetail />}></Route>
+          <Route path='/videoview/:videoId' element={<VideoView />}></Route>
         </Routes>
       </Main>
     </>

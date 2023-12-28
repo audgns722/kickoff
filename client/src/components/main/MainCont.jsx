@@ -98,12 +98,10 @@ const MainCont = (props) => {
                 </div>
 
                 <div className="main__video">
-
-
                     <div className="video__wrap">
                         <Swiper
                             spaceBetween={15}
-                            slidesPerView={3}
+                            slidesPerView={'auto'}
                             navigation={true}
                             loop={true}
                             autoplay={{
@@ -115,17 +113,16 @@ const MainCont = (props) => {
                         >
                             {props.videoInfo.slice(0, 15).map((video, key) => (
                                 <SwiperSlide key={key} className="video">
-                                    <Link to={`/videoview${video.videos.id}`} target='_blank'>
-                                        <img src={video.thumbnail} alt="썸네일" />
-                                    </Link>
+                                    {video.videos.length > 0 && (
+                                        <Link to={`/videoview/${video.videos[0].id}`}>
+                                            <img src={video.thumbnail} alt="썸네일" />
+                                        </Link>
+                                    )}
                                 </SwiperSlide>
                             ))}
                         </Swiper>
                     </div>
-
                 </div>
-
-
             </div >
         </>
     )

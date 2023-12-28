@@ -8,12 +8,47 @@
 .video__wrap {}
 
 .video__play {
-    width: 90%;
+    width: 100%;
     max-width: 1280px;
     margin: 0 auto;
     margin-top: 30px;
 }
 
 .video__play iframe {
-    border: 5px solid var(--red);
+    border-top: 5px solid var(--red);
+    border-bottom: 2px solid var(--red);
+}
+
+.video__info {
+    width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: #4d4d4d4a;
+    max-width: 1280px;
+    color: var(--white);
+}
+
+.video__info .left {
+    padding: 5px;
+    width: 48%;
+}
+
+.video__info .left .league {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.video__info .left .team {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.video__info .right {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 5px;
+    width: 48%;
+    text-align: right;
 }

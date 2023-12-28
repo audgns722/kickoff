@@ -492,8 +492,6 @@
 }
 
 .main__video>.video__wrap {
-    /* width: 300%; */
-    display: flex;
     margin-bottom: 5vh;
 }
 
@@ -502,6 +500,12 @@
     height: 500px;
     margin-right: 1rem;
     overflow: hidden;
+}
+
+
+.swiper-slide.video {
+    width: 33%;
+    min-width: 350px;
 }
 
 /* //main__video */

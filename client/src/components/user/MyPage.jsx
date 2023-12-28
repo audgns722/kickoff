@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { LiaUserEditSolid } from "react-icons/lia";
+import { AiOutlineUsergroupDelete } from "react-icons/ai";
+
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+
 
 const MyPage = () => {
+    const user = useSelector((state) => state.user);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user.isLoading && !user.accessToken) {
+            navigate("/login");
+        } else {
+        }
+        // eslint-disable-next-line
+    }, [])
     return (
         <>
             <div style={{ padding: "55px 0 0 55px" }}>
@@ -21,7 +37,7 @@ const MyPage = () => {
                         </div>
                         <div className="info">
                             <h1>NAME</h1>
-                            <p>Cristiano Ronaldo </p>
+                            <p>{user.displayName}</p>
                         </div>
                     </div>
                 </div>
@@ -34,11 +50,11 @@ const MyPage = () => {
                         </ul>
                         <div className="right__text">
                             <a href="/">
-                                <img src="/assets/img/edit.svg" alt="" />
+                                <LiaUserEditSolid />
                                 <div>Edit Profile</div>
                             </a>
                             <a href="/">
-                                <img src="/assets/img/unregister.svg" alt="" />
+                                <AiOutlineUsergroupDelete />
                                 <div>Unregister</div>
                             </a>
                         </div>

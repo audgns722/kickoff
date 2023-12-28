@@ -21,6 +21,7 @@ const Home = () => {
     // }, [])
 
     // video
+
     useEffect(() => {
         axios.post("/api/video")
             .then((response) => {
@@ -29,7 +30,6 @@ const Home = () => {
                 const filteredVideos = response.data.response
                     .filter(video => countries.some(country => video.competition.includes(country))) // 여러 국가 포함 필터링
                     .sort((a, b) => new Date(b.date) - new Date(a.date)); // 최신순 정렬
-
                 setVideoInfo(filteredVideos);
             })
             .catch((err) => {

@@ -59,10 +59,6 @@ const Header = () => {
         }
     };
 
-    const HomeLink = () => {
-        navigate('/')
-    }
-
     return (
         <header id="header">
             <div className="header__left">
