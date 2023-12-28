@@ -19,8 +19,10 @@ import FindId from './components/user/FindId'
 import FindSuccess from './components/user/FindSuccess'
 import BoardList from './components/board/BoardList'
 import BoardWrite from './components/board/BoardWrite'
-// import BoardDetail from './components/board/BoardDetail'
 import VideoView from './components/video/VideoView.jsx'
+import BoardModify from './components/board/BoardModify.jsx'
+import BoardArea from './components/board/BoardArea.jsx'
+import BoardDetail from './components/board/BoardDetail.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
