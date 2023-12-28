@@ -85,7 +85,7 @@ const Aside = ({ matches, setMatches }) => {
                 </div>
                 <div className="score__match">
                     <ul>
-                        {matches.slice(1, 10).map((matche, key) => (
+                        {matches.slice(1, 15).map((matche, key) => (
                             <li key={key}>
                                 <div className="home">
                                     <div className="logo">

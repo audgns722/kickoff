@@ -1,7 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
 
-const LeagueDetail = ({ league }) => {
-    if (!league || league.length === 0) {
+import LeagueFinish from './LeagueFinish';
+import LeagueSchedul from './LeagueSchedul';
+
+const LeagueDetail = ({ league, matches, scheduled }) => {
+    // 리그정보
+    const { leagueId } = useParams();
+    // console.log(leagueId);
+    const [leagueInfo, setLeagueInfo] = useState({});
+
+    useEffect(() => {
+        let info = {};
+
+        if (leagueId === '2021') {
+            info = {
+                year: '1992.02.20',
+                player: 'Erling Haaland',
+            };
+        } else if (leagueId === '2014') {
+            info = {
+                year: '1992',
+                player: 'Jude Bellingham',
+            };
+        } else if (leagueId === '2019') {
+            info = {
+                year: '1898',
+                player: 'Lautaro Martinez',
+            };
+        } else if (leagueId === '2015') {
+            info = {
+                year: '1932',
+                player: 'Kylian Mbappe',
+                img: '',
+            };
+        } else if (leagueId === '2002') {
+            info = {
+                year: '1962.07.28',
+                player: 'Harry Kane',
+            };
+        }
+
+        setLeagueInfo(info);
+    }, [leagueId]);
+
+    // 탭메뉴
+    const [selectedTab, setSelectedTab] = useState('finish');
+
+    const handleTabChange = (tab) => {
+        setSelectedTab(tab);
+    };
+
+    // 조건부 렌더링
+    if (!league || league.length === 0 || !matches || matches.length === 0 || !scheduled || scheduled.length === 0) {
         return <div>Loading...</div>;
     }
 
@@ -9,29 +60,23 @@ const LeagueDetail = ({ league }) => {
         <>
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="detail__info">
-                    <div className="left">
+                    <div className={`left ${leagueId === '2021' ? 'epl' : leagueId === '2014' ? 'laliga' : leagueId === '2019' ? 'serie' : leagueId === '2015' ? 'ligue1' : leagueId === '2002' ? 'bundesliga' : ''}`}>
                         <div className="logo">
-                            {league.competition.emblem &&
-                                <img src={league.competition.emblem} alt={league.competition.name} />
-                            }
+                            <img src={league.competition.emblem} alt={league.competition.name} />
                         </div>
                     </div>
                     <div className="right">
                         <div className="info">
                             <h1>SICNCE</h1>
-                            <p>1992.02.20</p>
+                            <p>{leagueInfo.year}</p>
                         </div>
                         <div className="info">
                             <h1>NUMBER OF TEAMS</h1>
-                            {league &&
-                                <p>{league.teams.length} teams</p>
-                            }
+                            <p>{league.teams.length} teams</p>
                         </div>
                         <div className="info">
                             <h1>LEAGUES</h1>
-                            {league &&
-                                <p>{league.competition.name}</p>
-                            }
+                            <p>{league.competition.name}</p>
                         </div>
                         <div className="info">
                             <h1>TEAMS</h1>
@@ -47,7 +92,7 @@ const LeagueDetail = ({ league }) => {
                         </div>
                         <div className="info">
                             <h1>BEST PLAYER</h1>
-                            <p>Cristiano Ronaldo</p>
+                            <p>{leagueInfo.player}</p>
                         </div>
                         <div className="info"></div>
                     </div>
@@ -56,140 +101,22 @@ const LeagueDetail = ({ league }) => {
                     <div className="content__top">
                         <div className="left__text">Score</div>
                         <ul>
-                            <li className="active">SUMMARY</li>
-                            <li>RESULT</li>
-                            <li>FIXTURES</li>
-                            <li>VIDEOS</li>
+                            <li className={selectedTab === 'finish' ? 'active' : ''} onClick={() => handleTabChange('finish')}>FINISH</li>
+                            <li className={selectedTab === 'schedul' ? 'active' : ''} onClick={() => handleTabChange('schedul')}>SCHEDUL</li>
                         </ul>
                         <div className="right__text">
                             <select name="detailSelect" id="detailSelect">
-                                <option value="option1">▼ MORE</option>
-                                <option value="option2">최신순</option>
-                                <option value="option3">인기순</option>
+                                <option value="option">▼ MORE</option>
+                                <option value="Newest">Newest</option>
+                                <option value="Oldest">Oldest</option>
                             </select>
                         </div>
                     </div>
-                    <div className="content__bottom">
-                        <div className="result__title">
-                            <div className="left__text">Latest Scores</div>
-                            <div className="right__text">BROADCAST MATCH</div>
-                        </div>
-                        <div className="result__info">
-                            <div className="result__left">
-                                <div className="league__logo"></div>
-                                <div className="date">
-                                    <p>21:45</p>
-                                    <span>21 Aug</span>
-                                </div>
-                            </div>
-                            <div className="result__center">
-                                <div className="league__team">
-                                    <div className="logo"></div>
-                                    <div className="name win">Liver Pool</div>
-                                </div>
-                                <div className="league__score"><em>2</em> : 1</div>
-                                <div className="league__team">
-                                    <div className="name">Liver Pool</div>
-                                    <div className="logo"></div>
-                                </div>
-                            </div>
-                            <div className="result__right">
-                                승패예측 결과 표시할 부분
-                            </div>
-                        </div>
-                        <div className="result__info">
-                            <div className="result__left">
-                                <div className="league__logo"></div>
-                                <div className="date">
-                                    <p>21:45</p>
-                                    <span>21 Aug</span>
-                                </div>
-                            </div>
-                            <div className="result__center">
-                                <div className="league__team">
-                                    <div className="logo"></div>
-                                    <div className="name win">Liver Pool</div>
-                                </div>
-                                <div className="league__score"><em>2</em> : 1</div>
-                                <div className="league__team">
-                                    <div className="name">Liver Pool</div>
-                                    <div className="logo"></div>
-                                </div>
-                            </div>
-                            <div className="result__right">
-                                승패예측 결과 표시할 부분
-                            </div>
-                        </div>
-                        <div className="result__info">
-                            <div className="result__left">
-                                <div className="league__logo"></div>
-                                <div className="date">
-                                    <p>21:45</p>
-                                    <span>21 Aug</span>
-                                </div>
-                            </div>
-                            <div className="result__center">
-                                <div className="league__team">
-                                    <div className="logo"></div>
-                                    <div className="name win">Liver Pool</div>
-                                </div>
-                                <div className="league__score"><em>2</em> : 1</div>
-                                <div className="league__team">
-                                    <div className="name">Liver Pool</div>
-                                    <div className="logo"></div>
-                                </div>
-                            </div>
-                            <div className="result__right">
-                                승패예측 결과 표시할 부분
-                            </div>
-                        </div>
-                        <div className="result__info">
-                            <div className="result__left">
-                                <div className="league__logo"></div>
-                                <div className="date">
-                                    <p>21:45</p>
-                                    <span>21 Aug</span>
-                                </div>
-                            </div>
-                            <div className="result__center">
-                                <div className="league__team">
-                                    <div className="logo"></div>
-                                    <div className="name win">Liver Pool</div>
-                                </div>
-                                <div className="league__score"><em>2</em> : 1</div>
-                                <div className="league__team">
-                                    <div className="name">Liver Pool</div>
-                                    <div className="logo"></div>
-                                </div>
-                            </div>
-                            <div className="result__right">
-                                승패예측 결과 표시할 부분
-                            </div>
-                        </div>
-                        <div className="result__info">
-                            <div className="result__left">
-                                <div className="league__logo"></div>
-                                <div className="date">
-                                    <p>21:45</p>
-                                    <span>21 Aug</span>
-                                </div>
-                            </div>
-                            <div className="result__center">
-                                <div className="league__team">
-                                    <div className="logo"></div>
-                                    <div className="name win">Liver Pool</div>
-                                </div>
-                                <div className="league__score"><em>2</em> : 1</div>
-                                <div className="league__team">
-                                    <div className="name">Liver Pool</div>
-                                    <div className="logo"></div>
-                                </div>
-                            </div>
-                            <div className="result__right">
-                                승패예측 결과 표시할 부분
-                            </div>
-                        </div>
-                    </div>
+                    {selectedTab === 'finish' ? (
+                        <LeagueFinish league={league} matches={matches} />
+                    ) : (
+                        <LeagueSchedul league={league} scheduled={scheduled} />
+                    )}
                 </div>
             </div>
         </>

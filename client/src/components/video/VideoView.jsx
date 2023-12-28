@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../layout/Header';
-import Nav from '../layout/Nav';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
@@ -35,9 +33,7 @@ const VideoView = () => {
 
     return (
         <>
-            <Header />
-            <Nav />
-            <div id='videoview' style={{ padding: "55px 300px 0 55px" }}>
+            <div id='videoview' style={{ padding: "55px 300px 0 55px", backgroundColor: "var(--bgcolor)" }}>
                 <div className="video__wrap">
                     <div className="video__play">
                         {videoInfo && videoInfo.videos.length > 0 &&
