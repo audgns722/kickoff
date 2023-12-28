@@ -35,8 +35,8 @@ const BoardModify = () => {
     }, [params.boardNum])
 
     useEffect(() => {
-        setTitle(boardInfo.title);
-        setContent(boardInfo.content);
+        setTitle(boardInfo.title || "");
+        setContent(boardInfo.content || "");
     }, [boardInfo]);
 
     // 글 수정하기

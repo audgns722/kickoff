@@ -14,7 +14,7 @@ const FindSuccess = () => {
                 <div class="CardLayout-Container">
                     <div class="CardLayout">
                         <header class="CardLayout__header">
-                            <h2>계정 발견!</h2>
+                            <h2>비밀번호 찾기</h2>
                         </header>
                         <div class="EmailPage__content">
                             <form id="EmailForm">
@@ -27,8 +27,8 @@ const FindSuccess = () => {
                                         <p class="username">abc@chocolate.com</p>
                                     </div>
                                     <div class="findtext">
-                                        <p>입력하신 정보와 연계된 KICKOFF 계정을 찾았습니다.</p>
-                                        <p>올바른 계정이 안닌 경우 다른 이메일 주소나 전화번호로 다시 시도하십시오.</p>
+                                        <p>입력하신 계정의 비밀번호를 찾았습니다.</p>
+                                        <p>올바른 계정이 아닌 경우 다른 이메일 주소로 다시 시도하십시오.</p>
                                     </div>
 
                                 </div>

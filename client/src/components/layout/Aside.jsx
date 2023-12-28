@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const Aside = ({ matches, setMatches }) => {
     const [matchFlag, setMatchFlag] = useState(true);
-
     const [leagueNum, setLeagueNum] = useState("2021");
 
     const leagueNumHandler = (e) => {
@@ -19,8 +18,8 @@ const Aside = ({ matches, setMatches }) => {
             .catch((err) => {
                 console.log(err);
             });
-    }, [leagueNum]);
-    console.log(matches)
+    }, [leagueNum, setMatches]);
+
     return (
         <aside id="aside">
             {matchFlag ? (

@@ -39,7 +39,7 @@ const Login = () => {
                     <div className="EmailPage__content">
                         <form id="LoginForm">
                             <div className="email-field">
-                                <p>신규 사용자이신가요?<Link to="/joinAgree"> 계정 만들기</Link></p>
+                                <p>신규 사용자이신가요? <Link to="/joinAgree">계정 만들기</Link></p>
                                 <div className="email_address">
                                     <label htmlFor="EmailPage-EmailField">이메일 주소</label>
                                     <input
@@ -67,7 +67,7 @@ const Login = () => {
                                     </div>
                                 </div>
                                 <div className="Password__submit">
-                                    <p>비밀번호 모르시나요?<Link href="#"> 비밀번호 찾기</Link></p>
+                                    <p>비밀번호 모르시나요? <Link to="/findpw">비밀번호 찾기</Link></p>
                                     <button
                                         type='submit'
                                         onClick={(e) => LoginFunc(e)}

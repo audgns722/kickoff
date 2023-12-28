@@ -42,7 +42,7 @@ app.use(cors());
 
 // 2023시즌 경기결과 최신순
 app.post('/api/matches', async (req, res) => {
-    const leagueNum = req.body.leagueNum; // 클라이언트로부터 받은 리그 번호
+    const leagueNum = req.body.leagueNum;
 
     try {
         const response = await axios.get(`http://api.football-data.org/v4/competitions/${leagueNum}/matches`, {
@@ -59,11 +59,28 @@ app.post('/api/matches', async (req, res) => {
         res.json({ matches: reversedMatches });
     } catch (error) {
         console.error('Error fetching matches:', error);
-        res.status(501).json({ success: false });
+        res.status(500).json({ success: false });
     }
 });
 
-//
+// league
+app.post('/api/league', async (req, res) => {
+    const leagueNum = req.body.leagueNum;
+
+    try {
+        const response = await axios.get(`http://api.football-data.org/v4/competitions/${leagueNum}/teams`, {
+            headers: {
+                'X-Auth-Token': config.XAuthToken,
+            }
+        });
+        res.status(200).json({ success: true, league: response.data });
+    } catch (error) {
+        console.error('Error fetching EPL data:', error);
+        res.status(500).json({ success: false });
+    }
+});
+
+// video
 app.post('/api/video', async (req, res) => {
     const token = config.token;
     try {

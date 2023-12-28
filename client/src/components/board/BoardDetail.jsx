@@ -153,7 +153,7 @@ const BoardDetail = (props) => {
                             <div className="bottom">
 
                                 <div className="bottom__left">
-                                    <div classNameName="img" style={{ backgroundImage: 'url(../assets/img/liverpool.png)' }}>
+                                    <div className="img" style={{ backgroundImage: 'url(../assets/img/liverpool.png)' }}>
                                         {/* <!-- <img src="../assets/img/liverpool.png" alt="임시"> --> */}
                                     </div>
                                     <p>

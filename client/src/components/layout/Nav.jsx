@@ -7,28 +7,28 @@ const nav = () => {
             <div className="nav__inner">
                 <ul>
                     <li className="active">
-                        <Link href="#">
+                        <Link to="/league/2021">
                             <img src="https://d37kf7rs4g1hyv.cloudfront.net/img/flags/64/epl.png" alt="epl" />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
+                        <Link to="/league/2014">
                             <img src="https://d37kf7rs4g1hyv.cloudfront.net/img/flags/64/laliganew.png" alt="laliga" />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
+                        <Link to="/league/2019">
                             <img src="https://d37kf7rs4g1hyv.cloudfront.net/img/flags/64/seriea.png" alt="seriea" />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
+                        <Link to="/league/2015">
                             <img src="https://d37kf7rs4g1hyv.cloudfront.net/img/flags/64/ligue1A.png" alt="ligue1a" />
                         </Link>
                     </li>
                     <li>
-                        <Link href="#">
-                            <img src="https://d37kf7rs4g1hyv.cloudfront.net/img/flags/64/101.png" alt="kleague" />
+                        <Link to="/league/2002">
+                            <img src="https://crests.football-data.org/BL1.png" alt="bundesliga" />
                         </Link>
                     </li>
                 </ul>
