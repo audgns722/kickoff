@@ -40,9 +40,10 @@ app.get("*", (req, res) => {
 // 모든 origin에서의 요청을 허용합니다. 실제 운영 환경에서는 특정 origin으로 제한하는 것이 좋습니다.
 app.use(cors());
 
-// 2023시즌 경기결과 최신순
+// 시즌 경기결과 최신순
 app.post('/api/matches', async (req, res) => {
     const leagueNum = req.body.leagueNum;
+    const currentYear = new Date().getFullYear();
 
     try {
         const response = await axios.get(`http://api.football-data.org/v4/competitions/${leagueNum}/matches`, {
@@ -51,7 +52,7 @@ app.post('/api/matches', async (req, res) => {
             },
             params: {
                 status: 'FINISHED',
-                season: '2023',
+                season: currentYear.toString(),
             },
         });
 
@@ -59,6 +60,30 @@ app.post('/api/matches', async (req, res) => {
         res.json({ matches: reversedMatches });
     } catch (error) {
         console.error('Error fetching matches:', error);
+        res.status(500).json({ success: false });
+    }
+});
+
+// 시즌 예정된 경기
+app.post('/api/scheduled', async (req, res) => {
+    const leagueNum = req.body.leagueNum;
+    const currentYear = new Date().getFullYear();
+
+    try {
+        const response = await axios.get(`http://api.football-data.org/v4/competitions/${leagueNum}/matches`, {
+            headers: {
+                'X-Auth-Token': config.XAuthToken,
+            },
+            params: {
+                status: 'SCHEDULED',
+                season: currentYear.toString(),
+            },
+        });
+
+        const scheduledMatches = response.data.matches;
+        res.json({ scheduled: scheduledMatches });
+    } catch (error) {
+        console.error('Error fetching scheduled matches:', error);
         res.status(500).json({ success: false });
     }
 });
