@@ -1,4 +1,5 @@
 ## client 설치
+```bash
 npx create-react-app .   
 npm install react-router-dom   
 npm install axios   
@@ -9,15 +10,19 @@ npm install @reduxjs/toolkit
 npm install react-icons --save 
 npm install moment --save
 npm install swiper
+```
    
 ## server 설치
+```bash
 npm init -y    
 npm install express --save   
 npm install nodemon --save   
 npm install path --save   
 npm install cors   
 npm install node-fetch   
-npm install mongoose --save   
+npm install mongoose --save    
+npm install multer --save   
+```
 
 ### KICKOFF
 

@@ -33,6 +33,7 @@ const JoinInfo = () => {
 
         await createdUser.user.updateProfile({
             displayName: youName,
+            photoURL: "https://kr.object.ncloudstorage.com/react-blog-final/user/1703034517260.png"
         });
 
         console.log(createdUser.user);
@@ -42,6 +43,7 @@ const JoinInfo = () => {
             email: createdUser.user.multiFactor.user.email,
             displayName: createdUser.user.multiFactor.user.displayName,
             uid: createdUser.user.multiFactor.user.uid,
+            photoURL: "https://kr.object.ncloudstorage.com/react-blog-final/user/1703034517260.png"
         }
 
         axios.post("/api/user/join", body)

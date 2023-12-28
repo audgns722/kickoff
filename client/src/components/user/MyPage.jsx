@@ -4,6 +4,7 @@ import { AiOutlineUsergroupDelete } from "react-icons/ai";
 
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import MypageImage from './MypageImage';
 
 
 const MyPage = () => {
@@ -22,9 +23,9 @@ const MyPage = () => {
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="mypage__info">
                     <div className="left">
-                        <div className="profile">
-                            <img src="/assets/img/profileimg.png" alt="프로필이지미" />
-                        </div>
+
+                        <MypageImage />
+
                     </div>
                     <div className="right">
                         <div className="info">

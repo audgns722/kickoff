@@ -23,6 +23,7 @@ import BoardModify from './components/board/BoardModify.jsx'
 import BoardArea from './components/board/BoardArea.jsx'
 import LeagueDetail from './components/league/LeagueDetail.jsx'
 import FindSuccess from './components/user/FindSuccess.jsx'
+import PlayDetail from './components/league/PlayDetail.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -61,6 +62,7 @@ const App = () => {
           <Route path='/league/:leagueId' element={<League />} />
           <Route path='/videoview/:videoId' element={<VideoView />} />
           <Route path='/leaguedetail' element={<LeagueDetail />} />
+          <Route path='/playdetail' element={<PlayDetail />} />
         </Routes>
       </Main>
     </>

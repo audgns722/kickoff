@@ -3,10 +3,13 @@ import Nav from '../layout/Nav'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios';
+import BoardImage from './BoardImage';
 
 const BoardWrite = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [image, setImage] = useState("");
+
     const navigate = useNavigate();
     const NoticeLink = () => {
         navigate('/boardDetail');
@@ -32,7 +35,7 @@ const BoardWrite = () => {
         let body = {
             title: title,
             content: content,
-            // image: image,
+            image: image,
             uid: user.uid
         }
 
@@ -49,7 +52,6 @@ const BoardWrite = () => {
     return (
         <div style={{ padding: "55px 0 0 55px" }}>
             <Nav />
-            {/* <Aside /> */}
             <div className="boardWrap">
                 <div className="board__cate">
                     <div className="cate__notice btn active" onClick={NoticeLink}>
@@ -79,13 +81,7 @@ const BoardWrite = () => {
                                 />
                             </div>
                             <div className="bottom">
-                                <div className="bottom__left">
-                                    <label htmlFor="commentImg">
-                                        <span>이미지첨부</span>
-                                    </label>
-                                    <span>*최대 1개(jpg, png, gif만 가능)</span>
-                                    <input type="file" className="blind" name="commentImg" id="commentImg" accept="image/png, image/jpeg, image/gif" />
-                                </div>
+                                <BoardImage setImage={setImage} />
                                 <div className="btnWrap">
                                     <Link to="/boardlist" className="list">
                                         목록으로

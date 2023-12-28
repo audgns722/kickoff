@@ -112,7 +112,7 @@
 
 .board__list>ul>li {
     width: 100%;
-    padding: 45px 60px;
+    padding: 35px 60px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -145,10 +145,14 @@
     width: 100%;
     margin-bottom: 25px;
     display: flex;
+    justify-content: space-between;
+}
+
+.board__list>ul>li>.list__left>.left__desc>.boardImg {
+    width: 100px;
 }
 
 .board__list>ul>li>.list__left>.left__desc>p {
-    width: 90%;
     font-size: 0.8rem;
     color: #B8BAC1;
     /* ...효과 */
@@ -157,18 +161,6 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-}
-
-.board__list>ul>li>.list__left>.left__desc>.img {
-    width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.board__list>ul>li>.list__left>.left__desc>.img>img {
-    width: auto;
-    height: 100px;
 }
 
 .board__list>ul>li>.list__left>.left__info {
@@ -278,7 +270,16 @@
 }
 
 .board__detail>.desc {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 25px;
+}
+
+.board__detail>.desc .boardImg {
+    margin-bottom: 25px;
+    max-width: 25%;
+    min-width: 150px;
+    width: 100%;
 }
 
 .board__detail>.desc>p {
@@ -489,6 +490,43 @@
     justify-content: space-between;
 }
 
+.board__detail.write .bottom .bottom__left {
+    display: flex;
+    align-items: center;
+}
+
+.board__detail.write .bottom .bottom__left .preview {
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+    border: 2px solid var(--gray);
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background-size: contain !important;
+}
+
+.board__detail.write .bottom .bottom__left>span {
+    margin-left: 10px;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.board__detail.write .bottom .bottom__left>label>span {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.board__detail.write .bottom .bottom__left>label>span>svg {
+    width: 100%;
+    height: 100%;
+}
+
+
 .board__detail.write fieldset .profill__left {
     text-align: right;
     font-size: 1.2rem;
@@ -519,4 +557,5 @@
     font-size: 1rem;
     background-color: #0057FF;
     margin-left: 15px;
+    cursor: pointer;
 }

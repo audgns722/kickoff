@@ -109,11 +109,7 @@ const BoardList = () => {
                                                         {board.content}
                                                     </Link>
                                                 </p>
-
-
-                                                <div className="img">
-                                                    <img src="../assets/img/liverpool.png" alt="임시" />
-                                                </div>
+                                                <img className='boardImg' src={`http://localhost:5050/${board.image}`} alt={board.content} />
                                             </div>
                                             <div className="left__info">
                                                 <div className="info__left">
