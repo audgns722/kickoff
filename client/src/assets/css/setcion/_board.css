@@ -444,15 +444,17 @@
     background-color: transparent;
     cursor: pointer;
     font-size: 0.8rem;
+    margin-left: 5px;
 }
 
-.commentWrap>.commentWrap__listBtn {
+/* 댓글 밑에 있는 목록 버튼 css */
+.commentWrap__listBtn {
     display: flex;
     justify-content: flex-end;
     padding-bottom: 30px;
 }
 
-.commentWrap>.commentWrap__listBtn>a {
+.commentWrap__listBtn>a {
     padding: 10px 15px;
     border-radius: 5px;
     color: var(--black);
@@ -461,6 +463,76 @@
     cursor: pointer;
 }
 
+/* editwrite */
+.editWrite {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.editWrite>form>fieldset {
+    border: 0;
+}
+
+.editWrite>form>fieldset>textarea {
+    width: 100% !important;
+    height: 130px !important;
+    resize: none;
+    padding: 40px;
+    background-color: transparent;
+}
+
+.editWrite>form>fieldset>textarea:focus {
+    outline: none;
+}
+
+.editWrite>form>fieldset>.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.editWrite>form>fieldset>.bottom>.bottom__left {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.editWrite>form>fieldset>.bottom>.bottom__left>label {
+    display: flex;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.editWrite>form>fieldset>.bottom>.bottom__left>label>svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+}
+
+.editWrite>form>fieldset>.bottom>.bottom__left>span {
+    font-size: 0.8rem;
+    color: #B8BAC1;
+    line-height: -1;
+}
+
+.editWrite>form>fieldset>.bottom>.bottom__left>input {
+    display: none;
+}
+
+.editWrite>form>fieldset>.bottom>div>button {
+    width: 130px;
+    height: 55px;
+    color: var(--white);
+    background-color: #0057FF;
+    cursor: pointer;
+}
+
+
+
+*/
 
 /* boardwrite */
 .board__detail.write {}

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import BoardDetail from './BoardDetail';
 
+
 const BoardArea = () => {
     const [boardInfo, setBoardInfo] = useState({});
     const [flag, setFlag] = useState(false);
@@ -31,7 +32,6 @@ const BoardArea = () => {
             {flag ? (
                 <>
                     <BoardDetail boardInfo={boardInfo} />
-
                 </>
             ) : (
                 <div>
