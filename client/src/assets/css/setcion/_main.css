@@ -289,6 +289,10 @@
     width: 50%;
 }
 
+.today__highlight>.highlight__info>.btn {
+    display: inline-block;
+}
+
 .today__highlight>.highlight__info>.btn>a {
     display: flex;
 }

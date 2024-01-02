@@ -79,7 +79,6 @@ const Aside = ({ matches, setMatches }) => {
                             <option value="2015">Ligue1</option>
                             <option value="2002">Bundesliga</option>
                         </select>
-                        {/* 여기에 경기 목록을 렌더링하는 로직 */}
                     </div>
 
                 </div>
@@ -91,7 +90,9 @@ const Aside = ({ matches, setMatches }) => {
                                     <div className="logo">
                                         <img src={matche.homeTeam.crest} alt={matche.homeTeam.tla} />
                                     </div>
-                                    <p className="team">{matche.homeTeam.tla}</p>
+                                    <p className={`team ${matche.score.winner === "HOME_TEAM" ? "" : matche.score.winner === "AWAY_TEAM" ? "lose" : ""}`}>
+                                        {matche.homeTeam.tla}
+                                    </p>
                                 </div>
                                 <div className="score">
                                     <div className="score__inner">
@@ -133,7 +134,9 @@ const Aside = ({ matches, setMatches }) => {
                                     </div>
                                 </div>
                                 <div className="away">
-                                    <p className="team">{matche.awayTeam.tla}</p>
+                                    <p className={`team ${matche.score.winner === "HOME_TEAM" ? "lose" : matche.score.winner === "AWAY_TEAM" ? "" : ""}`}>
+                                        {matche.awayTeam.tla}
+                                    </p>
                                     <div className="logo">
                                         <img src={matche.awayTeam.crest} alt={matche.awayTeam.tla} />
                                     </div>

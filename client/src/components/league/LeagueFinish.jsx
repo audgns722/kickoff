@@ -28,7 +28,7 @@ const LeagueFinish = ({ league, matches }) => {
                                     <div className="logo">
                                         <img src={matche.homeTeam.crest} alt={matche.homeTeam.tla} />
                                     </div>
-                                    <div className={`name ${matche.score.fullTime.home < matche.score.fullTime.away ? 'lose' : ''}`}>{matche.homeTeam.tla}</div>
+                                    <div className={`name ${matche.score.fullTime.home < matche.score.fullTime.away ? 'lose' : ''}`}>{matche.homeTeam.shortName}</div>
                                 </div>
                                 <div className="league__score">
                                     <span>
@@ -36,7 +36,7 @@ const LeagueFinish = ({ league, matches }) => {
                                     </span>
                                 </div>
                                 <div className="league__team away">
-                                    <div className={`name ${matche.score.fullTime.home > matche.score.fullTime.away ? 'lose' : ''}`}>{matche.awayTeam.tla}</div>
+                                    <div className={`name ${matche.score.fullTime.home > matche.score.fullTime.away ? 'lose' : ''}`}>{matche.awayTeam.shortName}</div>
                                     <div className="logo">
                                         <img src={matche.awayTeam.crest} alt={matche.awayTeam.tla} />
                                     </div>
