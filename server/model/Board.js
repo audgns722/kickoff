@@ -9,9 +9,13 @@ const boardSchema = new mongoose.Schema(
         author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
+        },
+        repleNum: {
+            type: Number,
+            default: 0,
         }
     },
-    { collection: "boards" }
+    { collection: "boards", timestamps: true }
 );
 
 const Board = mongoose.model("Board", boardSchema);
