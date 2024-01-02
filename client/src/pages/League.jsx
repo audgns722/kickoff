@@ -8,38 +8,51 @@ import LeagueDetail from '../components/league/LeagueDetail';
 const League = () => {
     const leagueNum = useParams();
     const [league, setLeague] = useState([]);
-    // const [matches, setMatches] = useState([]);
+    const [matches, setMatches] = useState([]);
+    const [scheduled, setScheduled] = useState([]);
 
-    console.log(leagueNum.leagueId);
+    // console.log(leagueNum.leagueId);
 
     // 리그정보
     useEffect(() => {
         axios.post("/api/league", { leagueNum: leagueNum.leagueId })
             .then((response) => {
                 setLeague(response.data.league)
-                console.log(response.data.league)
+                // console.log(response.data.league)
             })
             .catch((err) => {
                 console.log(err)
             });
     }, [leagueNum]);
 
-    // // 리그경기
-    // useEffect(() => {
-    //     axios.post("/api/matches", { leagueNum })
-    //         .then((response) => {
-    //             console.log(response);
-    //             setMatches(response.data.matches)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         });
-    // }, [leagueNum]);
+    // 리그 종료된 경기
+    useEffect(() => {
+        axios.post("/api/matches", { leagueNum: leagueNum.leagueId })
+            .then((response) => {
+                setMatches(response.data.matches)
+                // console.log(response.data.matches)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }, [leagueNum]);
+
+    // 리그 예정된 경기
+    useEffect(() => {
+        axios.post("/api/scheduled", { leagueNum: leagueNum.leagueId })
+            .then((response) => {
+                setScheduled(response.data.scheduled)
+                console.log(response.data.scheduled)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [leagueNum])
 
     return (
         <>
             <Nav />
-            <LeagueDetail league={league} />
+            <LeagueDetail league={league} matches={matches} scheduled={scheduled} />
         </>
     )
 }

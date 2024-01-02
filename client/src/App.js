@@ -18,11 +18,11 @@ import League from './pages/League'
 import FindPw from './components/user/FindPw.jsx'
 import BoardList from './components/board/BoardList'
 import BoardWrite from './components/board/BoardWrite'
-import VideoView from './components/video/VideoView.jsx'
 import BoardModify from './components/board/BoardModify.jsx'
 import BoardArea from './components/board/BoardArea.jsx'
 import LeagueDetail from './components/league/LeagueDetail.jsx'
 import FindSuccess from './components/user/FindSuccess.jsx'
+import Video from './pages/Video.jsx'
 import PlayDetail from './components/league/PlayDetail.jsx'
 
 const App = () => {
@@ -60,7 +60,7 @@ const App = () => {
           <Route path='/boarddetail/:boardNum' element={<BoardArea />} />
           <Route path='/boardmodify/:boardNum' element={<BoardModify />} />
           <Route path='/league/:leagueId' element={<League />} />
-          <Route path='/videoview/:videoId' element={<VideoView />} />
+          <Route path='/videoview/:videoId' element={<Video />} />
           <Route path='/leaguedetail' element={<LeagueDetail />} />
           <Route path='/playdetail' element={<PlayDetail />} />
         </Routes>

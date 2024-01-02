@@ -9,9 +9,9 @@
 
 .video__play {
     width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    margin-top: 30px;
+    /* max-width: 1280px; */
+    /* margin: 0 auto; */
+    /* margin-top: 30px; */
 }
 
 .video__play iframe {
@@ -25,8 +25,8 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    background-color: #4d4d4d4a;
-    max-width: 1280px;
+    background-color: var(--bgcolor);
+    /* max-width: 1280px; */
     color: var(--white);
 }
 
