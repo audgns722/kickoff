@@ -1,0 +1,42 @@
+.main__news {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 35px;
+}
+
+.main__news h2 {
+    width: 20%;
+    font-size: 1rem;
+    font-weight: 700;
+    padding-right: 10px;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.news-content p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-content a {
+    display: inline-block;
+}
+
+.news-content a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.main__news .swiper-button-next,
+.main__news .swiper-button-prev {
+    display: none;
+}

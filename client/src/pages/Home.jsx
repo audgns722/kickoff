@@ -5,9 +5,20 @@ import Aside from '../components/layout/Aside';
 import MainCont from '../components/main/MainCont';
 import Footer from '../components/layout/Footer';
 
+
 const Home = () => {
     const [matches, setMatches] = useState([]);
     const [videoInfo, setVideoInfo] = useState([]);
+    const [news, setNews] = useState([]);
+
+    // news
+    useEffect(() => {
+        axios.post("/api/news")
+            .then((response) => {
+                setNews(response.data);
+            })
+
+    }, [news]);
 
     // video
     useEffect(() => {
@@ -29,7 +40,7 @@ const Home = () => {
         <div>
             <Nav />
             <Aside matches={matches} setMatches={setMatches} />
-            <MainCont videoInfo={videoInfo} />
+            <MainCont videoInfo={videoInfo} news={news} />
             <Footer />
         </div>
     )
