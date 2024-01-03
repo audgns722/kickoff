@@ -147,6 +147,23 @@ app.post('/api/league', async (req, res) => {
     }
 });
 
+// rank
+app.post('/api/rank', async (req, res) => {
+    const leagueNum = req.body.leagueNum;
+
+    try {
+        const response = await axios.get(`http://api.football-data.org/v4/competitions/${leagueNum}/standings`, {
+            headers: {
+                'X-Auth-Token': config.XAuthToken,
+            }
+        });
+        res.status(200).json({ success: true, rank: response.data });
+    } catch (error) {
+        console.error('Error fetching EPL data:', error);
+        res.status(500).json({ success: false });
+    }
+})
+
 // video
 app.post('/api/video', async (req, res) => {
     const token = config.token;
