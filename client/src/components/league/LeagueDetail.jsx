@@ -72,12 +72,12 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
 
     // 조건부 렌더링
     if (!league || league.length === 0 || !matches || matches.length === 0 || !scheduled || scheduled.length === 0) {
-        return <div>Loading...</div>;
+        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span class="loader"></span></div>;
     }
 
     return (
         <>
-            <div style={{ padding: "55px 0 0 55px" }}>
+            <div style={{ padding: "55px 300px 0 55px" }}>
                 <div className="detail__info">
                     <div className={`left ${leagueId === '2021' ? 'epl' : leagueId === '2014' ? 'laliga' : leagueId === '2019' ? 'serie' : leagueId === '2015' ? 'ligue1' : leagueId === '2002' ? 'bundesliga' : ''}`}>
                         <div className="logo">

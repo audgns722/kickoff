@@ -31,6 +31,10 @@ const VideoView = () => {
         return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
     }
 
+    if (!videoInfo || videoInfo.length === 0) {
+        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span class="loader"></span></div>;
+    }
+
     return (
         <>
             <div id='videoview' style={{ padding: "55px 300px 0 55px", backgroundColor: "var(--bgcolor)" }}>

@@ -2,9 +2,40 @@
     width: 100%;
 }
 
+/* scroll */
 ::-webkit-scrollbar {
     width: 0;
     height: 0;
+}
+
+/* loading */
+.loaderWrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .container {
@@ -49,7 +80,7 @@
     position: fixed;
     right: 0;
     top: 55px;
-    background-color: var(--white);
+    background-color: var(--bgcolor);
     z-index: 1000;
 }
 

@@ -20,6 +20,11 @@ const Aside = ({ matches, setMatches }) => {
             });
     }, [leagueNum, setMatches]);
 
+    // 조건부 렌더링
+    if (!matches || matches.length === 0) {
+        return <div id='aside' style={{ display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;
+    }
+
     return (
         <aside id="aside">
             {matchFlag ? (

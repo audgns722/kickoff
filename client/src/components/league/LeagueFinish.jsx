@@ -8,7 +8,7 @@ const LeagueFinish = ({ league, matches }) => {
                     <div className="left__text">Latest Scores</div>
                     <div className="right__text">BROADCAST MATCH</div>
                 </div>
-                {matches.slice(0, 10).map((matche, key) => {
+                {matches.map((matche, key) => {
                     const matchDate = new Date(matche.utcDate);
 
                     // 날짜와 시간 추출
