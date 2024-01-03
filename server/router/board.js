@@ -13,9 +13,11 @@ const { User } = require("../model/User.js");
 // 글 쓰기
 router.post("/write", (req, res) => {
     let temp = {
+        cate: req.body.cate,
         title: req.body.title,
         content: req.body.content,
         image: req.body.image
+
     };
 
     Counter.findOne({ name: "counter" })
@@ -44,8 +46,8 @@ router.post("/write", (req, res) => {
         })
 })
 
-// 글목록
-router.post("/list", (req, res) => {
+// 메인 홈화면 게시글 리스트
+router.post("/mainlist", (req, res) => {
     Board
         .find()
         .populate("author")
@@ -58,6 +60,35 @@ router.post("/list", (req, res) => {
             res.status(400).json({ success: false });
         })
 })
+
+// Board게시판 목록
+router.post("/list", (req, res) => {
+    let sort = {};
+
+    if (req.body.sort === "최신순") {
+        sort.createdAt = -1;
+    } else if (req.body.sort === "댓글순") {
+        sort.repleNum = -1;
+    }
+
+    Board
+        .find({
+            $or: [
+                { title: { $regex: req.body.searchTerm } },
+                { content: { $regex: req.body.searchTerm } },
+            ],
+        })
+        .populate("author")
+        .sort(sort)
+        .exec()
+        .then((result) => {
+            res.status(200).json({ success: true, boardList: result });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).json({ success: false });
+        });
+});
 
 // 글 상세페이지
 router.post("/detail", (req, res) => {

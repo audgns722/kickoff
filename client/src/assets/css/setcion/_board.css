@@ -198,6 +198,43 @@
     color: rgba(0, 0, 0, 0.5);
 }
 
+.nav__sort input[type="checkbox"] {
+    display: none;
+    /* 원래의 체크박스 숨기기 */
+}
+
+.nav__sort .indicator {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: var(--white);
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.nav__sort .indicator::after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.nav__sort input[type="checkbox"]:checked+.indicator {
+    background-color: #0475fe;
+}
+
+.nav__sort input[type="checkbox"]:checked+.indicator::after {
+    display: block;
+}
+
 /* //board__list */
 
 /* ------------------ */
@@ -534,9 +571,30 @@
 
 
 */
-
 /* boardwrite */
+
 .board__detail.write {}
+
+
+/* 게시판 카테고리 */
+.board__detail.write #link {
+    width: 100px;
+    font-size: 0.8rem;
+    color: var(--white);
+    background-color: var(--black);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-align: left;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.board__detail.write #link option {
+    font-size: 0.8rem;
+    background: var(--white);
+    color: var(--black);
+}
 
 .board__detail.write input {
     font-size: 1.2rem;
