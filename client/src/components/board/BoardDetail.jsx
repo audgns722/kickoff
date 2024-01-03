@@ -21,13 +21,8 @@ const BoardDetail = (props) => {
         navigate('/boardlist')
     }
 
-
-    const SetTime = (a, b) => {
-        if (a !== b) {
-            return moment(b).format("YYYY MMMM Do , h:mm") + "(수정됨)"
-        } else {
-            return moment(a).format("YYYY MMMM Do , h:mm");
-        }
+    function formatDateString(dateStr) {
+        return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
     }
 
     const DeleteHandler = () => {
@@ -75,7 +70,7 @@ const BoardDetail = (props) => {
                             </div>
                             <div className="text">
                                 <p className="name">{props.boardInfo.author.displayName}</p>
-                                <p className="date">{SetTime(props.boardInfo.createdAt)}</p>
+                                <p className="date">{formatDateString(props.boardInfo.createdAt)}</p>
                             </div>
                         </div>
                         <div className="profill__right">
@@ -85,7 +80,7 @@ const BoardDetail = (props) => {
                             </div>
                             <div className="comment">
                                 <TfiComment />
-                                <span>777</span>
+                                <span>{props.boardInfo.repleNum}</span>
                             </div>
                         </div>
                     </div>

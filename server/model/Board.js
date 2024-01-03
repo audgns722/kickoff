@@ -6,6 +6,7 @@ const boardSchema = new mongoose.Schema(
         content: String,
         boardNum: Number,
         image: String,
+        cate: String,
         author: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",

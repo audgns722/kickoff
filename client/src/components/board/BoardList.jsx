@@ -1,46 +1,66 @@
 import React, { useEffect, useState } from 'react';
-import Nav from '../layout/Nav'
+import Nav from '../layout/Nav';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
-// icon
 import { TfiComment } from "react-icons/tfi";
-import { AiOutlineLike } from "react-icons/ai";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
+import moment from "moment";
+import "moment/locale/ko";
 
-
-
-
-
-// import Aside from '../layout/Aside'
 const BoardList = () => {
     const [boardList, setBoardList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sort, setSort] = useState("최신순");
+    const [isLatestChecked, setIsLatestChecked] = useState(true);
+    const [isCommentChecked, setIsCommentChecked] = useState(false);
 
     const navigate = useNavigate();
 
-
     const BoardWrite = () => {
-        navigate('/boardwrite')
+        navigate('/boardwrite');
     }
 
-    useEffect(() => {
-        axios.post("/api/board/list")
+    function formatDateString(dateStr) {
+        return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
+    }
+
+    const getBoardList = () => {
+        let body = {
+            sort: sort,
+            searchTerm: searchTerm,
+        };
+
+        axios.post("/api/board/list", body)
             .then((response) => {
                 if (response.data.success) {
-                    console.log(response.data)
                     setBoardList([...response.data.boardList]);
+                } else {
+                    // 에러 처리 또는 사용자에게 알림
                 }
             })
             .catch((err) => {
-                console.log(err);
-            })
-    }, [])
+                console.error(err);
+                // 에러 처리 또는 사용자에게 알림
+            });
+    };
 
+    useEffect(() => {
+        getBoardList();
+    }, [sort]);
+
+    const SearchHandler = () => {
+        getBoardList();
+    }
+
+    const handleSortChange = (type) => {
+        setSort(type);
+        setIsLatestChecked(type === "최신순");
+        setIsCommentChecked(type === "댓글순");
+    }
 
     return (
         <>
             <Nav />
-            {/* <Aside /> */}
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="boardWrap">
                     <div className="board__cate">
@@ -56,11 +76,25 @@ const BoardList = () => {
                             <p>전체 <span>999,999</span>건</p>
                         </div>
                         <div className="search__right">
-                            <form action="#" name="search" method="post">
+                            <form
+                                onSubmit={(e) => {
+                                    e.preventDefault();
+                                    SearchHandler();
+                                }}
+                            >
                                 <fieldset>
                                     <legend className="blind">검색 영역</legend>
-                                    <label htmlFor="board__search" className="blind">게시판 검색</label>
-                                    <input type="text" name="board__search" id="board__search" placeholder="다른사람들은 어떤 이야기를 할까?" />
+                                    <label htmlFor="board__search" className="blind">
+                                        게시판 검색
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="board__search"
+                                        id="board__search"
+                                        placeholder="다른 사람들은 어떤 이야기를 할까?"
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.currentTarget.value)}
+                                    />
                                 </fieldset>
                             </form>
                         </div>
@@ -71,9 +105,24 @@ const BoardList = () => {
                                 <form>
                                     <fieldset>
                                         <legend className="blind">정렬 영역</legend>
-                                        <input type="checkbox" name="sort1" id="sort1" /><label htmlFor="sort1">인기순</label>
-                                        <input type="checkbox" name="sort2" id="sort2" /><label htmlFor="sort2">최신순</label>
-                                        <input type="checkbox" name="sort3" id="sort3" /><label htmlFor="sort3">댓글순</label>
+                                        <input
+                                            type="checkbox"
+                                            name="sort1"
+                                            id="sort1"
+                                            checked={isLatestChecked}
+                                        />
+                                        <span className="indicator" onClick={() => handleSortChange("최신순")}></span>
+                                        <label htmlFor="sort1" >최신순</label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="sort2"
+                                            id="sort2"
+                                            checked={isCommentChecked}
+
+                                        />
+                                        <span className="indicator" onClick={() => handleSortChange("댓글순")}></span>
+                                        <label htmlFor="sort2">댓글순</label>
                                     </fieldset>
                                 </form>
                             </div>
@@ -89,7 +138,6 @@ const BoardList = () => {
                             {boardList.map((board, key) => {
                                 return (
                                     <li key={key}>
-
                                         <div className="list__left">
                                             <div className="left__title">
                                                 <div className="hot active">
@@ -100,9 +148,7 @@ const BoardList = () => {
                                                         <h3>{board.title}</h3>
                                                     </div>
                                                 </Link>
-
                                             </div>
-
                                             <div className="left__desc" style={{ cursor: "pointer" }}>
                                                 <p>
                                                     <Link to={`/boarddetail/${board.boardNum}`}>
@@ -119,7 +165,7 @@ const BoardList = () => {
                                                     </div>
                                                     <div className="comment">
                                                         <TfiComment />
-                                                        <span>댓글 <i>777</i></span>
+                                                        <span>댓글 <i>{board.repleNum}</i></span>
                                                     </div>
                                                     <div className="view">
                                                         <AiOutlineEye />
@@ -127,7 +173,7 @@ const BoardList = () => {
                                                     </div>
                                                 </div>
                                                 <div className="info__right">
-                                                    <p><span>{board.author.displayName}</span>님이 <i>오늘</i> 작성</p>
+                                                    <p><span>{board.author.displayName}</span>님이 <i>{formatDateString(board.createdAt)}</i> 작성</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,8 +186,7 @@ const BoardList = () => {
                     </div>
                 </div>
             </div>
-        </ >
-
+        </>
     )
 }
 

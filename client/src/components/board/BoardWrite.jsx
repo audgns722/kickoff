@@ -8,12 +8,13 @@ import BoardImage from './BoardImage';
 const BoardWrite = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [cate, setCate] = useState("community");
     const [image, setImage] = useState("");
 
     const navigate = useNavigate();
-    const NoticeLink = () => {
-        navigate('/boardDetail');
-    };
+    // const NoticeLink = () => {
+    //     navigate('/boardDetail');
+    // };
 
     const user = useSelector(state => state.user);
 
@@ -36,6 +37,7 @@ const BoardWrite = () => {
             title: title,
             content: content,
             image: image,
+            cate: cate,
             uid: user.uid
         }
 
@@ -53,16 +55,22 @@ const BoardWrite = () => {
         <div style={{ padding: "55px 0 0 55px" }}>
             <Nav />
             <div className="boardWrap">
-                <div className="board__cate">
+                {/* <div className="board__cate">
                     <div className="cate__notice btn active" onClick={NoticeLink}>
                         공지사항
                     </div>
                     <div className="cate__community btn">
                         자유게시판
                     </div>
-                </div>
+                </div> */}
                 <div className="board__detail write">
                     <form>
+
+                        <select name='link' id='link' value={cate} onChange={(e) => setCate(e.currentTarget.value)}>
+                            <option value="notice">공지사항</option>
+                            <option value="community">자유게시판</option>
+                        </select>
+
                         <fieldset>
                             <input
                                 type='text'
@@ -71,6 +79,7 @@ const BoardWrite = () => {
                                 id="title"
                                 value={title}
                                 onChange={(e) => setTitle(e.currentTarget.value)} />
+
                             <div className="desc">
                                 <textarea
                                     placeholder='내용을 입력해주세요'
