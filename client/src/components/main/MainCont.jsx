@@ -1,6 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import News from './News';
 
+// swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,7 +14,6 @@ import { FaShare } from "react-icons/fa";
 import { AiOutlineLike } from "react-icons/ai";
 
 const MainCont = (props) => {
-
     return (
         <>
             <div style={{ padding: "55px 300px 0 55px" }}>
@@ -34,7 +35,7 @@ const MainCont = (props) => {
                             1골, 1도움, 1자책골을 기록했다.
                         </div>
                         <div className="btn">
-                            <Link href="/">
+                            <Link to="/">
                                 <div className="icon">
                                     <FaShare />
                                 </div>
@@ -73,6 +74,9 @@ const MainCont = (props) => {
                         </div>
                     </div>
                 </div>
+
+                <News />
+
                 <div className="main__board">
                     <div className="card">
                         <div className="title">
@@ -125,7 +129,7 @@ const MainCont = (props) => {
                 </div>
             </div >
         </>
-    )
-}
+    );
+};
 
-export default MainCont
+export default MainCont;
