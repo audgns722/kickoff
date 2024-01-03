@@ -52,7 +52,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
     };
 
     // 조건부 렌더링
-    if (!league || league.length === 0) {
+    if (!league || league.length === 0 || !matches || matches.length === 0 || !scheduled || scheduled.length === 0) {
         return <div>Loading...</div>;
     }
 
@@ -113,7 +113,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
                         </div>
                     </div>
                     {selectedTab === 'finish' ? (
-                        <LeagueFinish league={league} matches={matches} />
+                        <LeagueFinish leagueId={leagueId} league={league} matches={matches} />
                     ) : (
                         <LeagueSchedul league={league} scheduled={scheduled} />
                     )}

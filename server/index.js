@@ -120,3 +120,5 @@ app.post('/api/video', async (req, res) => {
         res.status(500).json({ success: false });
     }
 });
+
+// 플레이디테일 정보 가져오기

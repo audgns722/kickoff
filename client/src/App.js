@@ -62,7 +62,7 @@ const App = () => {
           <Route path='/league/:leagueId' element={<League />} />
           <Route path='/videoview/:videoId' element={<Video />} />
           <Route path='/leaguedetail' element={<LeagueDetail />} />
-          <Route path='/playdetail' element={<PlayDetail />} />
+          <Route path="/playdetail/:leagueId/:matchId" element={<PlayDetail />} />
         </Routes>
       </Main>
     </>

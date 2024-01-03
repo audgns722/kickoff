@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const LeagueFinish = ({ league, matches }) => {
+const LeagueFinish = ({ leagueId, league, matches }) => {
     return (
         <>
             <div className="content__bottom">
@@ -43,7 +44,7 @@ const LeagueFinish = ({ league, matches }) => {
                                 </div>
                             </div>
                             <div className="result__right">
-                                승패예측 결과 표시할 부분
+                                <Link to={`/playdetail/${leagueId}/${matche.id}`}>경기결과보기</Link>
                             </div>
                         </div>
                     );

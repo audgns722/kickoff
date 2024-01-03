@@ -17,7 +17,9 @@ const VideoView = () => {
                 );
                 if (foundVideo) {
                     console.log(foundVideo)
+
                     setVideoInfo(foundVideo); // foundVideo 객체를 상태에 설정
+                    console.log(setVideoInfo)
                 } else {
                     alert("해당 영상정보를 찾을수 없습니다.")
                 }

@@ -34,7 +34,7 @@
     margin-top: 4.16vw;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     height: 100%;
     max-height: 560px;
 }
@@ -56,7 +56,7 @@
     height: 13vw;
     min-width: 100px;
     min-height: 100px;
-    border: 8px solid green;
+    /* border: 8px solid green; */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@
 }
 
 .league__home .logo img {
-    width: 40%;
+    width: 100%;
 }
 
 .league__home h3 {
@@ -102,7 +102,7 @@
     height: 13vw;
     min-width: 100px;
     min-height: 100px;
-    border: 8px solid var(--red);
+    /* border: 8px solid var(--red); */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -110,7 +110,7 @@
 }
 
 .league__away img {
-    width: 40%;
+    width: 100%;
 }
 
 .league__away h3 {
@@ -143,9 +143,9 @@
 
 
 .league__match .date {
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--gray);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--black);
 }
 
 .league__match .date em {
@@ -153,33 +153,39 @@
 }
 
 .league__match .score {
-    font-size: 5.2vw;
+    font-size: 20px;
     line-height: 1;
-    font-weight: 900;
-    padding: 2.5vw 0;
+    font-weight: 700;
+    padding: 10px 0;
+    text-transform: uppercase;
 }
 
 .league__match .playdata {
     font-size: 1.2rem;
-    color: var(--gray);
+    color: var(--black);
+}
+
+.league__match .playdata em {
+    color: var(--black);
+    text-transform: uppercase;
 }
 
 .league__match .stadium {
     font-size: 24px;
     margin-top: 5.2vw;
-    color: var(--gray);
+    color: var(--black);
 }
 
 .league__match .stadium em {
     font-weight: 900;
-    color: var(--black);
+
 }
 
 .league__match .draw {
     font-size: 1.3rem;
     font-weight: 900;
-    color: var(--gray);
-    margin-top: 35px;
+    color: var(--black);
+    margin-top: 30px;
 }
 
 .league__match .draw em {
@@ -265,6 +271,8 @@
     font-size: 2rem;
     color: var(--gray);
     font-weight: 700;
+    text-align: center;
+    line-height: 1;
 }
 
 .play__status .status__top>div:nth-child(2) {
@@ -272,6 +280,7 @@
 }
 
 .play__status .status__top .team {
+    width: 200px;
     font-size: 2rem;
     font-weight: 700;
     display: inline-block;
@@ -290,17 +299,19 @@
 .status__progress .progress__left {
     width: 35%;
     height: 10px;
-    background-color: greenyellow;
+    background-color: var(--gray);
     position: relative;
+    --progress-width: 50%;
 }
 
 .status__progress .progress__left::before {
     position: absolute;
     content: '';
-    left: 0;
-    width: 50%;
+    right: 0;
+    width: var(--progress-width);
     height: 10px;
-    background-color: var(--gray);
+    background-color: #00774a;
+    max-width: 100%;
 }
 
 .status__progress .progress__text {
@@ -313,30 +324,32 @@
 
 .status__progress .progress__text .score {
     font-size: 1.4rem;
-
 }
 
 .status__progress .progress__text>div:nth-child(2) {
     font-size: 1rem;
     font-weight: 700;
+    width: 100px;
     color: var(--gray);
-    margin: 0 30px;
+    text-align: center;
 }
 
 .status__progress .progress__right {
     width: 35%;
     height: 10px;
-    background-color: red;
+    background-color: var(--gray);
     position: relative;
+    --progress-width: 50%;
 }
 
 .status__progress .progress__right::before {
     position: absolute;
     content: '';
-    right: 0;
-    width: 50%;
+    left: 0;
+    width: var(--progress-width);
     height: 10px;
-    background-color: var(--gray);
+    background-color: #c50000;
+    max-width: 100%;
 }
 
 .play__bottom .play__comment {

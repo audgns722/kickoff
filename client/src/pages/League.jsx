@@ -25,6 +25,7 @@ const League = () => {
             });
     }, [leagueNum]);
 
+
     // 리그 종료된 경기
     useEffect(() => {
         axios.post("/api/matches", { leagueNum: leagueNum.leagueId })
