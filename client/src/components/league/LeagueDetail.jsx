@@ -44,6 +44,25 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
         setLeagueInfo(info);
     }, [leagueId]);
 
+    // 정렬
+    const [sortOrder, setSortOrder] = useState('Newest');
+
+    const handleSortChange = (e) => {
+        setSortOrder(e.target.value);
+    };
+
+    let sortedMatches = matches;
+    let sortedScheduled = scheduled;
+
+
+    if (sortOrder === 'Oldest') {
+        sortedMatches = [...matches].sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+        sortedScheduled = [...scheduled].sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+    } else {
+        sortedMatches = [...matches].sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
+        sortedScheduled = [...scheduled].sort((a, b) => new Date(b.utcDate) - new Date(a.utcDate));
+    }
+
     // 탭메뉴
     const [selectedTab, setSelectedTab] = useState('finish');
 
@@ -53,12 +72,12 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
 
     // 조건부 렌더링
     if (!league || league.length === 0 || !matches || matches.length === 0 || !scheduled || scheduled.length === 0) {
-        return <div>Loading...</div>;
+        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span class="loader"></span></div>;
     }
 
     return (
         <>
-            <div style={{ padding: "55px 0 0 55px" }}>
+            <div style={{ padding: "55px 300px 0 55px" }}>
                 <div className="detail__info">
                     <div className={`left ${leagueId === '2021' ? 'epl' : leagueId === '2014' ? 'laliga' : leagueId === '2019' ? 'serie' : leagueId === '2015' ? 'ligue1' : leagueId === '2002' ? 'bundesliga' : ''}`}>
                         <div className="logo">
@@ -105,7 +124,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
                             <li className={selectedTab === 'schedul' ? 'active' : ''} onClick={() => handleTabChange('schedul')}>SCHEDUL</li>
                         </ul>
                         <div className="right__text">
-                            <select name="detailSelect" id="detailSelect">
+                            <select name="detailSelect" id="detailSelect" value={sortOrder} onChange={handleSortChange}>
                                 <option value="option">▼ MORE</option>
                                 <option value="Newest">Newest</option>
                                 <option value="Oldest">Oldest</option>
@@ -113,9 +132,9 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
                         </div>
                     </div>
                     {selectedTab === 'finish' ? (
-                        <LeagueFinish leagueId={leagueId} league={league} matches={matches} />
+                        <LeagueFinish league={league} matches={sortedMatches} />
                     ) : (
-                        <LeagueSchedul league={league} scheduled={scheduled} />
+                        <LeagueSchedul league={league} scheduled={sortedScheduled} />
                     )}
                 </div>
             </div>

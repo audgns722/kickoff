@@ -159,7 +159,7 @@
 
 .aside__score>.score__match>ul {
     overflow-y: auto;
-    max-height: 520px;
+    max-height: 545px;
 }
 
 .aside__score>.score__match>ul>li {
@@ -287,6 +287,10 @@
     margin-top: 50px;
     margin-bottom: 20px;
     width: 50%;
+}
+
+.today__highlight>.highlight__info>.btn {
+    display: inline-block;
 }
 
 .today__highlight>.highlight__info>.btn>a {

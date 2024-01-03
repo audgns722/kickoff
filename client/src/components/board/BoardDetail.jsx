@@ -1,18 +1,20 @@
 import React from 'react'
-import Nav from '../layout/Nav'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import axios from 'axios'
-import { AiTwotoneLike } from "react-icons/ai";
-import { TfiComment } from "react-icons/tfi";
-import RepleWrite from '../reple/RepleWrite';
-import RepleList from '../reple/RepleList';
-
 import moment from "moment";
 import "moment/locale/ko";
 
+import Nav from '../layout/Nav'
+import RepleWrite from '../reple/RepleWrite';
+import RepleList from '../reple/RepleList';
 
-// import Aside from '../layout/Aside'
+// icon
+import { AiTwotoneLike } from "react-icons/ai";
+import { TfiComment } from "react-icons/tfi";
+
 const BoardDetail = (props) => {
+    const user = useSelector(state => state.user);
 
     let params = useParams();
     const navigate = useNavigate();
@@ -91,7 +93,7 @@ const BoardDetail = (props) => {
                         <img className='boardImg' src={`http://localhost:5050/${props.boardInfo.image}`} alt={props.boardInfo.content} />
                     </div>
                     <div className="bottom">
-                        <div className="tagWrap">
+                        {/* <div className="tagWrap">
                             <div className="tag">
                                 <p># <span>첫번째</span></p>
                             </div>
@@ -101,14 +103,23 @@ const BoardDetail = (props) => {
                             <div className="tag">
                                 <p># <span>첫번째</span></p>
                             </div>
-                        </div>
+                        </div> */}
+
                         <div className="btnWrap">
-                            <Link to={`/boardmodify/${props.boardInfo.boardNum}`} className="modify active">
-                                수정하기
-                            </Link>
-                            <div className="delete active">
-                                <p onClick={() => DeleteHandler()} >삭제하기</p>
-                            </div>
+
+                            {user.uid === props.boardInfo.author.uid ? (
+                                <>
+                                    <Link to={`/boardmodify/${props.boardInfo.boardNum}`} className="modify active">
+                                        수정하기
+                                    </Link>
+                                    <div className="delete active">
+                                        <p onClick={() => DeleteHandler()} >삭제하기</p>
+                                    </div>
+                                </>
+                            ) : (
+                                ""
+                            )}
+
                             <Link to="/boardlist" className="list">
                                 목록으로
                             </Link>
