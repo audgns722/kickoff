@@ -1,8 +1,9 @@
 import React from 'react'
 
 const LeagueAside = ({ rank }) => {
+    // 조건부 렌더링
     if (!rank || rank.length === 0) {
-        return <div>Loading...</div>;
+        return <div className='leagueAside' style={{ backgroundColor: "var(--bgcolor)", display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;
     }
 
     return (

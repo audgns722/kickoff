@@ -62,24 +62,6 @@ app.post('/api/news', async (req, res) => {
     }
 });
 
-// app.post('/api/news', async (req, res) => {
-//     try {
-//         const apiKey = config.apiKey;
-//         const countries = ['gb', 'de', 'fr', 'it', 'es'];
-//         const requests = countries.map(country =>
-//             axios.get(`https://newsapi.org/v2/top-headlines?country=${country}&category=sports&apiKey=${apiKey}`)
-//         );
-
-//         const responses = await Promise.all(requests);
-//         const newsData = responses.map(response => response.data);
-
-//         res.status(200).json({ news: newsData });
-//     } catch (error) {
-//         console.error('Error fetching news:', error);
-//         res.status(500).json({ success: false });
-//     }
-// });
-
 // 시즌 경기결과 최신순
 app.post('/api/matches', async (req, res) => {
     const leagueNum = req.body.leagueNum;

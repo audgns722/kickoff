@@ -57,7 +57,7 @@ const League = () => {
         axios.post("/api/rank", { leagueNum: leagueNum.leagueId })
             .then((response) => {
                 setRank(response.data.rank)
-                console.log(response.data.rank)
+                // console.log(response.data.rank)
             })
             .catch((err) => {
                 console.log(err)

@@ -26,14 +26,14 @@ const MainCont = (props) => {
         axios.post("/api/board/mainlist")
             .then((response) => {
                 if (response.data.success) {
-                    console.log(response.data)
+                    // console.log(response.data)
                     setBoardList([...response.data.boardList]);
                 }
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, [])
+    }, [boardList])
 
     function formatDateString(dateStr) {
         return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
@@ -43,6 +43,8 @@ const MainCont = (props) => {
         <>
             <div style={{ padding: "55px 300px 0 55px" }}>
                 <TodayHighlight />
+
+                <News />
                 <div className="main__board">
                     {boardList.slice(0, 4).map((board, key) => {
                         return (
@@ -82,8 +84,6 @@ const MainCont = (props) => {
                         )
                     })}
                 </div>
-
-                <News />
 
                 <div className="main__video">
                     <div className="video__wrap">

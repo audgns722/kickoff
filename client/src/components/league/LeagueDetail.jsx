@@ -72,7 +72,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
 
     // 조건부 렌더링
     if (!league || league.length === 0 || !matches || matches.length === 0 || !scheduled || scheduled.length === 0) {
-        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span class="loader"></span></div>;
+        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span className="loader"></span></div>;
     }
 
     return (
@@ -132,7 +132,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
                         </div>
                     </div>
                     {selectedTab === 'finish' ? (
-                        <LeagueFinish league={league} matches={sortedMatches} />
+                        <LeagueFinish leagueId={leagueId} league={league} matches={sortedMatches} />
                     ) : (
                         <LeagueSchedul league={league} scheduled={sortedScheduled} />
                     )}

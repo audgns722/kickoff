@@ -131,9 +131,9 @@ const PlayDetail = () => {
         return closestMatch;
     }
 
+    // 조건부 렌더링
     if (!playMatches || playMatches.length === 0 || !playMatches2 || playMatches2.length === 0) {
-
-        return <div>Loading...</div>; // playMatch가 없을 경우 로딩 표시
+        return <div style={{ backgroundColor: "var(--bgcolor)", width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;
     }
 
     return (
@@ -156,8 +156,8 @@ const PlayDetail = () => {
                             </div>
                             <div className="league__match">
                                 <p className="date">{convertUtcToKst(playMatches.utcDate)}</p>
-                                <p className="score">halftime : {playMatches.score.halfTime.home}-{playMatches.score.halfTime.away}</p>
-                                <p className="score">fulltime : {playMatches.score.fullTime.home}-{playMatches.score.fullTime.away}</p>
+                                {/* <p className="score">halftime : {playMatches.score.halfTime.home}-{playMatches.score.halfTime.away}</p> */}
+                                <p className="score">score : {playMatches.score.fullTime.home}-{playMatches.score.fullTime.away}</p>
                                 <p className="playdata">{playMatches.matchday} <em>Round</em></p>
                                 {/* <p className="stadium">Stadium: <em>Anfield</em></p> */}
                                 <p className="draw">referee : {playMatches.referees[0].name}</p>
