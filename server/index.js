@@ -21,6 +21,7 @@ app.use("/api/board", require("./router/board.js"));
 app.use("/api/user", require("./router/user.js"));
 app.use("/api/reple", require("./router/reple.js"));
 
+
 app.listen(port, () => {
     mongoose
         .connect(config.mongoURI)

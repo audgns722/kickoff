@@ -45,7 +45,7 @@ const BoardWrite = () => {
             .then((resopnse) => {
                 if (resopnse.data.success) {
                     alert("글 작성이 완료되었습니다.");
-                    navigate("/boardlist");
+                    navigate("/boardlist/community");
                 } else {
                     alert("글 작성이 실패하였습니다.");
                 }
@@ -92,7 +92,7 @@ const BoardWrite = () => {
                             <div className="bottom">
                                 <BoardImage setImage={setImage} />
                                 <div className="btnWrap">
-                                    <Link to="/boardlist" className="list">
+                                    <Link to="/boardlist/community" className="list">
                                         목록으로
                                     </Link>
                                     <button type="submit" className="writebtn" onClick={(e) => onSubmit(e)}>

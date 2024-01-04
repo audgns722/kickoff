@@ -13,15 +13,14 @@ import RepleList from '../reple/RepleList';
 import { AiTwotoneLike } from "react-icons/ai";
 import { TfiComment } from "react-icons/tfi";
 
+
 const BoardDetail = (props) => {
     const user = useSelector(state => state.user);
 
     let params = useParams();
     const navigate = useNavigate();
 
-    const NoticeLink = () => {
-        navigate('/boardlist')
-    }
+
 
     function formatDateString(dateStr) {
         return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
@@ -54,14 +53,21 @@ const BoardDetail = (props) => {
             {/* <Aside /> */}
             <div className="boardWrap">
                 <div className="board__cate">
-                    <div className="cate__notice btn active" onClick={NoticeLink}>
-                        공지사항
+                    <div className="cate__notice btn active">
+                        <Link to={`/boardlist/notice`}>
+                            공지사항
+                        </Link>
                     </div>
-                    <div className="cate__community btn">
-                        자유게시판
+                    <div className="cate__community btn active">
+                        <Link to={`/boardlist/community`}>
+                            자유게시판
+                        </Link>
                     </div>
                 </div>
                 <div className="board__detail">
+                    <div className='cate'>
+                        {props.boardInfo.cate}
+                    </div>
                     <div className="title">
                         <p>{props.boardInfo.title}</p>
                     </div>
@@ -120,7 +126,7 @@ const BoardDetail = (props) => {
                                 ""
                             )}
 
-                            <Link to="/boardlist" className="list">
+                            <Link to="/boardlist/community" className="list">
                                 목록으로
                             </Link>
                         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Nav from '../layout/Nav';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TfiComment } from "react-icons/tfi";
 import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
 import moment from "moment";
@@ -13,6 +13,7 @@ const BoardList = () => {
     const [sort, setSort] = useState("최신순");
     const [isLatestChecked, setIsLatestChecked] = useState(true);
     const [isCommentChecked, setIsCommentChecked] = useState(false);
+    const { cate } = useParams(); // useParams로부터 cate 값을 가져옴
 
     const navigate = useNavigate();
 
@@ -28,6 +29,7 @@ const BoardList = () => {
         let body = {
             sort: sort,
             searchTerm: searchTerm,
+            cate: cate // useParams로부터 받은 cate 값 사용
         };
 
         axios.post("/api/board/list", body)
@@ -46,7 +48,7 @@ const BoardList = () => {
 
     useEffect(() => {
         getBoardList();
-    }, [sort]);
+    }, [sort, cate]); // sort와 cate를 의존성 배열에 추가
 
     const SearchHandler = () => {
         getBoardList();
@@ -58,22 +60,27 @@ const BoardList = () => {
         setIsCommentChecked(type === "댓글순");
     }
 
+
     return (
         <>
             <Nav />
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="boardWrap">
                     <div className="board__cate">
-                        <div className="cate__notice btn active">
-                            공지사항
+                        <div className={`cate__notice btn ${cate === 'notice' ? 'active' : ''}`}>
+                            <Link to={`/boardlist/notice`}>
+                                공지사항
+                            </Link>
                         </div>
-                        <div className="cate__community btn">
-                            자유게시판
+                        <div className={`cate__community btn ${cate === 'community' ? 'active' : ''}`}>
+                            <Link to={`/boardlist/community`}>
+                                자유게시판
+                            </Link>
                         </div>
                     </div>
                     <div className="board__search">
                         <div className="search__left">
-                            <p>전체 <span>999,999</span>건</p>
+                            <p>전체 <span>{boardList.length}</span>건</p>
                         </div>
                         <div className="search__right">
                             <form

@@ -71,13 +71,19 @@ router.post("/list", (req, res) => {
         sort.repleNum = -1;
     }
 
+    let query = {
+        $or: [
+            { title: { $regex: req.body.searchTerm } },
+            { content: { $regex: req.body.searchTerm } },
+        ]
+    };
+
+    if (req.body.cate) {
+        query.cate = req.body.cate;
+    }
+
     Board
-        .find({
-            $or: [
-                { title: { $regex: req.body.searchTerm } },
-                { content: { $regex: req.body.searchTerm } },
-            ],
-        })
+        .find(query)
         .populate("author")
         .sort(sort)
         .exec()
@@ -159,6 +165,7 @@ router.post("/image/upload", (req, res) => {
         }
     })
 })
+
 
 // // 이미지 업로드
 // router.post("/image/upload", setUpload("react-blog2023/post"), (req, res, next) => {
