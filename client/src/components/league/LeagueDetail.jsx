@@ -77,7 +77,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
 
     return (
         <>
-            <div style={{ padding: "55px 300px 0 55px" }}>
+            <div id='LeagueDetail'>
                 <div className="detail__info">
                     <div className={`left ${leagueId === '2021' ? 'epl' : leagueId === '2014' ? 'laliga' : leagueId === '2019' ? 'serie' : leagueId === '2015' ? 'ligue1' : leagueId === '2002' ? 'bundesliga' : ''}`}>
                         <div className="logo">

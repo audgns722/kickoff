@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 // data
@@ -9,14 +9,18 @@ import { FaShare } from "react-icons/fa";
 
 const TodayHighlight = () => {
     const highlights = todayHL();
+    const [randomHighlight, setRandomHighlight] = useState(null);
 
-    const randomHighlights = highlights
-        .filter((_, index) => index < 3)
-        .sort(() => Math.random() - 0.5);
+    useEffect(() => {
+        const randomHighlights = highlights
+            .filter((_, index) => index < 3)
+            .sort(() => Math.random() - 0.5);
 
-    const randomHighlight = randomHighlights[0];
+        setRandomHighlight(randomHighlights[0]);
+        // eslint-disable-next-line
+    }, []);
 
-    // console.log(randomHighlight);
+    if (!randomHighlight) return <div>Loading...</div>;
 
     return (
         <div className="today__highlight" style={{ backgroundImage: `url(${randomHighlight.img})` }}>
@@ -25,11 +29,11 @@ const TodayHighlight = () => {
                     {randomHighlight.league}
                 </div>
                 <div className="home">
-                    {randomHighlight.home}
+                    <p>{randomHighlight.home}</p>
                 </div>
                 <span>VS</span>
                 <div className="away">
-                    {randomHighlight.away}
+                    <p>{randomHighlight.away}</p>
                 </div>
                 <div className="desc">
                     {randomHighlight.desc}
@@ -50,7 +54,7 @@ const TodayHighlight = () => {
                 <div className="score">
                     <div className="home">
                         <span>HOME</span>
-                        <p>{randomHighlight.home}</p>
+                        <p>{randomHighlight.homeTla}</p>
                     </div>
                     <div className="point">
                         <i>SCORE</i>
@@ -66,7 +70,7 @@ const TodayHighlight = () => {
                     </div>
                     <div className="away">
                         <span>AWAY</span>
-                        <p>{randomHighlight.away}</p>
+                        <p>{randomHighlight.awayTla}</p>
                     </div>
                 </div>
                 <div className="date">

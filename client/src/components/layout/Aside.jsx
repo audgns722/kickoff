@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-const Aside = ({ matches, setMatches }) => {
+const Aside = () => {
     const [matchFlag, setMatchFlag] = useState(true);
     const [leagueNum, setLeagueNum] = useState("2021");
+    const [matches, setMatches] = useState([]);
 
     const leagueNumHandler = (e) => {
         setLeagueNum(e.target.value);
@@ -39,7 +39,7 @@ const Aside = ({ matches, setMatches }) => {
                                     <img src={matches?.[0]?.homeTeam?.crest} alt={matches?.[0]?.homeTeam?.name} />
                                 </div>
                                 <p className="team">{matches?.[0]?.homeTeam?.shortName}</p>
-                                <Link to="#">HOME</Link>
+                                <span>HOME</span>
                             </div>
                             <div className="score">
                                 <div className="league">
@@ -58,7 +58,7 @@ const Aside = ({ matches, setMatches }) => {
                                     <img src={matches?.[0]?.awayTeam?.crest} alt={matches?.[0]?.awayTeam?.name} />
                                 </div>
                                 <p className="team">{matches?.[0]?.awayTeam?.shortName}</p>
-                                <Link to="#">AWAY</Link>
+                                <span>AWAY</span>
                             </div>
                         </div>
                     </div>

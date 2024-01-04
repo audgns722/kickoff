@@ -97,7 +97,7 @@ const Header = () => {
                         </Link>
                     ) : (
                         <>
-                            <p className='mypage'><Link to='/mypage'>{user.displayName}</Link>님 반갑습니다.</p>
+                            <p className='mypage'><Link to='/mypage'>{user.displayName}</Link><span>님 반갑습니다.</span></p>
                             <Link className='logout' onClick={(() => LogoutHandler())}>
                                 LOGOUT
                             </Link>

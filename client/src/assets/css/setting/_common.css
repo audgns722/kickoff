@@ -45,7 +45,7 @@
 }
 
 #header {
-    width: 100%;
+    width: 100vw;
     height: 55px;
     background-color: var(--bgcolor);
     position: fixed;
@@ -101,6 +101,12 @@
 .aside__score .score__title #link option {
     font-size: 0.8rem;
     color: var(--black);
+}
+
+@media(max-width: 1000px) {
+    #aside {
+        display: none;
+    }
 }
 
 /* swiper */
@@ -278,4 +284,61 @@ select:focus {
     height: 30px;
 }
 
+footer {
+    margin: 0 300px 0 55px;
+    background-color: var(--bgcolor);
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 20px 0 20px;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 /* //nav */
+
+@media(max-width: 1000px) {
+    .header__right>.login>.mypage>span {
+        display: none;
+    }
+
+    .header__right>.time {
+        display: none;
+    }
+
+    footer {
+        margin: 0 0 0 55px;
+    }
+}
+
+@media(max-width: 600px) {
+    .header__left>.search {
+        display: none;
+    }
+
+    .header__right>.link>select,
+    .header__right>.login>.logout {
+        width: 80px;
+    }
+
+    #nav {
+        width: 100vw;
+        height: 75px;
+        padding: 0;
+        top: 55px;
+        z-index: 1000;
+    }
+
+    #nav .nav__inner ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .nav__inner>ul>li.active {
+        border-left: 0;
+        border-bottom: 3px solid var(--red);
+    }
+
+    footer {
+        margin: 0;
+    }
+}

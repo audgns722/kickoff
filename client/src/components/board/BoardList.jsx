@@ -24,6 +24,7 @@ const BoardList = () => {
         return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
     }
 
+
     const getBoardList = () => {
         let body = {
             sort: sort,
@@ -34,18 +35,16 @@ const BoardList = () => {
             .then((response) => {
                 if (response.data.success) {
                     setBoardList([...response.data.boardList]);
-                } else {
-                    // 에러 처리 또는 사용자에게 알림
                 }
             })
             .catch((err) => {
                 console.error(err);
-                // 에러 처리 또는 사용자에게 알림
             });
     };
 
     useEffect(() => {
         getBoardList();
+        // eslint-disable-next-line
     }, [sort]);
 
     const SearchHandler = () => {

@@ -23,9 +23,7 @@ const MyPage = () => {
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="mypage__info">
                     <div className="left">
-
                         <MypageImage />
-
                     </div>
                     <div className="right">
                         <div className="info">

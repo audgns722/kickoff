@@ -13,7 +13,7 @@ import Login from './components/user/Login'
 import JoinAgree from './components/user/JoinAgree'
 import JoinInfo from './components/user/joinInfo'
 import JoinEnd from './components/user/JoinEnd'
-import MyPage from './components/user/MyPage'
+import MyPage from './pages/MyPage.jsx'
 import League from './pages/League'
 import FindPw from './components/user/FindPw.jsx'
 import BoardList from './components/board/BoardList'
@@ -48,21 +48,29 @@ const App = () => {
       <Main>
         <Routes>
           <Route path='/' element={<Home />} />
+
           <Route path='/login' element={<Login />} />
+
           <Route path='/joinagree' element={<JoinAgree />} />
           <Route path='/joininfo' element={<JoinInfo />} />
           <Route path='/joinend' element={<JoinEnd />} />
+
           <Route path='/findpw' element={<FindPw />} />
           <Route path='/findSuccess' element={<FindSuccess />} />
+
           <Route path='/mypage' element={<MyPage />} />
+
           <Route path='/boardlist' element={<BoardList />} />
           <Route path='/boardwrite' element={<BoardWrite />} />
           <Route path='/boarddetail/:boardNum' element={<BoardArea />} />
           <Route path='/boardmodify/:boardNum' element={<BoardModify />} />
+
           <Route path='/league/:leagueId' element={<League />} />
-          <Route path='/videoview/:videoId' element={<Video />} />
           <Route path='/leaguedetail' element={<LeagueDetail />} />
+
           <Route path="/playdetail/:leagueId/:matchId" element={<PlayDetail />} />
+
+          <Route path='/videoview/:videoId' element={<Video />} />
         </Routes>
       </Main>
     </>

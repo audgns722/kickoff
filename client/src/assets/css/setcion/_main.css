@@ -73,8 +73,8 @@
     text-align: center;
 }
 
-.aside__match>.aside__info>.home>a,
-.aside__match>.aside__info>.away>a {
+.aside__match>.aside__info>.home>span,
+.aside__match>.aside__info>.away>span {
     display: inline-block;
     width: 135px;
     height: 45px;
@@ -241,6 +241,10 @@
 
 /* aside__match */
 
+#MainCont {
+    padding: 55px 300px 0 55px;
+}
+
 .today__highlight {
     width: 100%;
     height: 130vh;
@@ -279,7 +283,7 @@
 .today__highlight>.highlight__info>.home,
 .today__highlight>.highlight__info>span,
 .today__highlight>.highlight__info>.away {
-    font-size: 4.5rem;
+    font-size: 4.5vw;
     font-weight: 700;
 }
 
@@ -351,6 +355,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 33.333%;
 }
 
 .highlight__socre>.score>.home>span,
@@ -373,6 +378,7 @@
 .highlight__socre>.score>.point {
     display: flex;
     flex-wrap: wrap;
+    width: 33.333%;
 }
 
 .highlight__socre>.score>.point>i {
@@ -425,14 +431,16 @@
 .main__board {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     padding: 35px 0;
 }
 
 .main__board>.card {
     width: 25%;
-    height: 380px;
+    height: 350px;
     padding: 25px 35px;
     background-color: var(--white);
+    position: relative;
 }
 
 .main__board>.card:nth-child(2n) {
@@ -444,7 +452,13 @@
     font-weight: 700;
     text-transform: uppercase;
     width: 100%;
-    height: 20%;
+
+    /* 한줄효과 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .main__board>.card>.desc {
@@ -452,71 +466,69 @@
     font-weight: 700;
     text-transform: uppercase;
     width: 100%;
-    height: 10%;
+    height: 50%;
     /* ...효과 */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 10;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
 
-.main__board>.card>.info {
+.main__board>.card>.card__btn {
+    position: absolute;
+    bottom: 25px;
+}
+
+.main__board>.card>.card__btn>.btn__left {
     display: flex;
+    align-items: center;
 }
 
-.main__board>.card>.info>.author {
-    margin-left: 1rem;
-}
-
-.main__board>.card>.info>.author>span,
-.main__board>.card>.info>.date>span {
+.main__board>.card>.card__btn>.btn__left>.date {
+    margin-right: 0.5rem;
     font-size: 0.8rem;
     color: #4d4d4d;
     font-weight: 700;
 }
 
-.main__board>.card>.btn {
-    font-size: 2rem;
+.main__board>.card>.card__btn>.btn__left>.author {
+    font-size: 0.8rem;
+    color: #4d4d4d;
     font-weight: 700;
-    text-transform: uppercase;
-    width: 100%;
-    height: 10%;
+}
+
+.main__board>.card>.card__btn>.btn__right {
     display: flex;
-    justify-content: flex-end;
 }
 
-.main__board>.card>.btn>.date {
-    margin-right: 0.5rem;
+.main__board>.card>.card__btn>.btn__right>div {
+    display: flex;
+    align-items: center;
 }
 
-.main__board>.card>.btn>.author {
-    margin-right: 2rem;
-}
-
-.main__board>.card>.btn>.like {
+.main__board>.card>.card__btn>.btn__right>div:first-child {
     margin-right: 1rem;
 }
 
-.main__board>.card>.btn>.like>svg,
-.main__board>.card>.btn>.share>svg {
+.main__board>.card>.card__btn>.btn__right>div>svg {
     width: 1rem;
     height: 1rem;
     fill: #D9D9D9;
+    margin-right: 0.3rem;
 }
 
-.main__board>.card>.btn>.like>span,
-.main__board>.card>.btn>.share>span {
-    font-size: 1rem;
+.main__board>.card>.card__btn>.btn__right>div>span {
+    font-size: 0.8rem;
+    font-weight: 700;
     color: #D9D9D9;
 }
 
-.main__board>.card>.btn>.author>span,
-.main__board>.card>.btn>.date>span {
+.main__board>.card>.card__btn>.btn__left>.author>span,
+.main__board>.card>.card__btn>.btn__left>.date>span {
     font-size: 0.8rem;
     color: var(--black);
 }
-
 
 /* //main_-board */
 
@@ -543,3 +555,98 @@
 }
 
 /* //main__video */
+
+@media(max-width: 1000px) {
+    #MainCont {
+        padding: 55px 0 0 55px;
+    }
+
+    .main__board>.card {
+        width: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+}
+
+@media(max-width: 600px) {
+    #MainCont {
+        padding: 130px 0 0 0;
+    }
+
+    .today__highlight {
+        height: 80vh;
+    }
+
+    .today__highlight>.highlight__info {
+        width: 95%;
+        top: 5%;
+    }
+
+    .today__highlight>.highlight__info>.home,
+    .today__highlight>.highlight__info>span,
+    .today__highlight>.highlight__info>.away {
+        font-size: 3rem;
+    }
+
+    .today__highlight>.highlight__info>.home>p,
+    .today__highlight>.highlight__info>.away>p {
+        width: 80%;
+        word-wrap: break-word;
+    }
+
+    .today__highlight>.highlight__info>.desc {
+        margin-top: 20px;
+
+        /* 3줄효과 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .highlight__socre {
+        display: inline-block;
+    }
+
+    .highlight__socre>.league {
+        width: 100%;
+    }
+
+    .highlight__socre>.score {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .highlight__socre>.score>.home>p,
+    .highlight__socre>.score>.away>p {
+        font-size: 2rem;
+    }
+
+    .highlight__socre>.score>.point>span>.home,
+    .highlight__socre>.score>.point>span>span,
+    .highlight__socre>.score>.point>span>.away {
+        font-size: 2rem;
+    }
+
+    .highlight__socre>.date {
+        width: 100%;
+    }
+
+    .highlight__socre>.date>p {
+        font-size: 1rem;
+    }
+
+    /* //highlight */
+
+    .main__board>.card {
+        width: 100%;
+        height: 150px;
+        border: 0;
+        padding: 15px 25px;
+    }
+
+    .main__board>.card>.desc {
+        height: auto;
+        -webkit-line-clamp: 1;
+    }
+}
