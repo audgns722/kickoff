@@ -10,6 +10,7 @@ npm install @reduxjs/toolkit
 npm install react-icons --save 
 npm install moment --save
 npm install swiper
+npm install --save react-circular-progressbar
 ```
    
 ## server 설치

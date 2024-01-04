@@ -44,7 +44,7 @@ const MainCont = (props) => {
             <div style={{ padding: "55px 300px 0 55px" }}>
                 <TodayHighlight />
 
-                <News />
+                {/* <News /> */}
                 <div className="main__board">
                     {boardList.slice(0, 4).map((board, key) => {
                         return (

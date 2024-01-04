@@ -87,6 +87,24 @@ app.post('/api/matches', async (req, res) => {
     }
 });
 
+// 시즌 경기결과 head2head 
+app.post('/api/head2head', async (req, res) => {
+    const matchId = req.body.matchId;
+
+    try {
+        const response = await axios.get(`http://api.football-data.org/v4/matches/${matchId}/head2head`, {
+            headers: {
+                'X-Auth-Token': config.XAuthToken,
+            },
+        });
+
+        res.status(200).json({ success: true, head: response.data }); // 클라이언트에 result 전송
+    } catch (error) {
+        console.error('Error fetching matches:', error);
+        res.status(500).json({ success: false });
+    }
+});
+
 // 시즌 예정된 경기
 app.post('/api/scheduled', async (req, res) => {
     const leagueNum = req.body.leagueNum;
