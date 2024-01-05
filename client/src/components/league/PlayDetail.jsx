@@ -5,7 +5,6 @@ import axios from 'axios';
 import moment from 'moment';
 import "moment/locale/ko";
 
-
 const PlayDetail = () => {
     const [playMatches, setPlayMatches] = useState(null);
     const [playMatches2, setPlayMatches2] = useState(null);
