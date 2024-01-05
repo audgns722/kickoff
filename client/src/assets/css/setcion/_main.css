@@ -527,7 +527,7 @@
 .main__board>.card>.card__btn>.btn__left>.author>span,
 .main__board>.card>.card__btn>.btn__left>.date>span {
     font-size: 0.8rem;
-    color: var(--black);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 /* //main_-board */

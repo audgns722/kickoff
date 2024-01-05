@@ -377,12 +377,12 @@
     font-size: 1.3rem;
     font-weight: 600;
     line-height: 1.2;
-    display: inline-block;
+    display: block;
 }
 
 .result__left .date span {
     line-height: 1.2;
-    display: inline-block;
+    display: block;
     color: #B8BAC1;
 }
 
@@ -463,5 +463,60 @@
 @media(max-width: 600px) {
     #LeagueDetail {
         padding: 130px 0 0 0;
+    }
+
+    .detail__info {
+        justify-content: center;
+        height: 370px;
+    }
+
+    .detail__info .left {
+        display: none;
+    }
+
+    .detail__info .right {
+        width: 100%;
+    }
+
+    .detail__info .right .info .teams__logo {
+        width: 90%;
+    }
+
+    .result__info {
+        display: block;
+        height: auto;
+        padding: 0 10px;
+    }
+
+    .result__info .result__left {
+        justify-content: center;
+    }
+
+    .result__left .date {
+        flex-direction: row;
+        line-height: 1;
+        align-items: center;
+    }
+
+    .result__left .date p {
+        margin-right: 5px;
+    }
+
+    .result__info .result__center {
+        width: 100%;
+    }
+
+    .result__center .league__team .name {
+        word-break: break-all;
+    }
+
+    /* .result__center .league__team .logo {
+        display: none;
+    } */
+
+    .result__right {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
     }
 }

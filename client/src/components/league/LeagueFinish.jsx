@@ -7,7 +7,7 @@ const LeagueFinish = ({ leagueId, league, matches }) => {
             <div className="content__bottom">
                 <div className="result__title">
                     <div className="left__text">Latest Scores</div>
-                    <div className="right__text">BROADCAST MATCH</div>
+                    <div className="right__text">RESULT MATCH</div>
                 </div>
                 {matches.map((matche, key) => {
                     const matchDate = new Date(matche.utcDate);
