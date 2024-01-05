@@ -10,18 +10,15 @@ import RepleWrite from '../reple/RepleWrite';
 import RepleList from '../reple/RepleList';
 
 // icon
-import { AiTwotoneLike } from "react-icons/ai";
+import { AiOutlineEye, AiTwotoneLike } from "react-icons/ai";
 import { TfiComment } from "react-icons/tfi";
+
 
 const BoardDetail = (props) => {
     const user = useSelector(state => state.user);
 
     let params = useParams();
     const navigate = useNavigate();
-
-    const NoticeLink = () => {
-        navigate('/boardlist')
-    }
 
     function formatDateString(dateStr) {
         return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
@@ -37,7 +34,7 @@ const BoardDetail = (props) => {
                 .then((resonpse) => {
                     if (resonpse.data.success) {
                         alert('게시글이 삭제되었습니다.')
-                        navigate('/boardlist')
+                        navigate('/boardlist/community')
                     }
                 })
                 .catch((err) => {
@@ -47,21 +44,27 @@ const BoardDetail = (props) => {
         }
     }
 
-
     return (
         <div style={{ padding: "55px 0 0 55px" }}>
             <Nav />
             {/* <Aside /> */}
             <div className="boardWrap">
                 <div className="board__cate">
-                    <div className="cate__notice btn active" onClick={NoticeLink}>
-                        공지사항
+                    <div className="cate__notice btn active">
+                        <Link to={`/boardlist/notice`}>
+                            공지사항
+                        </Link>
                     </div>
-                    <div className="cate__community btn">
-                        자유게시판
+                    <div className="cate__community btn active">
+                        <Link to={`/boardlist/community`}>
+                            자유게시판
+                        </Link>
                     </div>
                 </div>
                 <div className="board__detail">
+                    <div className='cate'>
+                        {props.boardInfo.cate}
+                    </div>
                     <div className="title">
                         <p>{props.boardInfo.title}</p>
                     </div>
@@ -74,8 +77,13 @@ const BoardDetail = (props) => {
                                 <p className="name">{props.boardInfo.author.displayName}</p>
                                 <p className="date">{formatDateString(props.boardInfo.createdAt)}</p>
                             </div>
+
                         </div>
                         <div className="profill__right">
+                            <div className="view">
+                                <AiOutlineEye />
+                                <span><i>{props.boardInfo.views}</i></span>
+                            </div>
                             <div className="like">
                                 <AiTwotoneLike />
                                 <span>777</span>
@@ -120,7 +128,7 @@ const BoardDetail = (props) => {
                                 ""
                             )}
 
-                            <Link to="/boardlist" className="list">
+                            <Link to="/boardlist/community" className="list">
                                 목록으로
                             </Link>
                         </div>

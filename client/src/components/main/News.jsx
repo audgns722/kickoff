@@ -36,7 +36,7 @@ const News = () => {
         <div className='main__news'>
             <h2>NEWS</h2>
             <Swiper
-                spaceBetween={15}
+                spaceBetween={10}
                 slidesPerView={'auto'}
                 navigation={true}
                 loop={true}

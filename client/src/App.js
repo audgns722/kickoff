@@ -60,8 +60,7 @@ const App = () => {
           <Route path='/findSuccess' element={<FindSuccess />} />
 
           <Route path='/mypage' element={<MyPage />} />
-
-          <Route path='/boardlist' element={<BoardList />} />
+          <Route path='/boardlist/:cate' element={<BoardList />} />
           <Route path='/boardwrite' element={<BoardWrite />} />
           <Route path='/boarddetail/:boardNum' element={<BoardArea />} />
           <Route path='/boardmodify/:boardNum' element={<BoardModify />} />

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TodayHighlight from './TodayHighlight';
-// import News from './News';
+import News from './News';
 import MainVideo from './MainVideo';
 import MainBoard from './MainBoard';
 
@@ -12,7 +12,7 @@ const MainCont = () => {
         <>
             <div id='MainCont'>
                 <TodayHighlight />
-                {/* <News /> */}
+                <News />
                 <MainBoard />
                 <MainVideo />
             </div >

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Nav from '../layout/Nav';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TfiComment } from "react-icons/tfi";
 import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
 import moment from "moment";
@@ -13,6 +13,8 @@ const BoardList = () => {
     const [sort, setSort] = useState("최신순");
     const [isLatestChecked, setIsLatestChecked] = useState(true);
     const [isCommentChecked, setIsCommentChecked] = useState(false);
+    const [isViewChecked, setIsViewChecked] = useState(false);
+    const { cate } = useParams(); // useParams로부터 cate 값을 가져옴
 
     const navigate = useNavigate();
 
@@ -29,6 +31,7 @@ const BoardList = () => {
         let body = {
             sort: sort,
             searchTerm: searchTerm,
+            cate: cate
         };
 
         axios.post("/api/board/list", body)
@@ -45,7 +48,7 @@ const BoardList = () => {
     useEffect(() => {
         getBoardList();
         // eslint-disable-next-line
-    }, [sort]);
+    }, [sort, cate]);
 
     const SearchHandler = () => {
         getBoardList();
@@ -55,7 +58,10 @@ const BoardList = () => {
         setSort(type);
         setIsLatestChecked(type === "최신순");
         setIsCommentChecked(type === "댓글순");
+        setIsViewChecked(type === "조회순");
+
     }
+
 
     return (
         <>
@@ -63,16 +69,16 @@ const BoardList = () => {
             <div style={{ padding: "55px 0 0 55px" }}>
                 <div className="boardWrap">
                     <div className="board__cate">
-                        <div className="cate__notice btn active">
+                        <Link className={`cate__notice btn ${cate === 'notice' ? 'active' : ''}`} to={`/boardlist/notice`}>
                             공지사항
-                        </div>
-                        <div className="cate__community btn">
+                        </Link>
+                        <Link to={`/boardlist/community`} className={`cate__community btn ${cate === 'community' ? 'active' : ''}`}>
                             자유게시판
-                        </div>
+                        </Link>
                     </div>
                     <div className="board__search">
                         <div className="search__left">
-                            <p>전체 <span>999,999</span>건</p>
+                            <p>전체 <span>{boardList.length}</span>건</p>
                         </div>
                         <div className="search__right">
                             <form
@@ -119,10 +125,20 @@ const BoardList = () => {
                                             name="sort2"
                                             id="sort2"
                                             checked={isCommentChecked}
-                                            onChange={() => handleSortChange("최신순")}
+                                            onChange={() => handleSortChange("댓글순")}
                                         />
                                         <span className="indicator" onClick={() => handleSortChange("댓글순")}></span>
                                         <label htmlFor="sort2">댓글순</label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="sort3"
+                                            id="sort3"
+                                            checked={isViewChecked}
+                                            onChange={() => handleSortChange("조회순")}
+                                        />
+                                        <span className="indicator" onClick={() => handleSortChange("조회순")}></span>
+                                        <label htmlFor="sort3">조회순</label>
                                     </fieldset>
                                 </form>
                             </div>
@@ -144,18 +160,20 @@ const BoardList = () => {
                                                     HOT
                                                 </div>
                                                 <Link to={`/boarddetail/${board.boardNum}`}>
-                                                    <div className="title" style={{ cursor: "pointer" }}>
+                                                    <div className="title">
                                                         <h3>{board.title}</h3>
                                                     </div>
                                                 </Link>
                                             </div>
-                                            <div className="left__desc" style={{ cursor: "pointer" }}>
+                                            <div className="left__desc">
                                                 <p>
                                                     <Link to={`/boarddetail/${board.boardNum}`}>
                                                         {board.content}
                                                     </Link>
                                                 </p>
-                                                <img className='boardImg' src={`http://localhost:5050/${board.image}`} alt={board.content} />
+                                                <Link className='boardImg' to={`/boarddetail/${board.boardNum}`}>
+                                                    <img src={`http://localhost:5050/${board.image}`} alt={board.content} />
+                                                </Link>
                                             </div>
                                             <div className="left__info">
                                                 <div className="info__left">
@@ -169,7 +187,7 @@ const BoardList = () => {
                                                     </div>
                                                     <div className="view">
                                                         <AiOutlineEye />
-                                                        <span>조회수 <i>777</i></span>
+                                                        <span>조회수 <i>{board.views}</i></span>
                                                     </div>
                                                 </div>
                                                 <div className="info__right">

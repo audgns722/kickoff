@@ -5,8 +5,7 @@ import moment from "moment";
 import "moment/locale/ko";
 
 // icon
-// import { FaShare } from "react-icons/fa";
-import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
 
 const MainBoard = () => {
     const [boardList, setBoardList] = useState([]);
@@ -61,10 +60,10 @@ const MainBoard = () => {
                                     <AiOutlineLike />
                                     <span>369</span>
                                 </div>
-                                {/* <div className="share">
-                                <FaShare />
-                                <span>369</span>
-                            </div> */}
+                                <div className="share">
+                                    <AiOutlineEye />
+                                    <span>{board.views}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

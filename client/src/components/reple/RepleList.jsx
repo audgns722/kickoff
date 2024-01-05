@@ -12,7 +12,7 @@ const RepleList = (props) => {
         }
         axios.post("/api/reple/getReple", body).then((response) => {
             if (response.data.success) {
-                console.log(response.data.repleList);
+                // console.log(response.data.repleList);
                 setRepleList([...response.data.repleList])
             }
         })

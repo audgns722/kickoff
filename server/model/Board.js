@@ -14,7 +14,11 @@ const boardSchema = new mongoose.Schema(
         repleNum: {
             type: Number,
             default: 0,
-        }
+        },
+        views: {
+            type: Number,
+            default: 0,
+        },
     },
     { collection: "boards", timestamps: true }
 );

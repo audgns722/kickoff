@@ -71,26 +71,26 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
 })
 
-// // news
-// app.post('/api/news', async (req, res) => {
-//     try {
-//         const response = await axios.get('https://openapi.naver.com/v1/search/news.json', {
-//             params: {
-//                 query: '&#xd574;&#xc678;&#xcd95;&#xad6c;',
-//                 display: "10",
-//                 start: "1",
-//                 sort: "sim"
-//             },
-//             headers: {
-//                 'X-Naver-Client-Id': config.NaverClientId,
-//                 'X-Naver-Client-Secret': config.NaverClientSecret
-//             }
-//         });
-//         res.json(response.data.items);
-//     } catch (error) {
-//         res.status(500).send(error.toString());
-//     }
-// });
+// news
+app.post('/api/news', async (req, res) => {
+    try {
+        const response = await axios.get('https://openapi.naver.com/v1/search/news.json', {
+            params: {
+                query: '&#xd574;&#xc678;&#xcd95;&#xad6c;',
+                display: "10",
+                start: "1",
+                sort: "sim"
+            },
+            headers: {
+                'X-Naver-Client-Id': config.NaverClientId,
+                'X-Naver-Client-Secret': config.NaverClientSecret
+            }
+        });
+        res.json(response.data.items);
+    } catch (error) {
+        res.status(500).send(error.toString());
+    }
+});
 
 // 시즌 경기결과 최신순
 app.post('/api/matches', async (req, res) => {

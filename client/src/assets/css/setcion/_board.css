@@ -245,6 +245,15 @@
     border-radius: 5px;
 }
 
+.board__detail>.cate::first-letter {
+    text-transform: uppercase;
+}
+
+.board__detail>.cate {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
 .board__detail>.title {
     margin-bottom: 25px;
 }

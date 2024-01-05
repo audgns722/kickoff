@@ -58,7 +58,7 @@ const BoardModify = () => {
             .then((response) => {
                 if (response.data.success) {
                     alert('글 수정이 완료됐습니다.')
-                    navigate('/boardlist');
+                    navigate('/boardlist/community');
                 } else {
                     alert('글 수정이 실패하였습니다');
                 }
@@ -108,7 +108,7 @@ const BoardModify = () => {
                                     <input type="file" className="blind" name="commentImg" id="commentImg" accept="image/png, image/jpeg, image/gif" />
                                 </div>
                                 <div className="btnWrap">
-                                    <Link to="/boardlist" className="list">
+                                    <Link to="/boardlist/community" className="list">
                                         목록으로
                                     </Link>
                                     <button type="submit" className="writebtn" onClick={(e) => onSubmit(e)}>
