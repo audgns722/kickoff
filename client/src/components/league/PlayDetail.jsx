@@ -4,22 +4,24 @@ import Nav from '../layout/Nav';
 import axios from 'axios';
 import moment from 'moment';
 import "moment/locale/ko";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const PlayDetail = () => {
     const [playMatches, setPlayMatches] = useState(null);
     const [playMatches2, setPlayMatches2] = useState(null);
-    const { leagueId, matchId } = useParams(); // useParams로 matchId 추출
+    const [head2Head, setHead2Head] = useState(null);
+    const { leagueId, matchId } = useParams();
+
 
     // 날짜변경
     const convertUtcToKst = (utcDateString) => {
-        // UTC 날짜를 기반으로 Moment 객체 생성
-        const utcDate = moment.utc(utcDateString);
+        const utcDate = moment.utc(utcDateString).locale('en');
 
-        // 한국 시간대로 변환 (UTC+9)
         const kstDate = utcDate.add(9, 'hours');
 
-        // 원하는 날짜 및 시간 포맷으로 변환
-        return kstDate.format('YYYY-MM-DD ddd a h:mm');
+        // 원하는 날짜 및 시간 포맷으로 변환 ('YY.MM.DDD HH:mm' 형식, 월을 영어로 표시)
+        return kstDate.format('MMM DD HH:mm');
     }
 
     useEffect(() => {
@@ -30,7 +32,7 @@ const PlayDetail = () => {
 
                 if (match) {
                     setPlayMatches(match); // 찾은 경기 정보를 상태에 설정
-                    console.log(match)
+                    // console.log(match)
                 } else {
                     console.log("해당 경기 정보를 찾을 수 없습니다.");
                 }
@@ -40,6 +42,20 @@ const PlayDetail = () => {
             });
         // eslint-disable-next-line
     }, [matchId]); // matchId가 변경될 때마다 이 효과를 재실행
+
+    // head2head 정보 가져오기
+    useEffect(() => {
+        const fetchHeads = async () => {
+            try {
+                const response = await axios.post("/api/head2head", { matchId: matchId });
+                setHead2Head(response.data.head)
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        fetchHeads();
+    }, [])
 
     useEffect(() => {
         const fetchMatches = async () => {
@@ -53,7 +69,7 @@ const PlayDetail = () => {
                     const response2 = await axios.get('https://api-football-beta.p.rapidapi.com/fixtures', {
                         params: { date: matchFromApi1.utcDate.substring(0, 10) },
                         headers: {
-                            'x-rapidapi-key': '2157171533msh40b591d111aac24p1a7d8djsn01109726b8bd',
+                            'x-rapidapi-key': '36c0488b9bmsha694c50fc1a58dap12df45jsn98128f857dfb',
                             'x-rapidapi-host': 'api-football-beta.p.rapidapi.com'
                         }
                     });
@@ -66,7 +82,7 @@ const PlayDetail = () => {
                         const statistics = await axios.get('https://api-football-beta.p.rapidapi.com/fixtures/statistics', {
                             params: { fixture: fixtureId },
                             headers: {
-                                'x-rapidapi-key': '2157171533msh40b591d111aac24p1a7d8djsn01109726b8bd',
+                                'x-rapidapi-key': '36c0488b9bmsha694c50fc1a58dap12df45jsn98128f857dfb',
                                 'x-rapidapi-host': 'api-football-beta.p.rapidapi.com'
                             }
                         });
@@ -131,7 +147,7 @@ const PlayDetail = () => {
     }
 
     // 조건부 렌더링
-    if (!playMatches || playMatches.length === 0 || !playMatches2 || playMatches2.length === 0) {
+    if (!playMatches || playMatches.length === 0 || !playMatches2 || playMatches2.length === 0 || !head2Head || head2Head.length === 0) {
         return <div style={{ backgroundColor: "var(--bgcolor)", width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;
     }
 
@@ -148,32 +164,34 @@ const PlayDetail = () => {
                         <div className="play__info">
                             <div className="league__home">
                                 <div className="logo">
+                                    <CircularProgressbar value={(head2Head.aggregates.homeTeam.wins / head2Head.aggregates.numberOfMatches) * 100} strokeWidth={5} circleRatio={0.75} styles={buildStyles({ rotation: 1 / 2 + 1 / 8, strokeLinecap: "butt", pathColor: "#f44336" })} />
                                     <img src={playMatches.homeTeam.crest} alt={playMatches.homeTeam.shortName} />
                                 </div>
                                 <h3 className="team">{playMatches.homeTeam.shortName}</h3>
-                                <p className="win"><em>14%</em> to win MATCH</p>
+                                <p className="win">expected goals<em>{playMatches2[0].statistics[16].value}</em></p>
                             </div>
                             <div className="league__match">
                                 <p className="date">{convertUtcToKst(playMatches.utcDate)}</p>
                                 {/* <p className="score">halftime : {playMatches.score.halfTime.home}-{playMatches.score.halfTime.away}</p> */}
-                                <p className="score">score : {playMatches.score.fullTime.home}-{playMatches.score.fullTime.away}</p>
+                                <p className="score">{playMatches.score.fullTime.home} - {playMatches.score.fullTime.away}</p>
                                 <p className="playdata">{playMatches.matchday} <em>Round</em></p>
                                 {/* <p className="stadium">Stadium: <em>Anfield</em></p> */}
-                                <p className="draw">referee : {playMatches.referees[0].name}</p>
+                                <p className="referee"><span></span>{playMatches.referees[0].name}</p>
                             </div>
                             <div className="league__away">
                                 <div className="logo">
+                                    <CircularProgressbar value={(head2Head.aggregates.awayTeam.wins / head2Head.aggregates.numberOfMatches) * 100} strokeWidth={5} circleRatio={0.75} styles={buildStyles({ rotation: 1 / 2 + 1 / 8, strokeLinecap: "butt", pathColor: "#3F51B5" })} />
                                     <img src={playMatches.awayTeam.crest} alt={playMatches.awayTeam.shortName} />
                                 </div>
                                 <h3 className="team">{playMatches.awayTeam.shortName}</h3>
-                                <p className="win"><em>14%</em> to win MATCH</p>
+                                <p className="win">expected goals<em>{playMatches2[1].statistics[16].value}</em></p>
                             </div>
                         </div>
                         <div className="list">
                             <ul>
                                 <li><Link href="#" className="active">MENU</Link></li>
-                                <li><Link href="#">MENU</Link></li>
-                                <li><Link href="#">MENU</Link></li>
+                                {/* <li><Link href="#">MENU</Link></li>
+                                <li><Link href="#">MENU</Link></li> */}
                             </ul>
                         </div>
                     </div>
@@ -255,25 +273,25 @@ const PlayDetail = () => {
                                 <div>선방</div>
                                 <div className="score">{playMatches2[1].statistics[12].value}</div>
                             </div>
-                            <div className="progress__right" style={{ '--progress-width': (playMatches2[1].statistics[12].value) * 5 + '%' }}></div>
+                            <div className="progress__right" style={{ '--progress-width': (playMatches2[1].statistics[12].value || 0) * 5 + '%' }}></div>
                         </div>
                         <div className="status__progress">
-                            <div className="progress__left" style={{ '--progress-width': (playMatches2[0].statistics[10].value) * 5 + '%' }}></div>
+                            <div className="progress__left" style={{ '--progress-width': (playMatches2[0].statistics[10].value || 0) * 5 + '%' }}></div>
                             <div className="progress__text">
-                                <div className="score">{playMatches2[0].statistics[10].value}</div>
+                                <div className="score">{playMatches2[0].statistics[10].value || 0}</div>
                                 <div>경고</div>
-                                <div className="score">{playMatches2[1].statistics[10].value}</div>
+                                <div className="score">{playMatches2[1].statistics[10].value || 0}</div>
                             </div>
-                            <div className="progress__right" style={{ '--progress-width': (playMatches2[1].statistics[10].value) * 5 + '%' }}></div>
+                            <div className="progress__right" style={{ '--progress-width': (playMatches2[1].statistics[10].value || 0) * 5 + '%' }}></div>
                         </div>
                         <div className="status__progress">
-                            <div className="progress__left" style={{ '--progress-width': (playMatches2[0].statistics[11].value) * 5 + '%' }}></div>
+                            <div className="progress__left" style={{ '--progress-width': (playMatches2[0].statistics[11].value || 0) * 5 + '%' }}></div>
                             <div className="progress__text">
-                                <div className="score">{playMatches2[0].statistics[11].value}</div>
+                                <div className="score">{playMatches2[0].statistics[11].value || 0}</div>
                                 <div>퇴장</div>
-                                <div className="score">{playMatches2[1].statistics[11].value}</div>
+                                <div className="score">{playMatches2[1].statistics[11].value || 0}</div>
                             </div>
-                            <div className="progress__right" style={{ '--progress-width': (playMatches2[1].statistics[11].value) * 5 + '%' }}></div>
+                            <div className="progress__right" style={{ '--progress-width': (playMatches2[1].statistics[11].value || 0) * 5 + '%' }}></div>
                         </div>
                     </div>
                     <div className="play__comment">

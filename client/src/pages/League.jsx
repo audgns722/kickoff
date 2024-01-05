@@ -64,6 +64,8 @@ const League = () => {
             })
     }, [leagueNum])
 
+
+
     return (
         <>
             <Nav />
