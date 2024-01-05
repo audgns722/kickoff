@@ -110,6 +110,7 @@ const BoardList = () => {
                                             name="sort1"
                                             id="sort1"
                                             checked={isLatestChecked}
+                                            onChange={() => handleSortChange("최신순")}
                                         />
                                         <span className="indicator" onClick={() => handleSortChange("최신순")}></span>
                                         <label htmlFor="sort1" >최신순</label>
@@ -119,7 +120,7 @@ const BoardList = () => {
                                             name="sort2"
                                             id="sort2"
                                             checked={isCommentChecked}
-
+                                            onChange={() => handleSortChange("최신순")}
                                         />
                                         <span className="indicator" onClick={() => handleSortChange("댓글순")}></span>
                                         <label htmlFor="sort2">댓글순</label>
@@ -191,3 +192,4 @@ const BoardList = () => {
 }
 
 export default BoardList
+

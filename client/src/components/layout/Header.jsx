@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link, useNavigate, } from 'react-router-dom'
-import firebase from '../../firebase.js'
-
-// icon
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import firebase from '../../firebase.js';
 import { IoMdSearch } from "react-icons/io";
 
 const Header = () => {
-    // 시간
     const [selectedTimezone, setSelectedTimezone] = useState('KOREA');
     const [currentTime, setCurrentTime] = useState(new Date());
+    const [searchInput, setSearchInput] = useState('');
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -17,7 +18,7 @@ const Header = () => {
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, [currentTime]);
+    }, []);
 
     const getTimeWithOffset = (offset) => {
         const localTime = new Date();
@@ -38,24 +39,33 @@ const Header = () => {
         setSelectedTimezone(e.target.value);
     };
 
-    // 로그아웃
-    const user = useSelector(state => state.user);
-    // console.log(user);
-    const navigate = useNavigate();
-
     const LogoutHandler = () => {
         firebase.auth().signOut();
         alert("로그아웃을 했습니다.");
         navigate("/");
-    }
-
-    // option 링크
+    };
 
     const handleChange = (event) => {
-        // 사용자가 선택한 값에 따라 URL 변경
         const path = event.target.value;
-        if (path) {
-            navigate(`/${path}`);
+        navigate(`/${path}`);
+    };
+
+    // 검색 핸들러 수정
+    const handleSearch = async (event) => {
+        if (event.key === 'Enter' && searchInput.trim()) {
+            try {
+                const response = await axios.get(`http://localhost:5050/api/search?query=${encodeURIComponent(searchInput)}`);
+                const searchResults = response.data.results;
+
+                if (searchResults.length > 0) {
+                    navigate(`/league/${searchResults[0].id}`);
+                } else {
+                    alert("No matching leagues found.");
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                alert('Error performing the search. Please try again.');
+            }
         }
     };
 
@@ -63,14 +73,19 @@ const Header = () => {
         <header id="header">
             <div className="header__left">
                 <Link to="/">
-                    <h1 className="logo">
-                        KICKOFF
-                    </h1>
+                    <h1 className="logo">KICKOFF</h1>
                 </Link>
                 <div className="search">
                     <IoMdSearch />
                     <label htmlFor="search">SEARCH</label>
-                    <input type="text" name="search" placeholder="Premier League, Chelsea" />
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="Premier League, Chelsea"
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        onKeyPress={handleSearch}
+                    />
                 </div>
             </div>
 
@@ -83,8 +98,8 @@ const Header = () => {
                     </select>
                 </div>
                 <div className="time">
-                    <label htmlFor="time" className="blind">LINK</label>
-                    <select name="time" id="lintimek" onChange={handleChangeTimezone} value={selectedTimezone}>
+                    <label htmlFor="time" className="blind">TIME</label>
+                    <select name="time" id="time" onChange={handleChangeTimezone} value={selectedTimezone}>
                         {renderTimeInfo('KOREA', 9, 'Korea')}
                         {renderTimeInfo('LONDON', 1, 'London')}
                         {renderTimeInfo('USA', -5, 'USA')}
@@ -92,21 +107,17 @@ const Header = () => {
                 </div>
                 <div className="login">
                     {user.accessToken === "" ? (
-                        <Link to="/login" className='loginLink'>
-                            LOGIN
-                        </Link>
+                        <Link to="/login" className='loginLink'>LOGIN</Link>
                     ) : (
                         <>
                             <p className='mypage'><Link to='/mypage'>{user.displayName}</Link>님 반갑습니다.</p>
-                            <Link className='logout' onClick={(() => LogoutHandler())}>
-                                LOGOUT
-                            </Link>
+                            <button className='logout' onClick={LogoutHandler}>LOGOUT</button>
                         </>
                     )}
                 </div>
             </div>
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

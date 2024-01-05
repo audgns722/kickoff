@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // data
@@ -9,14 +9,17 @@ import { FaShare } from "react-icons/fa";
 
 const TodayHighlight = () => {
     const highlights = todayHL();
+    const [randomHighlight, setRandomHighlight] = useState(null);
 
-    const randomHighlights = highlights
-        .filter((_, index) => index < 3)
-        .sort(() => Math.random() - 0.5);
+    useEffect(() => {
+        const randomHighlights = highlights
+            .filter((_, index) => index < 3)
+            .sort(() => Math.random() - 0.5);
 
-    const randomHighlight = randomHighlights[0];
+        setRandomHighlight(randomHighlights[0]);
+    }, []); // 빈 의존성 배열을 사용하여 이 코드가 한 번만 실행되도록 함
 
-    // console.log(randomHighlight);
+    if (!randomHighlight) return <div>Loading...</div>;
 
     return (
         <div className="today__highlight" style={{ backgroundImage: `url(${randomHighlight.img})` }}>
@@ -74,7 +77,7 @@ const TodayHighlight = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default TodayHighlight
+export default TodayHighlight;

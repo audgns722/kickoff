@@ -11,7 +11,7 @@ const Home = () => {
     const [videoInfo, setVideoInfo] = useState([]);
     const [news, setNews] = useState([]);
 
-    // news
+    //news
     useEffect(() => {
         axios.post("/api/news")
             .then((response) => {
