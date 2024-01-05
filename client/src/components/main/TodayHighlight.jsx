@@ -78,7 +78,7 @@ const TodayHighlight = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default TodayHighlight
+export default TodayHighlight;
