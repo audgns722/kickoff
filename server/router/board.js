@@ -69,6 +69,8 @@ router.post("/list", (req, res) => {
         sort.createdAt = -1;
     } else if (req.body.sort === "댓글순") {
         sort.repleNum = -1;
+    } else if (req.body.sort === "조회순") {
+        sort.views = -1;
     }
 
     let query = {
@@ -98,19 +100,23 @@ router.post("/list", (req, res) => {
 
 // 글 상세페이지
 router.post("/detail", (req, res) => {
-    Board
-        .findOne({ boardNum: req.body.boardNum })
+    const boardNum = req.body.boardNum;
+
+    Board.findOneAndUpdate(
+        { boardNum: boardNum },
+        { $inc: { views: 1 } }, // $inc 연산자를 사용하여 views를 1 증가시킵니다.
+        { new: true } // 업데이트 후의 문서를 반환합니다.
+    )
         .populate("author")
         .exec()
         .then((result) => {
             res.status(200).json({ success: true, board: result });
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err);
             res.status(400).json({ success: false });
-        })
-})
-
+        });
+});
 // 글 수정하기
 router.post("/modify", (req, res) => {
     let temp = {

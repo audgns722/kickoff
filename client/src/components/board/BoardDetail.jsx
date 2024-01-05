@@ -10,7 +10,7 @@ import RepleWrite from '../reple/RepleWrite';
 import RepleList from '../reple/RepleList';
 
 // icon
-import { AiTwotoneLike } from "react-icons/ai";
+import { AiOutlineEye, AiTwotoneLike } from "react-icons/ai";
 import { TfiComment } from "react-icons/tfi";
 
 
@@ -36,7 +36,7 @@ const BoardDetail = (props) => {
                 .then((resonpse) => {
                     if (resonpse.data.success) {
                         alert('게시글이 삭제되었습니다.')
-                        navigate('/boardlist')
+                        navigate('/boardlist/community')
                     }
                 })
                 .catch((err) => {
@@ -80,8 +80,13 @@ const BoardDetail = (props) => {
                                 <p className="name">{props.boardInfo.author.displayName}</p>
                                 <p className="date">{formatDateString(props.boardInfo.createdAt)}</p>
                             </div>
+
                         </div>
                         <div className="profill__right">
+                            <div className="view">
+                                <AiOutlineEye />
+                                <span><i>{props.boardInfo.views}</i></span>
+                            </div>
                             <div className="like">
                                 <AiTwotoneLike />
                                 <span>777</span>

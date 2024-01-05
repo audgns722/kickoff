@@ -13,6 +13,7 @@ const BoardList = () => {
     const [sort, setSort] = useState("최신순");
     const [isLatestChecked, setIsLatestChecked] = useState(true);
     const [isCommentChecked, setIsCommentChecked] = useState(false);
+    const [isViewChecked, setIsViewChecked] = useState(false);
     const { cate } = useParams(); // useParams로부터 cate 값을 가져옴
 
     const navigate = useNavigate();
@@ -58,6 +59,8 @@ const BoardList = () => {
         setSort(type);
         setIsLatestChecked(type === "최신순");
         setIsCommentChecked(type === "댓글순");
+        setIsViewChecked(type === "조회순");
+
     }
 
 
@@ -130,6 +133,16 @@ const BoardList = () => {
                                         />
                                         <span className="indicator" onClick={() => handleSortChange("댓글순")}></span>
                                         <label htmlFor="sort2">댓글순</label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="sort3"
+                                            id="sort3"
+                                            checked={isViewChecked}
+
+                                        />
+                                        <span className="indicator" onClick={() => handleSortChange("조회순")}></span>
+                                        <label htmlFor="sort3">조회순</label>
                                     </fieldset>
                                 </form>
                             </div>
@@ -176,7 +189,7 @@ const BoardList = () => {
                                                     </div>
                                                     <div className="view">
                                                         <AiOutlineEye />
-                                                        <span>조회수 <i>777</i></span>
+                                                        <span>조회수 <i>{board.views}</i></span>
                                                     </div>
                                                 </div>
                                                 <div className="info__right">
