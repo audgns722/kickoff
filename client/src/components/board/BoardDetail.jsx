@@ -10,7 +10,7 @@ import RepleWrite from '../reple/RepleWrite';
 import RepleList from '../reple/RepleList';
 
 // icon
-import { AiOutlineEye, AiTwotoneLike } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import { TfiComment } from "react-icons/tfi";
 
 
@@ -45,17 +45,17 @@ const BoardDetail = (props) => {
     }
 
     return (
-        <div style={{ padding: "55px 0 0 55px" }}>
+        <div id='boardDetail'>
             <Nav />
             {/* <Aside /> */}
             <div className="boardWrap">
                 <div className="board__cate">
-                    <div className="cate__notice btn active">
+                    <div className={`cate__notice btn ${props.boardInfo.cate === 'notice' ? "active" : ""}`}>
                         <Link to={`/boardlist/notice`}>
                             공지사항
                         </Link>
                     </div>
-                    <div className="cate__community btn active">
+                    <div className={`cate__community btn ${props.boardInfo.cate === 'community' ? "active" : ""}`}>
                         <Link to={`/boardlist/community`}>
                             자유게시판
                         </Link>
@@ -84,10 +84,10 @@ const BoardDetail = (props) => {
                                 <AiOutlineEye />
                                 <span><i>{props.boardInfo.views}</i></span>
                             </div>
-                            <div className="like">
+                            {/* <div className="like">
                                 <AiTwotoneLike />
                                 <span>777</span>
-                            </div>
+                            </div> */}
                             <div className="comment">
                                 <TfiComment />
                                 <span>{props.boardInfo.repleNum}</span>
@@ -128,7 +128,7 @@ const BoardDetail = (props) => {
                                 ""
                             )}
 
-                            <Link to="/boardlist/community" className="list">
+                            <Link to={`/boardlist/${props.boardInfo.cate}`} className="list">
                                 목록으로
                             </Link>
                         </div>

@@ -44,13 +44,8 @@ const RepleWrite = (props) => {
                     </textarea>
                     <div className="bottom">
                         <div className="bottom__left">
-                            <label htmlFor="commentImg">
-                                댓글이미지
-                                <span>이미지첨부</span>
-                            </label>
-                            <span>*최대 1개(jpg, png, gif만 가능)</span>
+                            <span>*남을 비방하거나 상업적 용도의 글은 통보없이 삭제될 수 있습니다.</span>
                         </div>
-                        <input type="file" className="blind" name="commentImg" id="commentImg" />
                         <button type="submit" onClick={(e) => { SubmitHandler(e) }}>댓글 등록</button>
                     </div>
                 </fieldset>

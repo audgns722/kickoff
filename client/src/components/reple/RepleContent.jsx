@@ -15,9 +15,9 @@ const RepleContent = (props) => {
 
     const SetTime = (a, b) => {
         if (a !== b) {
-            return moment(b).format("YYYY MMMM Do , h:mm") + "(수정됨)"
+            return moment(b).format("YYYY MMMM Do a h:mm") + "(수정됨)"
         } else {
-            return moment(a).format("YYYY MMMM Do , h:mm");
+            return moment(a).format("YYYY MMMM Do a h:mm");
         }
     }
 
@@ -67,8 +67,8 @@ const RepleContent = (props) => {
                     <p>
                         {props.reple.reple}
                     </p>
-                    <div className="bottom">
 
+                    <div className="bottom">
                         <div className="bottom__left">
                             <div className="img" style={{ backgroundImage: 'url(../assets/img/liverpool.png)' }}>
                                 {/* <!-- <img src="../assets/img/liverpool.png" alt="임시"> --> */}
@@ -77,13 +77,16 @@ const RepleContent = (props) => {
                                 <span>{props.reple.author.displayName}</span>님이 <i>{SetTime(props.reple.createdAt, props.reple.updatedAt)}</i>
                             </p>
                         </div>
-                        <div className="bottom__right">
-                            <button type="submit" onClick={(e) => DeleteHandler(e)}>삭제하기</button>
-                            <button type="submit" onClick={() => { setEditFlag(true); }}>수정하기</button>
-                        </div>
-
-
+                        {user.uid === props.reple.author.uid ? (
+                            <div className="bottom__right">
+                                <button type="submit" onClick={(e) => DeleteHandler(e)}>삭제하기</button>
+                                <button type="submit" onClick={() => { setEditFlag(true); }}>수정하기</button>
+                            </div>
+                        ) : (
+                            <div className="bottom__right"></div>
+                        )}
                     </div>
+
                     {editFlag ? (
                         <div className="editWrite">
                             <form action="#" name="comment" method="post">

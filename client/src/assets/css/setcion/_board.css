@@ -1,3 +1,8 @@
+#boardList,
+#boardDetail {
+    padding: 55px 0 0 55px;
+}
+
 .boardWrap {
     width: 100%;
     height: calc(100vh - 55px);
@@ -153,7 +158,7 @@
 }
 
 .board__list>ul>li>.list__left>.left__desc>p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #B8BAC1;
     /* ...효과 */
     overflow: hidden;
@@ -252,6 +257,7 @@
 .board__detail>.cate {
     font-size: 1.2rem;
     font-weight: 700;
+    display: none;
 }
 
 .board__detail>.title {
@@ -277,6 +283,12 @@
 
 .board__detail>.profill>.profill__left>.text {
     font-size: 1rem;
+    color: #7D7D7D;
+}
+
+.board__detail>.profill>.profill__left>.text>.name {
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .board__detail>.profill>.profill__left>.img {
@@ -313,6 +325,13 @@
 
 .board__detail>.profill>.profill__right>div>svg {
     margin-right: 15px;
+    fill: rgba(0, 0, 0, 0.5);
+}
+
+.board__detail>.profill>.profill__right>div>span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .board__detail>.desc {
@@ -485,13 +504,26 @@
 
 .commentWrap>ul>li>.bottom>.bottom__left>p {
     font-size: 1rem;
+    color: #7D7D7D;
+}
+
+.commentWrap>ul>li>.bottom>.bottom__left>p>span {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .commentWrap>ul>li>.bottom>.bottom__right>button {
     background-color: transparent;
     cursor: pointer;
     font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 700;
     margin-left: 5px;
+    transition: color 0.3s;
+}
+
+.commentWrap>ul>li>.bottom>.bottom__right>button:hover {
+    color: #0057FF;
 }
 
 /* 댓글 밑에 있는 목록 버튼 css */
@@ -697,4 +729,101 @@
     background-color: #0057FF;
     margin-left: 15px;
     cursor: pointer;
+}
+
+@media(max-width: 1000px) {}
+
+@media(max-width: 600px) {
+
+    #boardList,
+    #boardDetail {
+        padding: 130px 0 0;
+    }
+
+    .board__search {
+        display: block;
+    }
+
+    .board__search>.search__right>form>fieldset>input {
+        width: 100%;
+    }
+
+    .board__btn {
+        display: block;
+    }
+
+    .board__btn>.nav__right>.nav__write {
+        padding: 10px 50px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .board__list>ul>li {
+        padding: 15px 10px;
+    }
+
+    .board__btn .nav__left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .board__list>ul>li>.list__left>.left__title>a>.title>h3 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .board__list>ul>li>.list__left>.left__desc>.boardImg {
+        display: none;
+    }
+
+    .board__list>ul>li>.list__left>.left__info>.info__right>p>i {
+        display: none;
+    }
+
+    .board__list>ul>li>.list__left>.left__desc>p>a {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    /* boardDetail */
+    .board__detail {
+        padding: 20px;
+    }
+
+    .boardWrap {
+        padding: 40px 10px;
+    }
+
+    .board__detail>.title>p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
+
+    .board__detail>.profill {
+        display: block;
+    }
+
+    .board__detail>.profill>.profill__left {
+        margin-bottom: 5px;
+    }
+
+    .board__detail>.desc {
+        flex-direction: column-reverse;
+    }
+
+    /* reple */
+    .commentWrite>form>fieldset>textarea {
+        padding: 10px;
+        height: auto !important;
+    }
 }

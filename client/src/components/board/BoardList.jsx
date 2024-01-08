@@ -3,7 +3,7 @@ import Nav from '../layout/Nav';
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { TfiComment } from "react-icons/tfi";
-import { AiOutlineLike, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import moment from "moment";
 import "moment/locale/ko";
 
@@ -66,7 +66,7 @@ const BoardList = () => {
     return (
         <>
             <Nav />
-            <div style={{ padding: "55px 0 0 55px" }}>
+            <div id='boardList'>
                 <div className="boardWrap">
                     <div className="board__cate">
                         <Link className={`cate__notice btn ${cate === 'notice' ? 'active' : ''}`} to={`/boardlist/notice`}>
@@ -177,10 +177,10 @@ const BoardList = () => {
                                             </div>
                                             <div className="left__info">
                                                 <div className="info__left">
-                                                    <div className="like">
+                                                    {/* <div className="like">
                                                         <AiOutlineLike />
                                                         <span>공감 <i>777</i></span>
-                                                    </div>
+                                                    </div> */}
                                                     <div className="comment">
                                                         <TfiComment />
                                                         <span>댓글 <i>{board.repleNum}</i></span>

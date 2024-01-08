@@ -485,7 +485,7 @@
     .result__info {
         display: block;
         height: auto;
-        padding: 0 10px;
+        padding: 5px 10px;
     }
 
     .result__info .result__left {
@@ -496,10 +496,15 @@
         flex-direction: row;
         line-height: 1;
         align-items: center;
+        margin-bottom: 5px;
     }
 
     .result__left .date p {
         margin-right: 5px;
+    }
+
+    .result__info .result__left .league__logo {
+        display: none;
     }
 
     .result__info .result__center {
@@ -518,5 +523,22 @@
         width: 100%;
         text-align: center;
         margin: 10px 0;
+    }
+
+    .commentWrap>ul>li>.bottom {
+        display: block;
+    }
+
+    .commentWrap>ul>li>.bottom>.bottom__left {
+        margin-bottom: 5px;
+    }
+
+    .commentWrap>ul>li>.bottom>.bottom__right {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .commentWrite>form>fieldset>.bottom>button {
+        height: 62px;
     }
 }

@@ -38,9 +38,7 @@ const BoardArea = () => {
                     <BoardDetail boardInfo={boardInfo} />
                 </>
             ) : (
-                <div>
-                    로딩중
-                </div>
+                <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>
             )}
         </div>
     );
