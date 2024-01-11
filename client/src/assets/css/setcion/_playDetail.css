@@ -401,6 +401,8 @@
     max-width: 100%;
 }
 
+
+
 .play__bottom .play__comment {
     background-color: #fff;
     width: 100%;
@@ -427,6 +429,10 @@
 .play__comment .comment__top em {
     margin-left: 15px;
     font-weight: 500;
+}
+
+.play__comment .comment__list {
+    width: 100%;
 }
 
 .play__comment .comments {
@@ -475,11 +481,38 @@
     align-items: center;
 }
 
-.play__comment .commnetBox .commentInput {
+.play__comment .commnetBox form {
     width: 85%;
+}
+
+.play__comment .commnetBox fieldset {
+    width: 100%;
+    border: 0;
+}
+
+.play__comment .commnetBox .commentInput {
+    width: 100%;
     background-color: #F4F7F8;
     border-radius: 50px;
     padding: 15px 30px;
+}
+
+.play__comment .commnetBox fieldset {
+    position: relative;
+}
+
+.play__comment .commnetBox button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: transparent;
+}
+
+.play__comment .commnetBox button svg {
+    width: 20px;
+    height: 20px;
+    fill: rgba(0, 0, 0, 0.3);
 }
 
 .commnetBox .comment__view {

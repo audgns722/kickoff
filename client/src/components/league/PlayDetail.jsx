@@ -6,6 +6,8 @@ import moment from 'moment';
 import "moment/locale/ko";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import PlayRepleList from '../playreple/PlayRepleList';
+import PlayRepleWrite from '../playreple/PlayRepleWrite';
 
 const PlayDetail = () => {
     const [playMatches, setPlayMatches] = useState(null);
@@ -298,57 +300,9 @@ const PlayDetail = () => {
                         <div className="comment__top">
                             ⚽ NOTICE <em>타팀 비하, 욕설 금지</em>
                         </div>
-                        <div className="comments">
-                            <div className="avatar"></div>
-                            <div className="text">
-                                <div className="name">축덕</div>
-                                <div className="cont">가고싶다 집에</div>
-                            </div>
-                            <div className="time">오후 12:30</div>
-                        </div>
-                        <div className="comments">
-                            <div className="avatar"></div>
-                            <div className="text">
-                                <div className="name">축덕</div>
-                                <div className="cont">가고싶다 집에</div>
-                            </div>
-                            <div className="time">오후 12:30</div>
-                        </div>
-                        <div className="comments">
-                            <div className="avatar"></div>
-                            <div className="text">
-                                <div className="name">축덕</div>
-                                <div className="cont">가고싶다 집에</div>
-                            </div>
-                            <div className="time">오후 12:30</div>
-                        </div>
-                        <div className="comments">
-                            <div className="avatar"></div>
-                            <div className="text">
-                                <div className="name">축덕</div>
-                                <div className="cont">가고싶다 집에</div>
-                            </div>
-                            <div className="time">오후 12:30</div>
-                        </div>
-                        <div className="comments">
-                            <div className="avatar"></div>
-                            <div className="text">
-                                <div className="name">축덕</div>
-                                <div className="cont">가고싶다 집에</div>
-                            </div>
-                            <div className="time">오후 12:30</div>
-                        </div>
-                        <div className="comments">
-                            <div className="avatar"></div>
-                            <div className="text">
-                                <div className="name">축덕</div>
-                                <div className="cont">가고싶다 집에</div>
-                            </div>
-                            <div className="time">오후 12:30</div>
-                        </div>
+                        <PlayRepleList matchId={matchId} />
                         <div className="commnetBox">
-                            <label htmlFor="comment" className="blind">댓글입력</label>
-                            <input type="text" placeholder="응원톡에 참여해보세요" id="comment" className="commentInput" />
+                            <PlayRepleWrite matchId={matchId} />
                             <div className="comment__view">1.6M+ <em>view</em></div>
                         </div>
                     </div>

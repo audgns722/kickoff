@@ -29,7 +29,7 @@ const News = () => {
 
     // 조건부 렌더링
     if (!news || news.length === 0) {
-        return <div>Loading...</div>;
+        return <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;;
     }
 
     return (

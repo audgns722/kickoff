@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import firebase from '../../firebase.js'
+import firebase from '../../firebase';
+import { auth, googleProvider } from '../../firebase';
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -22,6 +23,50 @@ const Login = () => {
             alert("이메일과 비밀번호를 다시 한번 확인해주세요.");
         }
     }
+
+    // google 로그인
+    // const signInWithGoogle = async () => {
+    //     try {
+    //         await auth.signInWithPopup(googleProvider);
+    //         // 로그인 후 필요한 동작 수행
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+    const signInWithGoogle = async () => {
+        try {
+            // Google 로그인
+            const result = await auth.signInWithPopup(googleProvider);
+
+            // 로그인 성공 후 서버로 사용자 정보 전송
+            if (result.user) {
+                const user = {
+                    email: result.user.email,
+                    displayName: result.user.displayName,
+                    uid: result.user.uid,
+                    photoURL: result.user.photoURL,
+                };
+
+                // 서버에 사용자 정보 전송
+                const response = await fetch('/api/user/google-signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(user),
+                });
+
+                if (response.ok) {
+                    const serverResponse = await response.json();
+                    console.log('User data saved on the server:', serverResponse);
+                } else {
+                    console.error('Failed to save user data on the server');
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <div className="login__wrap">
@@ -131,7 +176,7 @@ const Login = () => {
                                         </g>
                                     </g>
                                 </svg>
-                                <span><em>google</em>로 계속</span>
+                                <span onClick={() => signInWithGoogle()}><em>google</em>로 계속</span>
                             </Link>
                             {/* <Link to="/">
                                 <img src="../" alt="" />

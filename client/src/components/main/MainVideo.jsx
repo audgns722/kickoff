@@ -28,6 +28,11 @@ const MainVideo = () => {
             });
     }, []);
 
+    // 조건부 렌더링
+    if (!videoInfo || videoInfo.length === 0) {
+        return <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;;
+    }
+
     return (
         <div className="main__video">
             <div className="video__wrap">
