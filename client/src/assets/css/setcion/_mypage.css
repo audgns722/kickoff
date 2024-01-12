@@ -1,4 +1,8 @@
 /* mypage__info */
+#mypage {
+    padding: 55px 0 0 55px
+}
+
 .mypage__info {
     width: 100%;
     height: 460px;
@@ -82,31 +86,54 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: all 0.5s;
 }
 
-.mypage__info .left .profile label span svg:hover {
-    opacity: 0.5;
-    background-color: #9696963a;
+.mypage__info .left .profile label span::before {
+    position: absolute;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.mypage__info .left .profile label span:hover::before {
+    opacity: 1;
+}
+
+.mypage__info .left .profile label span:hover svg {
+    opacity: 0.7;
+}
+
+.mypage__info .left .profile label span svg {
+    opacity: 0;
+    fill: rgba(255, 255, 255, 0.7);
 }
 
 .mypage__info .left .profile img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .mypage__info .left .profile button {
     position: absolute;
-    border-radius: 10px;
     display: inline-block;
-    width: 70%;
-    font-size: 14px;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 700;
     padding: 5px;
     z-index: 10;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background-color: #0f0f0f;
+    color: var(--white);
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .mypage__info .right {
@@ -352,4 +379,191 @@
     color: #FF3535;
     opacity: 0.1;
     letter-spacing: normal;
+}
+
+.mypage__bottom {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.mypage__board {
+    width: 100%;
+    height: 100%;
+}
+
+.mypage__board .list__wrap {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.mypage__board .list__wrap .list {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--white);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.mypage__board .list__wrap .list:hover {
+    color: #8d8d8d;
+    background-color: #f8f8f8;
+}
+
+.mypage__board .list__wrap .list .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mypage__board .list__wrap .list .left .img {
+    width: 50px;
+}
+
+.mypage__board .list__wrap .list .left .img img {
+    object-fit: contain;
+    padding: 3px;
+}
+
+.mypage__board .list__wrap .list .left .number {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.mypage__board .list__wrap .list .left .title {
+    display: inline-block;
+    font-weight: 700;
+    margin-right: 2vw;
+}
+
+.mypage__board .list__wrap .list .left .content {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mypage__board .list__wrap .list .left span {
+    color: #3694ff;
+    font-weight: 700;
+}
+
+.mypage__board .list__wrap .list .right {
+    width: 120px;
+    text-align: right;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mypage__board .list__wrap .list .right .date {
+    display: inline-block;
+}
+
+.mypage__board .list__wrap .list .right .view {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+}
+
+.mypage__board .list__wrap .list .right .view svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+@media (max-width:1000px) {
+    .mypage__board .list__wrap {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mypage__board .list__wrap .list {
+        width: 48%;
+        height: 100px;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .mypage__board .list__wrap .list .left .content {
+        width: 100px;
+    }
+
+    .mypage__board .list__wrap .list .left {
+        width: 100%;
+        justify-content: space-between;
+        height: 50px;
+        gap: 0px;
+    }
+
+    .mypage__board .list__wrap .list .left .title {
+        margin-right: 0;
+    }
+
+    .mypage__info {
+        height: 310px;
+    }
+
+    .mypage__info .left {
+        width: 50%;
+    }
+
+    .mypage__info .right {
+        width: 50%;
+        display: flex;
+        padding: 0;
+        align-items: center;
+    }
+
+    .mypage__info .right .info {
+        display: inline-block;
+        height: fit-content;
+    }
+}
+
+@media (max-width:600px) {
+    #mypage {
+        padding-left: 0;
+        padding-top: 170px;
+    }
+
+    .mypage__content .mypage__top ul {
+        width: auto;
+    }
+
+    .mypage__content .mypage__top {
+        padding: 0 5px;
+    }
+
+    .mypage__info {
+        flex-direction: row-reverse;
+    }
+
+    .mypage__info .left::before {
+        height: 100%;
+    }
+
+    .mypage__info .right {
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .mypage__info .right .info {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .mypage__info .left .profile label {
+        width: 150px;
+        height: 150px;
+    }
+
+    .mypage__board .list__wrap .list .left .img {
+        display: none;
+    }
 }
