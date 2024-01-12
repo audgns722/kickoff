@@ -41,7 +41,7 @@ const PlayDetail = () => {
                 console.log(err);
             });
         // eslint-disable-next-line
-    }, [matchId]); // matchId가 변경될 때마다 이 효과를 재실행
+    }, []);
 
     // head2head 정보 가져오기
     useEffect(() => {
@@ -55,7 +55,7 @@ const PlayDetail = () => {
             }
         }
         fetchHeads();
-    }, [])
+    }, [matchId])
 
     useEffect(() => {
         const fetchMatches = async () => {

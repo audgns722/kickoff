@@ -179,5 +179,18 @@ router.post("/image/upload", (req, res) => {
 //     res.status(200).json({ success: true, filePath: res.req.file.location })
 // })
 
+// 마이페이지 글불러오기
+router.post('/mypagelist', async (req, res) => {
+    try {
+        const { uid } = req.body;
+        const user = await User.findOne({ uid: uid });
+        const boards = await Board.find({ author: user._id });
+
+        res.json({ success: true, boardList: boards });
+    } catch (err) {
+        res.status(500).send({ success: false, message: '서버 오류 발생' });
+    }
+});
+
 
 module.exports = router;
