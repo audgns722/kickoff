@@ -15,7 +15,7 @@ const PlayRepleList = (props) => {
                 setRepleList([...response.data.repleList])
             }
         })
-    }, [props.matchId])
+    }, [repleList])
 
     return (
         <div className="comment__list">
@@ -26,7 +26,7 @@ const PlayRepleList = (props) => {
                         <div className="name">KICKOFF</div>
                         <div className="cont">응원톡에 참여해주세요.</div>
                     </div>
-                    <div className="time">2024년 1월 12일</div>
+                    <div className="time"><p>2024년 1월 12일</p></div>
                 </div>
             ) : (
                 repleList.map((reple, index) => (

@@ -16,7 +16,8 @@ const RepleList = (props) => {
                 setRepleList([...response.data.repleList])
             }
         })
-    }, [props.boardId])
+    }, [repleList])
+
     return (
         <div>
             {repleList.map((reple, idx) => {

@@ -52,7 +52,7 @@ const News = () => {
                         <div className="news-content">
                             <p>
                                 <Link to={item.link} target='_blank' rel='noopener noreferrer'>
-                                    {item.title.replace(/<b>|<\/b>/g, '')}
+                                    {item.title.replace(/<b>|<\/b>/g, '').replace(/&quot;/g, '"')}
                                 </Link>
                             </p>
                         </div>

@@ -156,7 +156,7 @@ const PlayDetail = () => {
     return (
         <>
             <Nav />
-            <div style={{ padding: "55px 0 0 55px", background: "#fff" }}>
+            <div id='playDetail'>
                 <div className="play__wrap">
                     <div className="league__info">
                         <div className="league__title">

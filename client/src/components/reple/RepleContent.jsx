@@ -32,9 +32,9 @@ const RepleContent = (props) => {
 
         axios.post("/api/reple/edit", body).then((response) => {
             if (response.data.success) {
-                alert("댓글 수정 성공하엿습니다.");
+                alert("댓글 수정되었습니다.");
             } else {
-                alert("댓글 수정 실패했습니다.")
+                alert("댓글 수정에 실패했습니다.")
             }
             return window.location.reload();
         })
@@ -50,13 +50,13 @@ const RepleContent = (props) => {
             }
             axios.post("/api/reple/delete", body).then((response) => {
                 if (response.data.success) {
-                    alert("댓글이 삭제됨");
-                    window.location.reload();
+                    alert("댓글이 삭제되었습니다.");
+                    // window.location.reload();
                 }
             })
                 .catch((err) => {
                     console.log(err);
-                    alert("댓글 삭제 실패함");
+                    alert("댓글 삭제에 실패했습니다.");
                 })
         }
     }
@@ -100,11 +100,11 @@ const RepleContent = (props) => {
                                     </textarea>
                                     <div className="bottom">
                                         <div className="bottom__left">
-                                            <label htmlFor="commentImg">
+                                            {/* <label htmlFor="commentImg">
                                                 댓글이미지
                                                 <span>이미지첨부</span>
-                                            </label>
-                                            <span>*최대 1개(jpg, png, gif만 가능)</span>
+                                            </label> */}
+                                            <span>*남을 비방하거나 상업적 용도의 글은 통보없이 삭제될 수 있습니다.</span>
                                         </div>
                                         <input type="file" className="blind" name="commentImg" id="commentImg" />
                                         <div style={{ display: "flex", gap: "1px" }}>

@@ -1,3 +1,8 @@
+#playDetail {
+    padding: 55px 0 0 55px;
+    background-color: var(--white);
+}
+
 .play__wrap {}
 
 .league__info {
@@ -153,7 +158,7 @@
 
 
 .league__match .date {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-size: 1.7rem;
     font-weight: 700;
     color: var(--black);
@@ -164,7 +169,7 @@
 }
 
 .league__match .score {
-    font-size: 60px;
+    font-size: 80px;
     line-height: 1;
     font-weight: 900;
     margin-bottom: 30px;
@@ -433,6 +438,8 @@
 
 .play__comment .comment__list {
     width: 100%;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
 .play__comment .comments {
@@ -470,6 +477,10 @@
     position: relative;
 }
 
+.play__comment .comments .text .name .edit p {
+    cursor: pointer;
+}
+
 .play__comment .comments .text .name .modal {
     width: 50px;
     height: 50px;
@@ -495,6 +506,27 @@
     padding: 15px 30px;
     background-color: #F4F7F8;
     border-radius: 50px;
+}
+
+.play__comment .comments .text .cont form fieldset {
+    border: 0;
+    display: flex;
+    align-items: center;
+}
+
+.play__comment .comments .text .cont form fieldset input {
+    background-color: transparent;
+}
+
+.play__comment .comments .text .cont form fieldset input:focus {
+    outline: 0;
+    width: 100%;
+}
+
+.play__comment .comments .text .cont form fieldset button {
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
 }
 
 .play__comment .comments .time {
@@ -540,6 +572,7 @@
     background-color: transparent;
 }
 
+.play__comment .comments .text .cont form fieldset button svg,
 .play__comment .commnetBox button svg {
     width: 20px;
     height: 20px;
@@ -555,4 +588,67 @@
 .commnetBox .comment__view em {
     font-size: 1.1rem;
     font-weight: 500;
+}
+
+@media(max-width: 600px) {
+    #playDetail {
+        padding: 130px 0 0 0;
+    }
+
+    .league__home h3,
+    .league__away h3 {
+        font-size: 2rem;
+        word-break: break-all;
+    }
+
+    .league__match .playdata,
+    .league__match .date {
+        font-size: 1rem;
+    }
+
+    .league__match .referee {
+        word-break: break-all;
+        font-size: 1rem;
+    }
+
+    .league__match .score {
+        font-size: 3rem;
+    }
+
+    .league__home p,
+    .league__away p {
+        font-size: 1rem;
+        word-break: keep-all;
+    }
+
+    .play__comment .comments {
+        flex-wrap: wrap;
+    }
+
+    .play__comment .comments .text {
+        width: calc(100% - 55px);
+    }
+
+    .play__comment .comments .time {
+        width: 100%;
+        display: inline-block;
+        font-size: 0.8rem;
+        margin: 5px 0 0;
+    }
+
+    .play__comment .comments .time p {
+        text-align: right;
+    }
+
+    .play__status .status__top .team {
+        word-break: break-all;
+    }
+
+    .status__progress .progress__text .score {
+        font-size: 1rem;
+    }
+
+    .status__progress .progress__text>div:nth-child(2) {
+        word-break: break-all;
+    }
 }

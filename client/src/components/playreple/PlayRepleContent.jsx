@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 
+// icon
+import { AiOutlineMessage } from "react-icons/ai";
+
 const PlayRepleContent = (props) => {
     // console.log(props.reple);
 
@@ -42,46 +45,46 @@ const PlayRepleContent = (props) => {
         }
     }
 
-    // // 수정
-    // const SubmitHandler = (e) => {
-    //     e.preventDefault();
-    //     let body = {
-    //         uid: user.uid,
-    //         reple: reple,
-    //         matchId: props.reple.matchId,
-    //         repleId: props.reple._id
-    //     }
+    // 수정
+    const SubmitHandler = (e) => {
+        e.preventDefault();
+        let body = {
+            uid: user.uid,
+            reple: reple,
+            matchId: props.reple.matchId,
+            repleId: props.reple._id
+        }
 
-    //     axios.post("/api/playreple/edit", body).then((response) => {
-    //         if (response.data.success) {
-    //             alert("댓글 수정 성공하엿습니다.");
-    //         } else {
-    //             alert("댓글 수정 실패했습니다.")
-    //         }
-    //         return window.location.reload();
-    //     })
-    // }
+        axios.post("/api/playreple/edit", body).then((response) => {
+            if (response.data.success) {
+                alert("댓글 수정 성공하엿습니다.");
+            } else {
+                alert("댓글 수정 실패했습니다.")
+            }
+            return window.location.reload();
+        })
+    }
 
-    // // 삭제
-    // const DeleteHandler = (e) => {
-    //     e.preventDefault();
-    //     if (window.confirm("정말로 삭제하시겠습니까?")) {
-    //         let body = {
-    //             repleId: props.reple._id,
-    //             boardId: props.reple.boardId
-    //         }
-    //         axios.post("/api/playreple/delete", body).then((response) => {
-    //             if (response.data.success) {
-    //                 alert("댓글이 삭제됨");
-    //                 window.location.reload();
-    //             }
-    //         })
-    //             .catch((err) => {
-    //                 console.log(err);
-    //                 alert("댓글 삭제 실패함");
-    //             })
-    //     }
-    // }
+    // 삭제
+    const DeleteHandler = (e) => {
+        // e.preventDefault();
+        if (window.confirm("정말로 삭제하시겠습니까?")) {
+            let body = {
+                repleId: props.reple._id,
+                matcchId: props.reple.matchId
+            }
+            axios.post("/api/playreple/delete", body).then((response) => {
+                if (response.data.success) {
+                    alert("댓글이 삭제되었습니다.");
+                }
+            })
+                .catch((err) => {
+                    console.log(err);
+                    alert("댓글 삭제에 실패했습니다.");
+                })
+        }
+    }
+
 
     return (
         <>
@@ -91,23 +94,53 @@ const PlayRepleContent = (props) => {
                     <div className="name">
                         <p>{props.reple.author.displayName}</p>
                         <div className='edit' onClick={() => { setModalFlag(true); }}>
-                            편집
+                            {user.uid === props.reple.author.uid ? (
+                                <p>편집</p>
+                            ) : (
+                                <p></p>
+                            )}
                             {modalFlag && (
                                 <div className='modal' ref={ref}>
                                     <p onClick={() => {
                                         setModalFlag(false);
+                                        DeleteHandler();
                                     }}>삭제</p>
 
                                     <p onClick={() => {
                                         setModalFlag(false);
+                                        setEditFlag(true);
+                                        setReple(reple);
                                     }}>수정</p>
                                 </div>
                             )}
                         </div>
                     </div>
-                    <div className="cont">{props.reple.reple}</div>
+                    {!editFlag ? (
+                        <div className="cont">
+                            <p>{props.reple.reple}</p>
+                        </div>
+                    ) : (
+                        <div className="cont" style={{ border: "2px solid rgba(0,0,0,0.15)" }}>
+                            <form action="#" name="comment" method="post">
+                                <fieldset>
+                                    <legend className="blind">댓글 영역</legend>
+                                    <label htmlFor="comment" className="blind">댓글입력</label>
+                                    <input
+                                        type="text"
+                                        value={reple}
+                                        onChange={(e) => { setReple(e.currentTarget.value) }}
+                                        placeholder="응원톡에 참여해보세요"
+                                        id="comment"
+                                        className="commentInput" />
+                                    <button type='submit' onClick={(e) => { SubmitHandler(e) }}>
+                                        <AiOutlineMessage />
+                                    </button>
+                                </fieldset>
+                            </form>
+                        </div>
+                    )}
                 </div>
-                <div className="time">{SetTime(props.reple.createdAt, props.reple.updatedAt)}</div>
+                <div className="time"><p>{SetTime(props.reple.createdAt, props.reple.updatedAt)}</p></div>
             </div>
         </>
     )

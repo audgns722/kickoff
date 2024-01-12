@@ -6,7 +6,7 @@ const LeagueSchedul = ({ league, scheduled }) => {
             <div className="content__bottom">
                 <div className="result__title">
                     <div className="left__text">Latest Scores</div>
-                    <div className="right__text">BROADCAST MATCH</div>
+                    <div className="right__text">WAIT MATCH</div>
                 </div>
                 {scheduled.map((matche, key) => {
                     const matchDate = new Date(matche.utcDate);
@@ -43,7 +43,7 @@ const LeagueSchedul = ({ league, scheduled }) => {
                                 </div>
                             </div>
                             <div className="result__right">
-                                승패예측 결과 표시할 부분
+                                Comming soon
                             </div>
                         </div>
                     );
