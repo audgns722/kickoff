@@ -20,7 +20,6 @@ const BoardArea = () => {
         if (!viewed) {
             axios.post('/api/board/detail', body)
                 .then((response) => {
-                    console.log(response);
                     setBoardInfo(response.data.board);
                     setFlag(true);
                     setViewed(true); // 조회 완료 시 viewed를 true로 설정

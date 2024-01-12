@@ -95,6 +95,21 @@ router.post('/google-signup', async (req, res) => {
     }
 });
 
+// 회원탈퇴
+router.post('/delete', async (req, res) => {
+    try {
+        const uid = req.body.uid;
+
+        // MongoDB에서 uid와 일치하는 사용자 데이터 삭제
+        await User.deleteOne({ uid: uid });
+
+        res.json({ success: true, message: '사용자 삭제 완료' });
+    } catch (error) {
+        console.error("사용자 삭제 중 오류 발생", error);
+        res.status(500).send({ success: false, message: '서버 오류' });
+    }
+});
+
 // 프로필 로컬 이미지 업로드
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

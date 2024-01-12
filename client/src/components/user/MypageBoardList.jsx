@@ -5,6 +5,13 @@ import { AiOutlineEye } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
 const MypageBoardList = (props) => {
+    if (props.boardList.length === 0) {
+        return <div className='mypage__board'>
+            <div className='list__wrap'>
+                <div className='list' style={{ justifyContent: "center" }}>작성된 글이 없습니다.</div>
+            </div>
+        </div>
+    }
     function formatDateString(dateStr) {
         return moment(dateStr).format('YY-MM-D');
     }

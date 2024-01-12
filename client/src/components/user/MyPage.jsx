@@ -8,60 +8,94 @@ import MypageImage from './MypageImage';
 import MypageBoardList from './MypageBoardList';
 import MypageCommentList from './MypageCommentList';
 import axios from 'axios';
+import { getAuth, deleteUser, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 
 
 const MyPage = () => {
     const user = useSelector((state) => state.user);
     const navigate = useNavigate();
-    const [boardList, setBoardList] = useState("");
-    const [repleList, setRepleList] = useState("");
-
-    useEffect(() => {
-        if (user.isLoading && !user.accessToken) {
-            navigate("/login");
-        } else {
-        }
-        // eslint-disable-next-line
-    }, [])
-
-    // 탭메뉴
+    const [boardList, setBoardList] = useState([]);
+    const [repleList, setRepleList] = useState([]);
     const [selectedTab, setSelectedTab] = useState('mylist');
 
-    const handleTabChange = (tab) => {
-        setSelectedTab(tab);
-    };
-
-    // 내 작성글 불러오기
     useEffect(() => {
-        const fetchBoardList = async () => {
+        // 사용자가 로드되지 않았거나, 필요한 정보가 없으면 데이터를 가져오지 않습니다.
+        if (!user.accessToken || !user.uid) {
+            // navigate("/login");
+            return;
+        }
+
+        // 데이터를 동시에 가져옵니다.
+        const fetchData = async () => {
             try {
-                const response = await axios.post("/api/board/mypagelist", { uid: user.uid });
-                if (response.data.success) {
-                    setBoardList([...response.data.boardList]);
-                }
-                console.log(response.data)
+                await Promise.all([fetchBoardList(), fetchRepleList()]);
             } catch (err) {
                 console.error(err);
             }
         };
 
-        fetchBoardList();
-    }, [user.uid]);
+        fetchData();
+        // eslint-disable-next-line
+    }, [user.accessToken, user.uid]); // 사용자의 accessToken과 uid가 변경될 때마다 데이터를 다시 가져옵니다.
+
+    // 내 작성글 불러오기
+    const fetchBoardList = async () => {
+        try {
+            const response = await axios.post("/api/board/mypagelist", { uid: user.uid });
+            if (response.data.success) {
+                setBoardList([...response.data.boardList]);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     // 댓글 불러오기
-    // useEffect(() => {
-    //     const fetchRepleList = async () => {
-    //         tyy {
-    //             const response = await axios.post("/api/reples/mypagereple", { uid : user.uid, boardId : boardId})
-    //         }
-    //     }
-    // })
+    const fetchRepleList = async () => {
+        try {
+            const response = await axios.post("/api/reple/mypagereple", { uid: user.uid });
+            if (response.data.success) {
+                setRepleList(response.data.comments);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
-    // 조건부 렌더링
-    if (!boardList || boardList.length === 0) {
-        return <div style={{ backgroundColor: "var(--bgcolor)", width: "100%", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}><span className="loader"></span></div>;
-    }
+    // 회원탈퇴
+    const handleUnregister = async () => {
+        const auth = getAuth();
+        const user = auth.currentUser;
 
+        // 사용자에게 비밀번호 입력 요청
+        const password = window.prompt("회원 탈퇴를 위해 비밀번호를 입력해주세요.");
+
+        if (password) {
+            const credential = EmailAuthProvider.credential(user.email, password);
+
+            try {
+                // 사용자 재인증
+                await reauthenticateWithCredential(user, credential);
+
+                // Firebase Authentication에서 사용자 삭제
+                await deleteUser(user);
+
+                // 서버에 MongoDB 데이터 삭제 요청
+                await axios.post('/api/user/delete', { uid: user.uid });
+                navigate("/");
+            } catch (error) {
+                alert("비밀번호가 일치하지 않습니다.")
+            }
+        } else {
+            // 비밀번호 입력 취소
+            console.log("회원 탈퇴가 취소되었습니다.");
+        }
+    };
+
+    // 탭메뉴
+    const handleTabChange = (tab) => {
+        setSelectedTab(tab);
+    };
 
     return (
         <>
@@ -83,6 +117,10 @@ const MyPage = () => {
                             <h1>NAME</h1>
                             <p>{user.displayName}</p>
                         </div>
+                        <div className="info">
+                            <h1>EMAIL</h1>
+                            <p>{user.email}</p>
+                        </div>
                     </div>
                 </div>
                 <div className="mypage__content">
@@ -96,15 +134,15 @@ const MyPage = () => {
                                 <LiaUserEditSolid />
                                 <div>Edit Password</div>
                             </Link>
-                            <Link to="/">
+                            <span onClick={handleUnregister}>
                                 <AiOutlineUsergroupDelete />
                                 <div>Unregister</div>
-                            </Link>
+                            </span>
                         </div>
                     </div>
                     <div className="mypage__bottom">
                         {selectedTab === 'mylist' && <MypageBoardList boardList={boardList} />}
-                        {selectedTab === 'mycomments' && <MypageCommentList boardList={boardList} />}
+                        {selectedTab === 'mycomments' && <MypageCommentList repleList={repleList} />}
                     </div>
                 </div>
             </div>

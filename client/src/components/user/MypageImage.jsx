@@ -69,6 +69,9 @@ const MypageImage = () => {
             }
         })
     }
+    // 이미지 주소 판별
+    const isFullUrl = user.photoURL?.startsWith('http://') || user.photoURL?.startsWith('https://');
+    const imageUrl = isFullUrl ? user.photoURL : `http://localhost:5050/${user.photoURL}`;
 
 
 
@@ -84,7 +87,7 @@ const MypageImage = () => {
                     accept="image/png, image/jpeg, image/gif"
                     onChange={(e) => ImageUpload(e)}
                 />
-                <img src={previewImage || `http://localhost:5050/${user.photoURL}`} alt="프로필이미지" />
+                <img src={previewImage || imageUrl} alt="프로필 이미지" />
                 <button onClick={(e) => SaveProfile(e)}>Edit</button>
             </label>
 
