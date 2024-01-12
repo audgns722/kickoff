@@ -303,7 +303,7 @@ const PlayDetail = () => {
                         <PlayRepleList matchId={matchId} />
                         <div className="commnetBox">
                             <PlayRepleWrite matchId={matchId} />
-                            <div className="comment__view">1.6M+ <em>view</em></div>
+                            {/* <div className="comment__view">1.6M+ <em>view</em></div> */}
                         </div>
                     </div>
                 </div>

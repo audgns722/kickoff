@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/board", require("./router/board.js"));
 app.use("/api/user", require("./router/user.js"));
 app.use("/api/reple", require("./router/reple.js"));
+app.use("/api/playreple", require("./router/playreple.js"));
 
 const leagues = [
     { id: "2021", name: "English Premier League 프리미어 손흥민 Nottingham 노팅엄 Newcastle 뉴캐슬 Luton 루턴 Liverpool 리버풀 mancity 맨시티 manutd 맨유 burnley 번리 Bournemouth 본머스 brighton 브라이튼 brentford 브렌트포드 Sheffield 셰필드 Arsenal 아스날 astonvilla 아스톤빌라 Everton 에버튼 Wolverhampton 울버햄튼 westham 웨스트햄 Chelsea 첼시 tottenham 토트넘 palace 팰리스 fulham 풀럼" },

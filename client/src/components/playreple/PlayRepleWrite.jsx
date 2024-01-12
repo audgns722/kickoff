@@ -6,15 +6,18 @@ import { useSelector } from 'react-redux';
 import { AiOutlineMessage } from "react-icons/ai";
 
 const PlayRepleWrite = (props) => {
+    // console.log(props.matchId);
+
     const [reple, setReple] = useState("");
     const user = useSelector((state) => state.user);
 
     const SubmitHandler = (e) => {
-        console.log(props.matchId);
         e.preventDefault();
 
         if (!reple) {
             return alert("댓글 내용을 채워주세요.");
+        } else if (user.uid === '') {
+            return alert("로그인을 해주세요.")
         }
 
         let body = {
@@ -23,7 +26,7 @@ const PlayRepleWrite = (props) => {
             matchId: props.matchId
         }
 
-        axios.post("/api/reple/submit", body).then((response) => {
+        axios.post("/api/playreple/submit", body).then((response) => {
             console.log(response.data);
             if (response.data.success) {
                 alert("댓글 작성이 성공하였습니다.");
@@ -33,6 +36,7 @@ const PlayRepleWrite = (props) => {
             }
         })
     }
+
     return (
         <form action="#" name="comment" method="post">
             <fieldset>

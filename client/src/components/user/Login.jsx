@@ -25,14 +25,6 @@ const Login = () => {
     }
 
     // google 로그인
-    // const signInWithGoogle = async () => {
-    //     try {
-    //         await auth.signInWithPopup(googleProvider);
-    //         // 로그인 후 필요한 동작 수행
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
     const signInWithGoogle = async () => {
         try {
             // Google 로그인

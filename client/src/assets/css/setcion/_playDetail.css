@@ -458,6 +458,37 @@
 
 .play__comment .comments .text .name {
     font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.play__comment .comments .text .name .edit {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    position: relative;
+}
+
+.play__comment .comments .text .name .modal {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 0.8rem;
+    text-align: center;
+    color: var(--white);
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.play__comment .comments .text .name .modal p:nth-child(2) {
+    margin-top: 5px;
 }
 
 .play__comment .comments .text .cont {
@@ -482,7 +513,7 @@
 }
 
 .play__comment .commnetBox form {
-    width: 85%;
+    width: 100%;
 }
 
 .play__comment .commnetBox fieldset {

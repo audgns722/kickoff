@@ -15,7 +15,7 @@ router.post("/submit", async (req, res) => {
     try {
         const userInfo = await User.findOne({ uid: req.body.uid }).exec();
         temp.author = userInfo._id;
-        const NewReple = new Reple(temp);
+        const NewReple = new PlayReple(temp);
         await NewReple.save();
 
         return res.status(200).json({ success: true });
@@ -23,11 +23,9 @@ router.post("/submit", async (req, res) => {
         console.log(err);
         return res.status(400).json({ success: false });
     }
-
-
 });
 
-router.post("/getPlayReple", (req, res) => {
+router.post("/get", (req, res) => {
     PlayReple.find({ matchId: req.body.matchId })
         .populate("author")
         .exec()
@@ -40,7 +38,7 @@ router.post("/getPlayReple", (req, res) => {
         })
 })
 
-router.post("/PlayEdit", (req, res) => {
+router.post("/edit", (req, res) => {
     let temp = {
         matchId: req.body.matchId,
         reple: req.body.reple,

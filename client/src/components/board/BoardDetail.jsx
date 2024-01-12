@@ -134,8 +134,6 @@ const BoardDetail = (props) => {
                         </div>
                     </div>
                 </div>
-
-
                 <RepleWrite boardId={props.boardInfo._id} />
 
                 <RepleList boardId={props.boardInfo._id} />
