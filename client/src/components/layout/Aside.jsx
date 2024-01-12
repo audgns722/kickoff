@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import AsideAD from '../ad/AsideAD';
 
 const Aside = () => {
     const [matchFlag, setMatchFlag] = useState(true);
@@ -62,14 +63,18 @@ const Aside = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="aside__ad"></div>
+                    <div className='aside__ad'>
+                        <AsideAD />
+                    </div>
                 </>
             ) : (
                 <>
                     <div className='aside__matchOff' onClick={() => setMatchFlag(true)}>
                         <p>&lt; recent matches</p>
                     </div>
-                    <div className="aside__ad off"></div>
+                    <div className='aside__ad off'>
+                        <AsideAD />
+                    </div>
                 </>
             )}
             <div className="aside__score">
@@ -88,7 +93,7 @@ const Aside = () => {
 
                 </div>
                 <div className="score__match">
-                    <ul>
+                    <ul className={matchFlag ? ('') : ('off')}>
                         {matches.slice(1, 15).map((matche, key) => (
                             <li key={key}>
                                 <div className="home">

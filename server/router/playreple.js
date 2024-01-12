@@ -54,7 +54,7 @@ router.post("/edit", (req, res) => {
         })
 })
 
-router.post("/PlayDelete", (req, res) => {
+router.post("/delete", (req, res) => {
     PlayReple.deleteOne({ _id: req.body.repleId })
         .exec()
         .then(() => { return res.status(200).json({ success: true }) })

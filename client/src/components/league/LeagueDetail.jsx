@@ -45,7 +45,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
     }, [leagueId]);
 
     // 정렬
-    const [sortOrder, setSortOrder] = useState('Newest');
+    const [sortOrder, setSortOrder] = useState('');
 
     const handleSortChange = (e) => {
         setSortOrder(e.target.value);
@@ -125,7 +125,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
                         </ul>
                         <div className="right__text">
                             <select name="detailSelect" id="detailSelect" value={sortOrder} onChange={handleSortChange}>
-                                <option value="option">▼ MORE</option>
+                                <option value="" disabled selected>▼ MORE</option>
                                 <option value="Newest">Newest</option>
                                 <option value="Oldest">Oldest</option>
                             </select>

@@ -28,6 +28,11 @@
     animation: rotation 1s linear infinite;
 }
 
+/* select메뉴 placeholder */
+select option[value=""][disabled] {
+    display: none;
+}
+
 @keyframes rotation {
     0% {
         transform: rotate(0deg);

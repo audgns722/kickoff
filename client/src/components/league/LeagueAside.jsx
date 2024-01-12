@@ -1,4 +1,5 @@
 import React from 'react'
+import AsideAD from '../ad/AsideAD';
 
 const LeagueAside = ({ rank }) => {
     // 조건부 렌더링
@@ -8,7 +9,9 @@ const LeagueAside = ({ rank }) => {
 
     return (
         <div className='leagueAside'>
-            <div className="leagueAside__ad"></div>
+            <div className="leagueAside__ad">
+                <AsideAD />
+            </div>
             <div className="leagueAside__rank">
                 <h2><span>{rank.competition.name}</span> TABLES</h2>
                 <ul>

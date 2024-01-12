@@ -38,7 +38,7 @@ const News = () => {
             <Swiper
                 spaceBetween={10}
                 slidesPerView={'auto'}
-                navigation={true}
+                navigation={false}
                 loop={true}
                 autoplay={{
                     delay: 3000,

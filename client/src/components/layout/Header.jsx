@@ -93,8 +93,9 @@ const Header = () => {
                 <div className="link">
                     <label htmlFor="link" className="blind">LINK</label>
                     <select name="link" id="link" onChange={handleChange}>
+                        <option value="" disabled selected>BOARD</option>
                         <option value={`boardlist/notice`}>NOTICE</option>
-                        <option value={`boardlist/community`}>BOARD</option>
+                        <option value={`boardlist/community`}>COMMUNITY</option>
                     </select>
                 </div>
                 <div className="time">

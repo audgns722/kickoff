@@ -125,9 +125,8 @@
 .aside__ad {
     margin-top: 300px;
     width: 100%;
-    height: 263px;
+    height: 300px;
     background-color: rgba(0, 0, 0, 0.15);
-    background-image: url(../../img/banner1.png);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -159,7 +158,11 @@
 
 .aside__score>.score__match>ul {
     overflow-y: auto;
-    max-height: 545px;
+    max-height: calc(100vh - 655px);
+}
+
+.aside__score>.score__match>ul.off {
+    max-height: calc(100vh - 415.75px);
 }
 
 .aside__score>.score__match>ul>li {
@@ -248,7 +251,6 @@
 .today__highlight {
     width: 100%;
     height: 130vh;
-    background-image: url(../../img/today__bg01.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
