@@ -160,7 +160,6 @@
 .board__list>ul>li>.list__left>.left__desc>p {
     font-size: 0.9rem;
     color: #B8BAC1;
-    /* ...효과 */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -205,7 +204,6 @@
 
 .nav__sort input[type="checkbox"] {
     display: none;
-    /* 원래의 체크박스 숨기기 */
 }
 
 .nav__sort .indicator {
@@ -369,9 +367,7 @@
     margin-right: 10px;
 }
 
-.board__detail>.bottom>.btnWrap {
-    /* display: flex; */
-}
+.board__detail>.bottom>.btnWrap {}
 
 .board__detail>.bottom>.btnWrap>.modify,
 .board__detail>.bottom>.btnWrap>.delete {

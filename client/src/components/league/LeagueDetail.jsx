@@ -125,7 +125,7 @@ const LeagueDetail = ({ league, matches, scheduled }) => {
                         </ul>
                         <div className="right__text">
                             <select name="detailSelect" id="detailSelect" value={sortOrder} onChange={handleSortChange}>
-                                <option value="" disabled selected>▼ MORE</option>
+                                <option value="" hidden>▼ MORE</option>
                                 <option value="Newest">Newest</option>
                                 <option value="Oldest">Oldest</option>
                             </select>

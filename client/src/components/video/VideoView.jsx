@@ -34,12 +34,12 @@ const VideoView = () => {
     }
 
     if (!videoInfo || videoInfo.length === 0) {
-        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span class="loader"></span></div>;
+        return <div className='loaderWrap' style={{ padding: "55px 300px 0 55px" }}><span className="loader"></span></div>;
     }
 
     return (
         <>
-            <div id='videoview' style={{ padding: "55px 300px 0 55px", backgroundColor: "var(--bgcolor)" }}>
+            <div id='videoview'>
                 <div className="video__wrap">
                     <div className="video__play">
                         {videoInfo && videoInfo.videos.length > 0 &&

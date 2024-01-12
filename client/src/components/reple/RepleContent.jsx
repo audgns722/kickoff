@@ -60,6 +60,10 @@ const RepleContent = (props) => {
                 })
         }
     }
+
+    // 이미지 주소 판별
+    const isFullUrl = user.photoURL?.startsWith('http://') || user.photoURL?.startsWith('https://');
+    const imageUrl = isFullUrl ? user.photoURL : `http://localhost:5050/${user.photoURL}`;
     return (
         <div className="commentWrap">
             <ul>
@@ -70,8 +74,8 @@ const RepleContent = (props) => {
 
                     <div className="bottom">
                         <div className="bottom__left">
-                            <div className="img" style={{ backgroundImage: 'url(../assets/img/liverpool.png)' }}>
-                                {/* <!-- <img src="../assets/img/liverpool.png" alt="임시"> --> */}
+                            <div className="img">
+                                <img src={imageUrl} alt="프로필 이미지" />
                             </div>
                             <p>
                                 <span>{props.reple.author.displayName}</span>님이 <i>{SetTime(props.reple.createdAt, props.reple.updatedAt)}</i>

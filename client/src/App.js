@@ -28,13 +28,11 @@ import PlayDetail from './components/league/PlayDetail.jsx'
 
 const App = () => {
   const dispatch = useDispatch();
-
   const user = useSelector((state) => state.user);
-  console.log(user);
+  console.log(user)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
-      console.log("userInfo", userInfo);
       if (userInfo !== null) {
         dispatch(loginUser(userInfo.multiFactor.user));
       } else {

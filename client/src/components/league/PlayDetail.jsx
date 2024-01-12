@@ -191,7 +191,7 @@ const PlayDetail = () => {
                         </div>
                         <div className="list">
                             <ul>
-                                <li><Link href="#" className="active">MENU</Link></li>
+                                <li><Link href="#" className="active">STATUS</Link></li>
                                 {/* <li><Link href="#">MENU</Link></li>
                                 <li><Link href="#">MENU</Link></li> */}
                             </ul>

@@ -30,6 +30,14 @@ const leagues = [
     { id: "2002", name: "Bundesliga 분데스리가 김민재 이재성 Augsburg 아우크스부르크 Union Berlin 우니온 베를린 Werder Bremen 베르더 브레멘 dortmund 도르트문트 frankfurt 프랑크푸르트 Freiburg 프라이부르크 Hoffenheim 호펜하임 Cologne 쾰른 Leipzig 라이프치히 Leverkusen 레버쿠젠 Mainz 마인츠 Mönchengladbach 묀헨글라트바흐 bayern munich 바이에른 뮌헨 VfB Stuttgart VfB 슈투트가르트 Wolfsburg 볼프스부르크 VfL Bochum VfL 보훔 heidenheim 하이덴하임 Darmstadt 다름슈타" }
 ];
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+})
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+})
+
 app.listen(port, () => {
     mongoose
         .connect(config.mongoURI)
@@ -62,15 +70,6 @@ app.get('/api/search', (req, res) => {
         res.status(500).json({ success: false });
     }
 });
-
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-})
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-})
 
 // news
 app.post('/api/news', async (req, res) => {

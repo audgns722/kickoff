@@ -6,6 +6,7 @@ const multer = require('multer')
 const { Board } = require("../model/Board.js");
 const { Counter } = require("../model/Counter.js");
 const { User } = require("../model/User.js");
+const { Reple } = require("../model/Reple.js");
 
 // 이미지 업로드
 // const setUpload = require("../util/upload.js");
@@ -136,17 +137,27 @@ router.post("/modify", (req, res) => {
 
 // 글 삭제하기
 router.post("/delete", (req, res) => {
-    Board
-        .deleteOne({ boardNum: Number(req.body.boardNum) })
-        .exec()
+    const boardNum = Number(req.body.boardNum);
+
+    Board.findOne({ boardNum: boardNum })
+        .then(board => {
+            if (!board) {
+                throw new Error('게시글을 찾을 수 없습니다.');
+            }
+            const boardId = board._id;
+            return Board.deleteOne({ _id: boardId }).then(() => boardId);
+        })
+        .then(boardId => {
+            return Reple.deleteMany({ boardId: boardId });
+        })
         .then(() => {
-            res.status(200).json({ success: true })
+            res.status(200).json({ success: true });
         })
         .catch((err) => {
-            console.log(err)
-            res.status(400).json({ success: false })
-        })
-})
+            console.error(err);
+            res.status(400).json({ success: false });
+        });
+});
 
 // 로컬 이미지 업로드
 
@@ -191,6 +202,9 @@ router.post('/mypagelist', async (req, res) => {
         res.status(500).send({ success: false, message: '서버 오류 발생' });
     }
 });
+
+
+
 
 
 module.exports = router;

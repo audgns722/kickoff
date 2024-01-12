@@ -27,7 +27,7 @@ const PlayRepleWrite = (props) => {
         }
 
         axios.post("/api/playreple/submit", body).then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             if (response.data.success) {
                 alert("댓글 작성이 성공하였습니다.");
             } else {

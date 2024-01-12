@@ -224,13 +224,13 @@
     margin-right: 5px;
 }
 
-.list {
+.league__info .list {
     width: 100%;
     height: 84px;
     text-align: center;
 }
 
-.list ul {
+.league__info .list ul {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -238,12 +238,12 @@
     margin-top: 30px;
 }
 
-.list li {
+.league__info .list li {
     display: inline-block;
     margin: 0 10px;
 }
 
-.list a {
+.league__info .list a {
     padding: 0 25px;
     text-decoration: none;
     color: var(--gray);
@@ -251,12 +251,12 @@
     font-size: 1.5rem;
 }
 
-.list a.active {
+.league__info .list a.active {
     color: #007BFF;
     position: relative;
 }
 
-.list a.active::before {
+.league__info .list a.active::before {
     content: '';
     width: 40%;
     height: 4px;
@@ -267,7 +267,7 @@
     transform: translateX(-50%);
 }
 
-.list a:hover {
+.league__info .list a:hover {
     color: #007BFF;
 }
 
@@ -448,6 +448,10 @@
     width: 100%;
     font-size: 1.2rem;
     line-height: 1;
+}
+
+.play__comment .comments:first-child {
+    padding-top: 60px;
 }
 
 .play__comment .comments .avatar {

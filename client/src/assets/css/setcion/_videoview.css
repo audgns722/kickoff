@@ -1,8 +1,8 @@
 #videoview {
     width: 100%;
     height: 100vh;
-    padding-left: 55px;
-    padding-top: 55px;
+    padding: 55px 300px 0px 55px;
+
 }
 
 .video__wrap {}
@@ -51,4 +51,18 @@
     padding: 5px;
     width: 48%;
     text-align: right;
+}
+
+@media (max-width:1000px) {
+    #videoview {
+        padding-right: 0;
+    }
+
+}
+
+@media (max-width:600px) {
+    #videoview {
+        padding: 130px 0 0;
+    }
+
 }

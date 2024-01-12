@@ -139,17 +139,14 @@
 .mypage__info .right {
     width: calc(100% - 25.2604vw);
     height: 100%;
-    display: grid;
     z-index: 2;
-    grid-template-columns: repeat(1, 100%);
-    gap: 10px;
     padding-top: 52px;
     padding-left: 5px;
 }
 
 
 .mypage__info .right .info {
-    height: 100%;
+    margin-top: 15px;
 }
 
 .mypage__info .right .info h1 {
@@ -243,6 +240,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.right__text span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .right__text svg {
@@ -474,6 +478,49 @@
     margin-right: 5px;
 }
 
+/* 마이페이지 댓글리스트 */
+.mypage__board .reple__wrap {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.mypage__board .reple__wrap .list {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    background-color: #F4F7F8;
+    border-radius: 50px;
+    margin-bottom: 10px;
+}
+
+.mypage__board .reple__wrap .list .number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #ffffff;
+    margin-right: 15px;
+}
+
+.mypage__board .reple__wrap .list .content {
+    display: inline-block;
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mypage__board .reple__wrap .list .date {
+    display: inline-block;
+    font-size: 12px;
+    color: #acacac;
+    text-align: right;
+    margin-right: 10px;
+}
+
 @media (max-width:1000px) {
     .mypage__board .list__wrap {
         flex-wrap: wrap;
@@ -503,6 +550,14 @@
         margin-right: 0;
     }
 
+    .mypage__board .list__wrap .list .right {
+        width: 100%;
+    }
+
+    .mypage__info .left::before {
+        background-position: bottom center;
+    }
+
     .mypage__info {
         height: 310px;
     }
@@ -515,12 +570,18 @@
         width: 50%;
         display: flex;
         padding: 0;
-        align-items: center;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 20px;
     }
 
     .mypage__info .right .info {
         display: inline-block;
         height: fit-content;
+    }
+
+    .mypage__board .reple__wrap {
+        width: 80%;
     }
 }
 
@@ -538,30 +599,35 @@
         padding: 0 5px;
     }
 
-    .mypage__info {
-        flex-direction: row-reverse;
-    }
-
     .mypage__info .left::before {
         height: 100%;
+        background-position: bottom left;
     }
 
-    .mypage__info .right {
-        align-items: flex-end;
-        justify-content: center;
-    }
-
-    .mypage__info .right .info {
-        text-align: center;
-        margin-bottom: 20px;
+    .mypage__info .right .info p {
+        font-size: 16px;
+        word-break: break-all;
     }
 
     .mypage__info .left .profile label {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
 
     .mypage__board .list__wrap .list .left .img {
         display: none;
+    }
+
+    .mypage__board .reple__wrap {
+        width: 80%;
+    }
+
+    .mypage__content .mypage__top .right__text div {
+        display: none;
+    }
+
+    .mypage__board .list__wrap .list {
+        width: 95%;
+        margin: 0 auto;
     }
 }
