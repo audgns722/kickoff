@@ -385,7 +385,6 @@
 
 .mypage__bottom {
     width: 100%;
-    padding-top: 30px;
 }
 
 .mypage__board {
@@ -394,7 +393,7 @@
 }
 
 .mypage__board .list__wrap {
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -402,17 +401,16 @@
     width: 100%;
     padding: 15px;
     background-color: var(--white);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
     transition: all 0.3s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mypage__board .list__wrap .list:hover {
-    color: #8d8d8d;
-    background-color: #f8f8f8;
+    opacity: 0.5;
 }
 
 .mypage__board .list__wrap .list .left {
@@ -454,7 +452,6 @@
 }
 
 .mypage__board .list__wrap .list .right {
-    width: 120px;
     text-align: right;
     display: flex;
     gap: 10px;
@@ -464,33 +461,41 @@
 
 .mypage__board .list__wrap .list .right .date {
     display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .mypage__board .list__wrap .list .right .view {
     display: inline-block;
     display: flex;
     align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .mypage__board .list__wrap .list .right .view svg {
     width: 20px;
     height: 20px;
     margin-right: 5px;
+    fill: rgba(0, 0, 0, 0.5);
 }
 
 /* 마이페이지 댓글리스트 */
 .mypage__board .reple__wrap {
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .mypage__board .reple__wrap .list {
     display: flex;
     align-items: center;
-    padding: 5px 5px;
-    background-color: #F4F7F8;
-    border-radius: 50px;
+    justify-content: space-between;
+    padding: 15px 5px;
+    background-color: var(--white);
     margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .mypage__board .reple__wrap .list .number {
@@ -499,9 +504,7 @@
     justify-content: center;
     width: 35px;
     height: 35px;
-    border-radius: 50%;
     font-size: 20px;
-    background-color: #ffffff;
     margin-right: 15px;
 }
 
@@ -627,7 +630,7 @@
     }
 
     .mypage__board .list__wrap .list {
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
     }
 }

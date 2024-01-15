@@ -102,7 +102,7 @@ const BoardDetail = (props) => {
                         <p>
                             {props.boardInfo.content}
                         </p>
-                        <img className='boardImg' src={`http://localhost:5050/${props.boardInfo.image}`} alt={props.boardInfo.content} />
+                        <img className='boardImg' src={`http://localhost:5050/${props.boardInfo.image}`} alt={props.boardInfo.title} />
                     </div>
                     <div className="bottom">
                         {/* <div className="tagWrap">

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { LiaUserEditSolid } from "react-icons/lia";
-import { AiOutlineUsergroupDelete } from "react-icons/ai";
+
+// icon
+import { FaKey } from "react-icons/fa";
+import { FaUserMinus } from "react-icons/fa6";
 
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
@@ -131,11 +133,11 @@ const MyPage = () => {
                         </ul>
                         <div className="right__text">
                             <Link to="/findpw">
-                                <LiaUserEditSolid />
+                                <FaKey />
                                 <div>Edit Password</div>
                             </Link>
                             <span onClick={handleUnregister}>
-                                <AiOutlineUsergroupDelete />
+                                <FaUserMinus />
                                 <div>Unregister</div>
                             </span>
                         </div>
