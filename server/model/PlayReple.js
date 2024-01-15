@@ -7,6 +7,7 @@ const playRepleSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
+        leagueId: Number,
         matchId: Number,
     },
     { collection: "playreples", timestamps: true }

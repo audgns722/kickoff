@@ -9,6 +9,7 @@ router.post("/submit", async (req, res) => {
     console.log(req.body);
     let temp = {
         reple: req.body.reple,
+        leagueId: req.body.leagueId,
         matchId: req.body.matchId,
     }
 

@@ -183,7 +183,6 @@ router.post("/image/upload", (req, res) => {
     })
 })
 
-
 // // 이미지 업로드
 // router.post("/image/upload", setUpload("react-blog2023/post"), (req, res, next) => {
 //     // console.log(res.req);
@@ -202,9 +201,5 @@ router.post('/mypagelist', async (req, res) => {
         res.status(500).send({ success: false, message: '서버 오류 발생' });
     }
 });
-
-
-
-
 
 module.exports = router;

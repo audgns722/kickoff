@@ -7,6 +7,7 @@ const repleSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
         },
+        boardNum: Number,
         boardId: {
             type: mongoose.Schema.Types.ObjectId,
         }
