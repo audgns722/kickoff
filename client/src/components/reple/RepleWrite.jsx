@@ -17,6 +17,7 @@ const RepleWrite = (props) => {
         let body = {
             reple: reple,
             uid: user.uid,
+            boardNum: props.boardNum,
             boardId: props.boardId
         }
 

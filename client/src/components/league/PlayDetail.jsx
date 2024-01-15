@@ -302,7 +302,7 @@ const PlayDetail = () => {
                         </div>
                         <PlayRepleList matchId={matchId} />
                         <div className="commnetBox">
-                            <PlayRepleWrite matchId={matchId} />
+                            <PlayRepleWrite leagueId={leagueId} matchId={matchId} />
                             {/* <div className="comment__view">1.6M+ <em>view</em></div> */}
                         </div>
                     </div>

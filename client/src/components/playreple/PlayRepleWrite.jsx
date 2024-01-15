@@ -23,6 +23,7 @@ const PlayRepleWrite = (props) => {
         let body = {
             reple: reple,
             uid: user.uid,
+            leagueId: props.leagueId,
             matchId: props.matchId
         }
 

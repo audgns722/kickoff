@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from "moment";
 import "moment/locale/ko";
+import { Link } from 'react-router-dom';
 
 const MypageCommentList = (props) => {
     if (props.repleList.length === 0) {
@@ -18,11 +19,11 @@ const MypageCommentList = (props) => {
             <div className="mypage__board">
                 <div className="reple__wrap">
                     {props.repleList.map((reple, index) => (
-                        <div className="list" key={index}>
+                        <Link className="list" key={index} to={reple.boardNum ? `/boarddetail/${reple.boardNum}` : `/playdetail/${reple.leagueId}/${reple.matchId}`}>
                             <div className="number">{index + 1}</div>
                             <div className="content">{reple.reple}</div>
                             <div className="date">{formatDateString(reple.createdAt)}</div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
