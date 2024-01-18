@@ -55,14 +55,6 @@ const BoardWrite = () => {
         <div style={{ padding: "55px 0 0 55px" }}>
             <Nav />
             <div className="boardWrap">
-                {/* <div className="board__cate">
-                    <div className="cate__notice btn active" onClick={NoticeLink}>
-                        공지사항
-                    </div>
-                    <div className="cate__community btn">
-                        자유게시판
-                    </div>
-                </div> */}
                 <div className="board__detail write">
                     <form>
 

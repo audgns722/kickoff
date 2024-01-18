@@ -71,7 +71,7 @@ const PlayDetail = () => {
                     const response2 = await axios.get('https://api-football-beta.p.rapidapi.com/fixtures', {
                         params: { date: matchFromApi1.utcDate.substring(0, 10) },
                         headers: {
-                            'x-rapidapi-key': '36c0488b9bmsha694c50fc1a58dap12df45jsn98128f857dfb',
+                            'x-rapidapi-key': process.env.REACT_APP_FOOTBALL_API,
                             'x-rapidapi-host': 'api-football-beta.p.rapidapi.com'
                         }
                     });
@@ -84,7 +84,7 @@ const PlayDetail = () => {
                         const statistics = await axios.get('https://api-football-beta.p.rapidapi.com/fixtures/statistics', {
                             params: { fixture: fixtureId },
                             headers: {
-                                'x-rapidapi-key': '36c0488b9bmsha694c50fc1a58dap12df45jsn98128f857dfb',
+                                'x-rapidapi-key': process.env.REACT_APP_FOOTBALL_API,
                                 'x-rapidapi-host': 'api-football-beta.p.rapidapi.com'
                             }
                         });

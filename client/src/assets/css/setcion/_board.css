@@ -615,7 +615,7 @@
     width: 100px;
     font-size: 0.8rem;
     color: var(--white);
-    background-color: var(--black);
+    background-color: #0057FF;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     padding: 5px 10px;
@@ -636,7 +636,7 @@
     margin-bottom: 20px;
     background-color: #fafafa;
     padding: 10px 15px;
-    width: 30%;
+    width: 100%;
     min-width: 300px;
 }
 

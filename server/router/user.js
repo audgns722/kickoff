@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const multer = require('multer')
 
 const { User } = require("../model/User.js");
 const { Counter } = require("../model/Counter.js");
+
+// 이미지 업로드
+const setUpload = require("../util/upload.js");
 
 // firebase 일반 회원가입
 router.post("/join", (req, res) => {
@@ -67,7 +69,7 @@ router.post('/google-signup', async (req, res) => {
         // 중복 여부 검사
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ success: false });
+            return res.status(400).json({ existingUser });
         }
 
         // Counter 컬렉션에서 다음 userNum 가져오기
@@ -110,26 +112,32 @@ router.post('/delete', async (req, res) => {
     }
 });
 
-// 프로필 로컬 이미지 업로드
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'image/')
-    },
-    filename: function (req, file, cb) {
-        cb(null, `${Date.now()}_${file.originalname}`)
-    }
-})
-const upload = multer({ storage: storage }).single("file");
+// // 프로필 로컬 이미지 업로드
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'image/')
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, `${Date.now()}_${file.originalname}`)
+//     }
+// })
+// const upload = multer({ storage: storage }).single("file");
 
-router.post("/profile/img", (req, res) => {
-    // console.log(req.body, req.formData)
-    upload(req, res, (err) => {
-        if (err) {
-            res.status(400).json({ success: false })
-        } else {
-            res.status(200).json({ success: true, filePath: res.req.file.path })
-        }
-    })
+// router.post("/profile/img", (req, res) => {
+//     // console.log(req.body, req.formData)
+//     upload(req, res, (err) => {
+//         if (err) {
+//             res.status(400).json({ success: false })
+//         } else {
+//             res.status(200).json({ success: true, filePath: res.req.file.path })
+//         }
+//     })
+// })
+
+// 이미지 업로드
+router.post("/profile/img", setUpload("kickoff/post"), (req, res, next) => {
+    // console.log(res.req);
+    res.status(200).json({ success: true, filePath: res.req.file.location })
 })
 
 router.post("/profile/update", (req, res) => {

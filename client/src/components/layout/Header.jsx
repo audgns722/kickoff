@@ -54,7 +54,7 @@ const Header = () => {
     const handleSearch = async (event) => {
         if (event.key === 'Enter' && searchInput.trim()) {
             try {
-                const response = await axios.get(`http://localhost:5050/api/search?query=${encodeURIComponent(searchInput)}`);
+                const response = await axios.get(`/api/search?query=${encodeURIComponent(searchInput)}`);
                 const searchResults = response.data.results;
 
                 if (searchResults.length > 0) {

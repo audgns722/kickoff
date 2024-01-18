@@ -2,6 +2,6 @@ node_modules
 package-lock.json
 server/config/dev.js
 
-client/node_modules
 client/.env
+client/node_modules
 client/package-lock.json

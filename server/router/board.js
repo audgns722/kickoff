@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const multer = require('multer')
 
 // 스키마 만들기
 const { Board } = require("../model/Board.js");
@@ -9,7 +8,7 @@ const { User } = require("../model/User.js");
 const { Reple } = require("../model/Reple.js");
 
 // 이미지 업로드
-// const setUpload = require("../util/upload.js");
+const setUpload = require("../util/upload.js");
 
 // 글 쓰기
 router.post("/write", (req, res) => {
@@ -159,35 +158,35 @@ router.post("/delete", (req, res) => {
         });
 });
 
-// 로컬 이미지 업로드
+// // 로컬 이미지 업로드
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'image/')
-    },
-    filename: function (req, file, cb) {
-        cb(null, `${Date.now()}_${file.originalname}`)
-    }
-})
-
-const upload = multer({ storage: storage }).single("file");
-
-router.post("/image/upload", (req, res) => {
-    // console.log(req.body, req.formData)
-    upload(req, res, (err) => {
-        if (err) {
-            res.status(400).json({ success: false })
-        } else {
-            res.status(200).json({ success: true, filePath: res.req.file.path })
-        }
-    })
-})
-
-// // 이미지 업로드
-// router.post("/image/upload", setUpload("react-blog2023/post"), (req, res, next) => {
-//     // console.log(res.req);
-//     res.status(200).json({ success: true, filePath: res.req.file.location })
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'image/')
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, `${Date.now()}_${file.originalname}`)
+//     }
 // })
+
+// const upload = multer({ storage: storage }).single("file");
+
+// router.post("/image/upload", (req, res) => {
+//     // console.log(req.body, req.formData)
+//     upload(req, res, (err) => {
+//         if (err) {
+//             res.status(400).json({ success: false })
+//         } else {
+//             res.status(200).json({ success: true, filePath: res.req.file.path })
+//         }
+//     })
+// })
+
+// 이미지 업로드
+router.post("/image/upload", setUpload("kickoff/post"), (req, res, next) => {
+    // console.log(res.req);
+    res.status(200).json({ success: true, filePath: res.req.file.location })
+})
 
 // 마이페이지 글불러오기
 router.post('/mypagelist', async (req, res) => {

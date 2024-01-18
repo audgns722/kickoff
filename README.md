@@ -1,5 +1,5 @@
 ## client 설치
-```bash
+```
 npx create-react-app .   
 npm install react-router-dom   
 npm install axios   
@@ -14,7 +14,7 @@ npm install --save react-circular-progressbar
 ```
    
 ## server 설치
-```bash
+```
 npm init -y    
 npm install express --save   
 npm install nodemon --save   
@@ -22,7 +22,9 @@ npm install path --save
 npm install cors   
 npm install node-fetch   
 npm install mongoose --save    
-npm install multer --save   
+npm install multer --save
+npm install --save multer-s3
+npm install aws-sdk@2.348.0
 ```
 
 # KICKOFF

@@ -15,7 +15,7 @@ const PlayRepleList = (props) => {
                 setRepleList([...response.data.repleList])
             }
         })
-    }, [repleList])
+    }, [props.matchId])
 
     return (
         <div className="comment__list">

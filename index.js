@@ -5,22 +5,23 @@ const cors = require('cors');
 
 const path = require("path");
 const app = express();
-const port = "5050";
-const config = require("./config/key.js");
+const port = process.env.PORT || 8080;
+// const port = 5050;
+const config = require("./server/config/key.js");
 
 // 모든 origin에서의 요청을 허용합니다. 실제 운영 환경에서는 특정 origin으로 제한하는 것이 좋습니다.
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 app.use("/image", express.static("./image"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // express router
-app.use("/api/board", require("./router/board.js"));
-app.use("/api/user", require("./router/user.js"));
-app.use("/api/reple", require("./router/reple.js"));
-app.use("/api/playreple", require("./router/playreple.js"));
+app.use("/api/board", require("./server/router/board.js"));
+app.use("/api/user", require("./server/router/user.js"));
+app.use("/api/reple", require("./server/router/reple.js"));
+app.use("/api/playreple", require("./server/router/playreple.js"));
 
 const leagues = [
     { id: "2021", name: "English Premier League 프리미어 손흥민 Nottingham 노팅엄 Newcastle 뉴캐슬 Luton 루턴 Liverpool 리버풀 mancity 맨시티 manutd 맨유 burnley 번리 Bournemouth 본머스 brighton 브라이튼 brentford 브렌트포드 Sheffield 셰필드 Arsenal 아스날 astonvilla 아스톤빌라 Everton 에버튼 Wolverhampton 울버햄튼 westham 웨스트햄 Chelsea 첼시 tottenham 토트넘 palace 팰리스 fulham 풀럼" },
@@ -30,15 +31,10 @@ const leagues = [
     { id: "2002", name: "Bundesliga 분데스리가 김민재 이재성 Augsburg 아우크스부르크 Union Berlin 우니온 베를린 Werder Bremen 베르더 브레멘 dortmund 도르트문트 frankfurt 프랑크푸르트 Freiburg 프라이부르크 Hoffenheim 호펜하임 Cologne 쾰른 Leipzig 라이프치히 Leverkusen 레버쿠젠 Mainz 마인츠 Mönchengladbach 묀헨글라트바흐 bayern munich 바이에른 뮌헨 VfB Stuttgart VfB 슈투트가르트 Wolfsburg 볼프스부르크 VfL Bochum VfL 보훔 heidenheim 하이덴하임 Darmstadt 다름슈타" }
 ];
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-})
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-})
 
-app.listen(port, () => {
+app.listen(port, ("0.0.0.0"), () => {
+    // app.listen(port, () => {
     mongoose
         .connect(config.mongoURI)
         .then(() => {
@@ -70,6 +66,14 @@ app.get('/api/search', (req, res) => {
         res.status(500).json({ success: false });
     }
 });
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+})
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+})
 
 // news
 app.post('/api/news', async (req, res) => {

@@ -24,7 +24,7 @@ const MypageBoardList = (props) => {
                             <div className="left">
                                 <div className="number">{index + 1}</div>
                                 <div className="img">
-                                    <img src={`http://localhost:5050/${list.image}`} alt={list.content} />
+                                    <img src={`${list.image}`} alt={list.content} />
                                 </div>
                                 <div className="title">{list.title}</div>
                                 <div className="content">{list.content}</div>

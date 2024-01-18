@@ -172,7 +172,7 @@ const BoardList = () => {
                                                     </Link>
                                                 </p>
                                                 <Link className='boardImg' to={`/boarddetail/${board.boardNum}`}>
-                                                    <img src={`http://localhost:5050/${board.image}`} alt={board.title} />
+                                                    <img src={`${board.image}`} alt={board.title} />
                                                 </Link>
                                             </div>
                                             <div className="left__info">

@@ -102,21 +102,9 @@ const BoardDetail = (props) => {
                         <p>
                             {props.boardInfo.content}
                         </p>
-                        <img className='boardImg' src={`http://localhost:5050/${props.boardInfo.image}`} alt={props.boardInfo.title} />
+                        <img className='boardImg' src={`${props.boardInfo.image}`} alt={props.boardInfo.title} />
                     </div>
                     <div className="bottom">
-                        {/* <div className="tagWrap">
-                            <div className="tag">
-                                <p># <span>첫번째</span></p>
-                            </div>
-                            <div className="tag">
-                                <p># <span>첫번째</span></p>
-                            </div>
-                            <div className="tag">
-                                <p># <span>첫번째</span></p>
-                            </div>
-                        </div> */}
-
                         <div className="btnWrap">
 
                             {user.uid === props.boardInfo.author.uid ? (
