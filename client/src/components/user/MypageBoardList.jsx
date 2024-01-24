@@ -13,7 +13,7 @@ const MypageBoardList = (props) => {
         </div>
     }
     function formatDateString(dateStr) {
-        return moment(dateStr).format('YYYY-MM-DD');
+        return moment(dateStr).format('YYYY년 MMMM Do a h:mm');
     }
     return (
         <>
