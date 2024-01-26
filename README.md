@@ -1,5 +1,37 @@
-## client 설치
-```
+# KICKOFF
+KICKOFF은 축구api를 이용하여 축구를 사랑하는 이들을 위한 유럽 5대리그 해외축구 하이라이트영상과 리그 경기일정 및 결과를 보여주는 웹사이트 입니다.<br> 
+우리는 다양한 배경과 경험을 가진 축구 팬들이 모여 새로운 친구들을 만들고,<br>
+토론을 나누며, 가장 열정적인 스포츠인 축구에 대한 모든 것을 공유하는 곳으로 초대합니다!<br>
+
+- 유럽 5대리그 정보 보기
+    - 유럽 5대리그 로고를 누르면, 각 리그의 창설연도, 참가팀의 수 , 리그순위, 대표선수, 경기결과, 경기일정의 정보를 확인하실수 있습니다.
+    - 경기결과를 누르면, 해당경기의 데이터(팀의 기대골값, 점유율, 전체 슛, 유효슛, 오프사이드, 파울, 코너킥, 패스 성공률, 경고, 퇴장,주심이름)를 확인하실수 있고, 경기후기를 작성하실수 있습니다.
+
+- 유럽 5대리그 경기 하이라이트 영상 보기
+    - 유럽 5대리그 경기 하이라이트 영상 페이지에서는 리그, 맞대결한 팀, 경기시간의 정보를 확인하실수 있습니다.
+
+- 최신 축구 뉴스 보기
+    - 메인화면에서 나오는 뉴스 제목을 클릭하면 해당 링크에서 최신 축구 뉴스를 보실수 있습니다.
+
+- 축구에 대해 커뮤니케이션 하기
+    - 커뮤니티 페이지에서 남녀노소 자유롭게 축구에 대해서 의사소통하실수 있습니다.
+
+## 팀원소개
+|윤영식|이명훈|문진호|윤지성|
+|:---:|:---:|:---:|:---:|
+|<img width="150px" src="https://avatars.githubusercontent.com/u/144635640?v=4" />|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|
+
+## 제작기간
+2023-12-19 ~ 2024-01-19
+
+## 미리보기
+![kickoff03](https://github.com/audgns722/kickoff/assets/144635699/b7aaedb6-8e76-4d5e-8760-5289ce8a4325)
+
+## client & server  라이브러리 설치
+<details>
+<summary>client</summary>
+
+```js
 npx create-react-app .   
 npm install react-router-dom   
 npm install axios   
@@ -12,9 +44,11 @@ npm install moment --save
 npm install swiper
 npm install --save react-circular-progressbar
 ```
+</details>
+<details>
+<summary>server</summary>
    
-## server 설치
-```
+```js
 npm init -y    
 npm install express --save   
 npm install nodemon --save   
@@ -26,13 +60,20 @@ npm install multer --save
 npm install --save multer-s3
 npm install aws-sdk@2.348.0
 ```
+</details>
 
-# KICKOFF
+## 기술 스택
+Front-end<br>
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
 
-## 팀원소개
-|윤영식|이명훈|문진호|윤지성|
-|:---:|:---:|:---:|:---:|
-|<img width="150px" src="https://avatars.githubusercontent.com/u/144635640?v=4" />|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|
+Back-end<br>
+<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
+<img src="https://img.shields.io/badge/nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white">
+
+Database<br>
+<img src="https://img.shields.io/badge/firebase-F04D35?style=for-the-badge&logo=firebase&logoColor=white">
+<img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
 
 
 ## 기능소개
@@ -49,7 +90,8 @@ npm install aws-sdk@2.348.0
 - 회원가입   
 Firebase를 이용해 사용자의 이메일과 비밀번호로 회원가입하고, MongoDB를 통해 사용자 데이터를 저장합니다.<br/>
 Axios를 사용하여 서버로 데이터를 전송하며, React Router를 이용하여 페이지 간 이동을 합니다.<br/>
-또한, 사용자가 입력한 정보의 유효성을 검사하고, 이메일 중복 검사를 수행하여 회원가입 과정을 관리합니다.   
+또한, 사용자가 입력한 정보의 유효성을 검사하고, 이메일 중복 검사를 수행하여 회원가입 과정을 관리합니다. <br/>
+
 
 
 - 홈   
