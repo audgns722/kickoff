@@ -20,7 +20,7 @@ KICKOFF은 축구api를 이용하여 축구를 사랑하는 이들을 위한<br>
 ## 팀원소개
 |윤영식|이명훈|문진호|윤지성|
 |:---:|:---:|:---:|:---:|
-|<img width="150px" src="https://avatars.githubusercontent.com/u/144635640?v=4" />|<img width="150px" src="https://avatars.githubusercontent.com/u/144664895?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|
+|<img width="150px" src="https://avatars.githubusercontent.com/u/144635640?v=4" />|<img width="150px" src="https://avatars.githubusercontent.com/u/144664895?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635699?v=4">|<img width="150px" src="https://avatars.githubusercontent.com/u/144635615?v=4">|
 
 ## 제작기간
 2023-12-19 ~ 2024-01-19
